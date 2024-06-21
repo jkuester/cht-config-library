@@ -1,0 +1,11 @@
+{
+  "muting": {
+    "mute_forms": ["mute_contact"],
+    "unmute_forms": ["unmute_contact"],
+    "validations": [],
+    "messages": []
+  },
+  "transitions": {
+    "muting": true
+  }
+}

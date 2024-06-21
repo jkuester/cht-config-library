@@ -1,9 +1,46 @@
 {
+  "extends": "@medic",
   "env": {
     "node": true,
     "es6": true
   },
   "parserOptions": {
     "ecmaVersion": 6
-  }
+  },
+  "plugins": [
+    "json"
+  ],
+  "rules": {
+//    "max-len": "off",
+//    "no-console": "error",
+//    "no-var": "error",
+//    "eol-last": 0,
+//    "no-debugger": "off",
+//    "quotes": [
+//      "error",
+//      "single",
+//      {
+//        "allowTemplateLiterals": true,
+//        "avoidEscape": true
+//      }
+//    ],
+//    "indent": [
+//      "error",
+//      2,
+//      {
+//        "SwitchCase": 1
+//      }
+//    ]
+  },
+  "globals": {
+//    "Utils": true,
+    "reports": true,
+    "lineage": true,
+    "contact": true
+//    "user": true,
+//    "cht": true
+  },
+  "ignorePatterns": [
+    "**/node_modules/**"
+  ]
 }

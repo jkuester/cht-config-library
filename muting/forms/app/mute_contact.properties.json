@@ -1,0 +1,7 @@
+{
+    "context": {
+        "person": true,
+        "place": true,
+        "expression": "!contact.muted"
+    }
+}
