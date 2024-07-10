@@ -1,0 +1,21 @@
+name: CI
+
+on: [push, pull_request]
+
+env:
+  NODE_VERSION: '20.11'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - run: sudo python -m pip install git+https://github.com/medic/pyxform.git@medic-conf-1.17#egg=pyxform-medic
+      - run: sudo apt install -y xsltproc
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
