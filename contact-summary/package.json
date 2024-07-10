@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "test": "npm run compile-forms && npm run compile-app-settings && npm run unittest",
+    "compile-app-settings": "npx cht --no-check compile-app-settings",
+    "compile-forms": "npx cht --no-check convert-app-forms",
+    "unittest": "mocha test/**/*.spec.js --timeout 20000"
+  }
+}

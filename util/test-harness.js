@@ -10,4 +10,4 @@ module.exports = {
     beforeEach: async () => await harness.clear(),
     afterEach: () => expect(harness.consoleErrors).to.be.empty,
   }
-}
+};
