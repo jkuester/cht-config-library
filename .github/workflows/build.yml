@@ -17,5 +17,5 @@ jobs:
       - run: sudo python -m pip install git+https://github.com/medic/pyxform.git@medic-conf-1.17#egg=pyxform-medic
       - run: sudo apt install -y xsltproc
       - run: npm ci
-      - run: npm lint
+      - run: npm run lint
       - run: npm test
