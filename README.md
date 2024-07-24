@@ -17,7 +17,7 @@ Before opening a PR, review the following considerations:
   - The functionality should work, but it does not need to be "production-ready" in terms of polish or completeness.
 - Testing - Automated tests are required for all configuration. This will help ensure the configuration is valid and continues to work as expected as the CHT evolves. 
 
-## Development Environment
+### Development Environment
 
 Building this configuration requires the [standard CHT app development environment](https://docs.communityhealthtoolkit.org/apps/tutorials/local-setup/#setup-environment).
 
@@ -37,7 +37,7 @@ Run the linting:
 npm run lint
 ```
 
-### Testing
+#### Testing
 
 Run all the tests:
 ```shell
