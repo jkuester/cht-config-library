@@ -8,6 +8,6 @@ module.exports = {
     beforeAll: async () => await harness.start(),
     afterAll: async () => await harness.stop(),
     beforeEach: async () => await harness.clear(),
-    afterEach: () => expect(harness.consoleErrors).to.be.empty,
+    afterEach: () => expect(harness.consoleErrors, JSON.stringify(harness.consoleErrors)).to.be.empty,
   }
 };
