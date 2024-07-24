@@ -1,5 +1,7 @@
 const { expect } = require('chai');
 const { harness } = require('../../../util/test-harness');
+const { readFile} = require('fs').promises;
+const Path = require('path');
 
 const form = 'embedded_multimedia';
 
@@ -19,6 +21,9 @@ describe('Embedded Multimedia form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
+    const base64ImageFile = (await readFile(Path.resolve(__dirname, 'base64_image.txt')))
+      .toString()
+      .trim();
     expect(fields).to.deep.include({
       questions_with_media: {
         image_question: 'image',
@@ -40,6 +45,7 @@ describe('Embedded Multimedia form', () => {
       },
       notes_with_media: {
         image_note: '',
+        base64_note: base64ImageFile,
         fa_note: '',
         svg_note: '',
         inline_image_note: '',
