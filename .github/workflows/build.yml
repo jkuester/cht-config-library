@@ -6,7 +6,7 @@ env:
   NODE_VERSION: '20.11'
   GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
   GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-  GOOGLE_REDIRECT_URI: ${{ secrets.GOOGLE_REDIRECT_URI }}
+  GOOGLE_REDIRECT_URI: "http://localhost"
   GOOGLE_TOKEN_SCOPE: 'https://www.googleapis.com/auth/drive.readonly'
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
       - id: auth
         uses: google-github-actions/auth@v2
         with:
-          service_account: ${{ secrets.GOOGLE_SERVICE_ACCT }}
+          service_account: ${{ env.GOOGLE_SERVICE_ACCT }}
           credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
           project_id: 'cht-config-library'
           token_format: access_token
@@ -29,7 +29,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: |
+      - name: Write token to google-drive/.gdrive.session.json file
+        run: |
           echo '{
             "access_token": "${{ steps.auth.outputs.access_token }}",
             "scope": "${{ env.GOOGLE_TOKEN_SCOPE }}",
