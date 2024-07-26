@@ -11,9 +11,18 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
+      - id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          service_account: ${{ secrets.GOOGLE_SERVICE_ACCT }}
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+          create_credentials_file: true
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/drive.readonly
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
+      - run: cp ${{ steps.auth.outputs.credentials_file_path }} .gdrive.session.json
       - run: sudo python -m pip install git+https://github.com/medic/pyxform.git@medic-conf-1.17#egg=pyxform-medic
       - run: sudo apt install -y xsltproc
       - run: npm ci
