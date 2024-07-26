@@ -36,7 +36,7 @@ jobs:
             "access_token": "${{ steps.auth.outputs.access_token }}",
             "scope": "https://www.googleapis.com/auth/drive.readonly",
             "token_type": "Bearer",
-            "expiry_date": "${{ env.NOW }}999"
+            "expiry_date": "9999999999999"
           }' > .gdrive.session.json
       - run: sudo python -m pip install git+https://github.com/medic/pyxform.git@medic-conf-1.17#egg=pyxform-medic
       - run: sudo apt install -y xsltproc
