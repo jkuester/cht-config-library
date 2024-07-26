@@ -7,6 +7,7 @@ env:
   GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
   GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
   GOOGLE_REDIRECT_URI: ${{ secrets.GOOGLE_REDIRECT_URI }}
+  GOOGLE_TOKEN_SCOPE: 'https://www.googleapis.com/auth/drive.readonly'
 
 jobs:
   test:
@@ -22,22 +23,19 @@ jobs:
         with:
           service_account: ${{ secrets.GOOGLE_SERVICE_ACCT }}
           credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
-          create_credentials_file: true
           project_id: 'cht-config-library'
           token_format: access_token
-          access_token_scopes: https://www.googleapis.com/auth/drive.readonly
+          access_token_scopes: ${{ env.GOOGLE_TOKEN_SCOPE }}
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: cp ${{ steps.auth.outputs.credentials_file_path }} google-drive/.gdrive.session.json
-#      - run: echo "NOW=$(date +%s)" >> $GITHUB_ENV
-#      - run: |
-#          echo '{
-#            "access_token": "${{ steps.auth.outputs.access_token }}",
-#            "scope": "https://www.googleapis.com/auth/drive.readonly",
-#            "token_type": "Bearer",
-#            "expiry_date": "9999999999999"
-#          }' > google-drive/.gdrive.session.json
+      - run: |
+          echo '{
+            "access_token": "${{ steps.auth.outputs.access_token }}",
+            "scope": "${{ env.GOOGLE_TOKEN_SCOPE }}",
+            "token_type": "Bearer",
+            "expiry_date": "9999999999999"
+          }' > google-drive/.gdrive.session.json
       - run: sudo python -m pip install git+https://github.com/medic/pyxform.git@medic-conf-1.17#egg=pyxform-medic
       - run: sudo apt install -y xsltproc
       - run: npm ci
