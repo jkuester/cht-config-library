@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - name: Write token to google-drive/.gdrive.session.json file
+      - name: Write access_token to .gdrive.session.json
         run: |
           echo '{
             "access_token": "${{ steps.auth.outputs.access_token }}",

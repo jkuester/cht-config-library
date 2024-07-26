@@ -1,14 +1,14 @@
 const { expect } = require('chai');
-const { harness } = require('../../../util/test-harness');
+const { harness } = require('../../../../util/test-harness');
 
 const form = 'death_report';
 
 describe('Death Report form', () => {
-  const dateOfDeath = new Date();
+  const dateOfDeath = new Date().toISOString().split('T')[0];
 
   it('submits form successfully', async () => {
     const death_details = {
-      date_of_death: dateOfDeath.toISOString().split('T')[0],
+      date_of_death: dateOfDeath,
       place_of_death: 'other',
       place_of_death_other: 'somewhere else',
       death_information: 'relevant information'
