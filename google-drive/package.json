@@ -2,7 +2,8 @@
   "scripts": {
     "test": "npm run compile-forms && npm run compile-app-settings && npm run unittest",
     "compile-app-settings": "npx cht compile-app-settings",
-    "compile-forms": "npx cht convert-app-forms",
+    "compile-forms": "npm run fetch-forms && npx cht convert-app-forms convert-contact-forms",
+    "fetch-forms": "npx cht fetch-forms-from-google-drive",
     "unittest": "mocha test/**/*.spec.js --timeout 20000"
   }
 }

@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { harness } = require('../../../util/test-harness');
+const { harness } = require('../../../../util/test-harness');
 const { readFile} = require('fs').promises;
 const Path = require('path');
 
