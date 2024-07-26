@@ -10,6 +10,9 @@ env:
 
 jobs:
   test:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -26,8 +29,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }}
-#      - run: cp ${{ steps.auth.outputs.credentials_file_path }} .gdrive.session.json
-      - run: echo ${{ steps.auth.outputs.access_token }} > .gdrive.session.json
+      - run: cp ${{ steps.auth.outputs.credentials_file_path }} .gdrive.session.json
+#      - run: echo ${{ steps.auth.outputs.access_token }} > .gdrive.session.json
       - run: sudo python -m pip install git+https://github.com/medic/pyxform.git@medic-conf-1.17#egg=pyxform-medic
       - run: sudo apt install -y xsltproc
       - run: npm ci
