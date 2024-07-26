@@ -23,7 +23,6 @@ jobs:
         with:
           service_account: ${{ env.GOOGLE_SERVICE_ACCT }}
           credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
-          project_id: 'cht-config-library'
           token_format: access_token
           access_token_scopes: ${{ env.GOOGLE_TOKEN_SCOPE }}
       - uses: actions/setup-node@v3
