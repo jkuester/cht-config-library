@@ -30,8 +30,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 #      - run: cp ${{ steps.auth.outputs.credentials_file_path }} .gdrive.session.json
-      - run: echo "NOW=$(date -d ${{ github.event.repository.updated_at}} +%s)" >> $GITHUB_ENV
-      - run: echo "NOW=$NOW"
+      - run: echo "NOW=$(date +%s)" >> $GITHUB_ENV
       - run: |
           echo '{
             "access_token": "${{ steps.auth.outputs.access_token }}",
