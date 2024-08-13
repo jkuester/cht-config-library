@@ -27,3 +27,11 @@ When running `cht fetch-forms-from-google-drive` for the first time, it will pro
 OAuth flows make automated CI runs difficult. To work around this, you can use a Google service account. In your Google Cloud project, create a service account. Make sure the account has the `Service Account Token Creator` role and has access to the files on Google Drive. (Note that service accounts are technically not members of an organization. So, files only shared with the organization will not be accessible to the service account. If you are an organization admin, you can grant `Domain-wide Delegation` to your service account, otherwise just share the files/directories directly with your service account email address.) 
 
 Then you can configure your CI workflow to log in with the service account. This will allow for bypassing the normal consent screen which requires manual input. For GitHub actions, the `google-github-actions/auth` action supports authenticating with the service account key and getting back an OAuth access token. Save this token in `.gdrive.session.json` and set the `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, and `GOOGLE_REDIRECT_URI` environment variables. Then cht-conf will use the provided credentials to access Google Drive. See the [GitHub workflow config](../.github/workflows/build.yml) for this repo for more details.
+
+## Local development
+
+Running the tests for this project locally requires a Google account and manual user input (copying the authorization token from browser to complete the OAuth flow). Because of this, tests for this project are not run locally by default (when running tests for all projects via the root `test` script). If you want to run the tests locally, you can run the npm `test` script in this `google-drive` directory, or you can set the `CI` envar when executing the root `test` script. The tests for this project are always run in CI.
+
+```shell
+CI=true npm run test
+```
