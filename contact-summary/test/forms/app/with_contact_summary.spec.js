@@ -19,7 +19,7 @@ describe('Test Contact Summary form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).to.deep.includes({ my_page: {
+    expect(fields).excluding(['meta']).to.deep.equal({ my_page: {
       favorite_chw_name: allChws[0].name,
       favorite_chw_hh_visits: `${allChws[0].household_visits}`,
       favorite_chw_referrals: `${allChws[0].referrals}`,
@@ -55,7 +55,7 @@ describe('Test Contact Summary form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).to.deep.includes({ my_page: {
+    expect(fields).excluding(['meta']).to.deep.equal({ my_page: {
       favorite_chw_name: allChws[0].name,
       favorite_chw_hh_visits: `${allChws[0].household_visits}`,
       favorite_chw_referrals: `${allChws[0].referrals}`,
@@ -84,7 +84,7 @@ describe('Test Contact Summary form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).to.deep.includes({ my_page: {
+    expect(fields).excluding(['meta']).to.deep.equal({ my_page: {
       favorite_chw_name: '',
       favorite_chw_hh_visits: '',
       favorite_chw_referrals: '',

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Comparing Values</h:title>
+    <model>
+      <itext>
+        <translation lang="en">
+          <text id="/comparing_values/case_insensitive/description:label">
+            <value>Case insensitive comparisons can be accomplished via the `translate` function.</value>
+          </text>
+          <text id="/comparing_values/case_insensitive/description_conclusion/equal:label">
+            <value>&quot;<output value=" /comparing_values/case_insensitive/value_a "/>&quot; **is equal** to &quot;<output value=" /comparing_values/case_insensitive/value_b "/>&quot; _(ignoring case)_</value>
+          </text>
+          <text id="/comparing_values/case_insensitive/description_conclusion/not_equal:label">
+            <value>&quot;<output value=" /comparing_values/case_insensitive/value_a "/>&quot; **is not equal** to &quot;<output value=" /comparing_values/case_insensitive/value_b "/>&quot; _(ignoring case)_</value>
+          </text>
+          <text id="/comparing_values/case_insensitive/value_b:label">
+            <value>Enter a value to compare against the string &quot;<output value=" /comparing_values/case_insensitive/value_a "/>&quot;</value>
+          </text>
+          <text id="/comparing_values/case_insensitive:label">
+            <value>Case insensitive string comparison</value>
+          </text>
+          <text id="/comparing_values/intro:label">
+            <value>This form demonstrates various methods for comparing values.</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <comparing_values delimiter="#" id="comparing_values" prefix="J1!comparing_values!" version="2024-08-14 00:00:00">
+          <intro/>
+          <case_insensitive>
+            <description/>
+            <value_a/>
+            <value_b/>
+            <is_equal/>
+            <description_conclusion>
+              <equal/>
+              <not_equal/>
+            </description_conclusion>
+          </case_insensitive>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </comparing_values>
+      </instance>
+      <instance id="contact-summary"/>
+      <bind nodeset="/comparing_values/intro" readonly="true()" type="string"/>
+      <bind nodeset="/comparing_values/case_insensitive/description" readonly="true()" type="string"/>
+      <bind calculate="&quot;Hello World&quot;" nodeset="/comparing_values/case_insensitive/value_a" type="string"/>
+      <bind nodeset="/comparing_values/case_insensitive/value_b" type="string"/>
+      <bind calculate="translate( /comparing_values/case_insensitive/value_a , 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate( /comparing_values/case_insensitive/value_b , 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')" nodeset="/comparing_values/case_insensitive/is_equal" type="string"/>
+      <bind nodeset="/comparing_values/case_insensitive/description_conclusion" relevant=" /comparing_values/case_insensitive/value_b  != &quot;&quot;"/>
+      <bind nodeset="/comparing_values/case_insensitive/description_conclusion/equal" readonly="true()" relevant=" /comparing_values/case_insensitive/is_equal  = &quot;true&quot;" type="string"/>
+      <bind nodeset="/comparing_values/case_insensitive/description_conclusion/not_equal" readonly="true()" relevant=" /comparing_values/case_insensitive/is_equal  != &quot;true&quot;" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/comparing_values/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <input ref="/comparing_values/intro">
+      <label ref="jr:itext('/comparing_values/intro:label')"/>
+      <hint>For more complex comparisons, consider implementing the comparison logic in an [extension-lib](https://docs.communityhealthtoolkit.org/apps/reference/extension-libs/).</hint>
+    </input>
+    <group appearance="field-list" ref="/comparing_values/case_insensitive">
+      <label ref="jr:itext('/comparing_values/case_insensitive:label')"/>
+      <input ref="/comparing_values/case_insensitive/description">
+        <label ref="jr:itext('/comparing_values/case_insensitive/description:label')"/>
+      </input>
+      <input ref="/comparing_values/case_insensitive/value_b">
+        <label ref="jr:itext('/comparing_values/case_insensitive/value_b:label')"/>
+      </input>
+      <group ref="/comparing_values/case_insensitive/description_conclusion">
+        <input ref="/comparing_values/case_insensitive/description_conclusion/equal">
+          <label ref="jr:itext('/comparing_values/case_insensitive/description_conclusion/equal:label')"/>
+        </input>
+        <input ref="/comparing_values/case_insensitive/description_conclusion/not_equal">
+          <label ref="jr:itext('/comparing_values/case_insensitive/description_conclusion/not_equal:label')"/>
+        </input>
+      </group>
+    </group>
+  </h:body>
+</h:html>

@@ -51,6 +51,6 @@ describe('Person Create form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalContacts).to.be.empty;
-    expect(contact).to.deep.include(person);
+    expect(contact).excluding(['meta', '_id', 'reported_date']).to.deep.equal(person);
   });
 });

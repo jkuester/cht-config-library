@@ -24,7 +24,7 @@ describe('Embedded Multimedia form', () => {
     const base64ImageFile = (await readFile(Path.resolve(__dirname, 'base64_image.txt')))
       .toString()
       .trim();
-    expect(fields).to.deep.include({
+    expect(fields).excluding(['meta']).to.deep.equal({
       questions_with_media: {
         image_question: 'image',
         audio_question: 'audio',
