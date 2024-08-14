@@ -29,7 +29,7 @@ describe('Android App Launcher form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).to.deep.include({
+    expect(fields).excluding(['meta']).to.deep.equal({
       intro: '',
       camera_image: {
         camera_app: {
