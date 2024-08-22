@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Inputs Contact</h:title>
+    <model>
+      <itext>
+        <translation lang="en">
+          <text id="/inputs_contact/hello:label">
+            <value>Hello: <output value=" /inputs_contact/contact_name "/></value>
+          </text>
+          <text id="/inputs_contact/inputs/contact/_id:label">
+            <value>Select a contact</value>
+          </text>
+          <text id="/inputs_contact/intro:label">
+            <value>As noted in [the documentation](https://docs.communityhealthtoolkit.org/apps/guides/forms/form-inputs/#inputs-data-for-contact-in-app-forms), when opening an app form from a contact's profile page, data for that contact will be available in the &lt;code&gt;inputs/contact&lt;/code&gt; group.
+
+However, when opening the same form from the "Reports" tab, this group will not be populated by default. A common pattern to handle this is to display/hide the actual &lt;code&gt;inputs&lt;/code&gt; group based on the value of &lt;code&gt;inputs/source&lt;/code&gt;. The source will be "contact" if the form was opened from a profile page. If it is opened from the "Reports" tab, the source will be set to its default value.
+
+Setting the top level &lt;code&gt;patient\_uuid&lt;/code&gt; (or &lt;code&gt;place\_uuid&lt;/code&gt;) field to the &lt;code&gt;inputs/contact/_id&lt;/code&gt; value will associate the report with the selected patient.</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <inputs_contact delimiter="#" id="inputs_contact" prefix="J1!inputs_contact!" version="2024-08-22 00:00:00">
+          <intro/>
+          <inputs>
+            <meta>
+              <location>
+                <lat/>
+                <long/>
+                <error/>
+                <message/>
+              </location>
+            </meta>
+            <source>user</source>
+            <contact>
+              <_id/>
+              <name/>
+            </contact>
+          </inputs>
+          <patient_uuid/>
+          <contact_name/>
+          <hello/>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </inputs_contact>
+      </instance>
+      <instance id="contact-summary"/>
+      <bind nodeset="/inputs_contact/intro" readonly="true()" type="string"/>
+      <bind nodeset="/inputs_contact/inputs" relevant="./source = 'user'"/>
+      <bind nodeset="/inputs_contact/inputs/source" type="string"/>
+      <bind nodeset="/inputs_contact/inputs/contact/_id" type="string"/>
+      <bind nodeset="/inputs_contact/inputs/contact/name" type="string"/>
+      <bind calculate="../inputs/contact/_id" nodeset="/inputs_contact/patient_uuid" type="string"/>
+      <bind calculate="../inputs/contact/name" nodeset="/inputs_contact/contact_name" type="string"/>
+      <bind nodeset="/inputs_contact/hello" readonly="true()" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/inputs_contact/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <input ref="/inputs_contact/intro">
+      <label ref="jr:itext('/inputs_contact/intro:label')"/>
+    </input>
+    <group ref="/inputs_contact/inputs">
+      <group ref="/inputs_contact/inputs/contact">
+        <input appearance="select-contact" ref="/inputs_contact/inputs/contact/_id">
+          <label ref="jr:itext('/inputs_contact/inputs/contact/_id:label')"/>
+        </input>
+      </group>
+    </group>
+    <input ref="/inputs_contact/hello">
+      <label ref="jr:itext('/inputs_contact/hello:label')"/>
+    </input>
+  </h:body>
+</h:html>
