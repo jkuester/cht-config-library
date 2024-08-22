@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Select Contact</h:title>
+    <model>
+      <itext>
+        <translation lang="en">
+          <text id="/select_contact/contact_page/contact/_id:label">
+            <value>Select any contact</value>
+          </text>
+          <text id="/select_contact/contact_page/description:label">
+            <value>You selected: <output value=" /select_contact/contact_page/selected_contact_name "/></value>
+          </text>
+          <text id="/select_contact/contact_page:label">
+            <value>Data dynamically loaded from the selected contact</value>
+          </text>
+          <text id="/select_contact/inputs/user:label">
+            <value>User Settings Doc</value>
+          </text>
+          <text id="/select_contact/intro:label">
+            <value>As described [in the docs](https://docs.communityhealthtoolkit.org/apps/guides/forms/form-inputs/#contact-selector), the contact selector loads data from a contact doc into a form group. 
+
+This can be triggered automatically to load contact data in the background (e.g. this form loads the contact document for the current user). 
+
+Alternatively, the contact selector can be displayed to the user as a search box so they can dynamically choose which contact to load. 
+
+_(Note that because of [this issue](https://github.com/medic/cht-core/issues/8225) we have to load the user's contact outside of the &lt;code&gt;inputs&lt;/code&gt; group.)_</value>
+          </text>
+          <text id="/select_contact/user_page/description:label">
+            <value><output value=" /select_contact/user_page/user_name "/>'s role: <output value=" /select_contact/user_page/user_role "/></value></text>
+          <text id="/select_contact/user_page/user_contact:label">
+            <value>User's Contact Doc</value>
+          </text>
+          <text id="/select_contact/user_page:label">
+            <value>Data automatically loaded from the user's contact doc</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <select_contact delimiter="#" id="select_contact" prefix="J1!select_contact!" version="2024-08-22 00:00:00">
+          <intro/>
+          <inputs>
+            <meta>
+              <location>
+                <lat/>
+                <long/>
+                <error/>
+                <message/>
+              </location>
+            </meta>
+            <user>
+              <contact_id/>
+            </user>
+          </inputs>
+          <user_page>
+            <user_contact>
+              <_id/>
+              <name/>
+              <role/>
+            </user_contact>
+            <user_name/>
+            <user_role/>
+            <description/>
+          </user_page>
+          <contact_page>
+            <contact>
+              <_id/>
+              <name/>
+            </contact>
+            <selected_contact_name/>
+            <description/>
+          </contact_page>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </select_contact>
+      </instance>
+      <instance id="contact-summary"/>
+      <bind nodeset="/select_contact/intro" readonly="true()" type="string"/>
+      <bind nodeset="/select_contact/inputs" relevant="false()"/>
+      <bind nodeset="/select_contact/inputs/user/contact_id" type="string"/>
+      <bind calculate="../../../inputs/user/contact_id" nodeset="/select_contact/user_page/user_contact/_id" type="string"/>
+      <bind nodeset="/select_contact/user_page/user_contact/name" type="string"/>
+      <bind nodeset="/select_contact/user_page/user_contact/role" type="string"/>
+      <bind calculate="../user_contact/name" nodeset="/select_contact/user_page/user_name" type="string"/>
+      <bind calculate="../user_contact/role" nodeset="/select_contact/user_page/user_role" type="string"/>
+      <bind nodeset="/select_contact/user_page/description" readonly="true()" type="string"/>
+      <bind nodeset="/select_contact/contact_page/contact/_id" type="string"/>
+      <bind nodeset="/select_contact/contact_page/contact/name" type="string"/>
+      <bind calculate="../contact/name" nodeset="/select_contact/contact_page/selected_contact_name" type="string"/>
+      <bind nodeset="/select_contact/contact_page/description" readonly="true()" relevant=" /select_contact/contact_page/selected_contact_name  != &quot;&quot;" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/select_contact/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <input ref="/select_contact/intro">
+      <label ref="jr:itext('/select_contact/intro:label')"/>
+    </input>
+    <group ref="/select_contact/inputs">
+      <group ref="/select_contact/inputs/user">
+        <label ref="jr:itext('/select_contact/inputs/user:label')"/>
+      </group>
+    </group>
+    <group appearance="field-list" ref="/select_contact/user_page">
+      <label ref="jr:itext('/select_contact/user_page:label')"/>
+      <group appearance="hidden" ref="/select_contact/user_page/user_contact">
+        <label ref="jr:itext('/select_contact/user_page/user_contact:label')"/>
+        <input appearance="select-contact type-person" ref="/select_contact/user_page/user_contact/_id"/>
+      </group>
+      <input ref="/select_contact/user_page/description">
+        <label ref="jr:itext('/select_contact/user_page/description:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/select_contact/contact_page">
+      <label ref="jr:itext('/select_contact/contact_page:label')"/>
+      <group ref="/select_contact/contact_page/contact">
+        <input appearance="select-contact" ref="/select_contact/contact_page/contact/_id">
+          <label ref="jr:itext('/select_contact/contact_page/contact/_id:label')"/>
+        </input>
+      </group>
+      <input ref="/select_contact/contact_page/description">
+        <label ref="jr:itext('/select_contact/contact_page/description:label')"/>
+      </input>
+    </group>
+  </h:body>
+</h:html>
