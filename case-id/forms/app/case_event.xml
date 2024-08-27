@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <h:head>
+    <h:title>Add Case Event</h:title>
+    <model>
+      <itext>
+        <translation lang="en">
+          <text id="/case_event/case_id:label">
+            <value>Enter your Case Id</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <case_event delimiter="#" id="case_event" prefix="J1!case_event!" version="2024-08-27 14:09:31">
+          <case_id/>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </case_event>
+      </instance>
+      <instance id="contact-summary"/>
+      <bind nodeset="/case_event/case_id" type="string"/>
+      <bind calculate="concat('uuid:', uuid())" nodeset="/case_event/meta/instanceID" readonly="true()" type="string"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <input ref="/case_event/case_id">
+      <label ref="jr:itext('/case_event/case_id:label')"/>
+    </input>
+  </h:body>
+</h:html>

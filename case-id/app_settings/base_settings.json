@@ -1,0 +1,18 @@
+{
+  "registrations": [{
+    "form": "register_case",
+    "events": [{
+      "name": "on_create",
+      "trigger": "add_case"
+    }]
+  }],
+  "accept_case_reports": [{
+    "form": "case_event",
+    "validations": {},
+    "messages": []
+  }],
+  "transitions": {
+    "registration": true,
+    "accept_case_reports": true
+  }
+}
