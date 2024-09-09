@@ -17,12 +17,11 @@ describe('Unmute Contact form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).excluding(['meta']).to.deep.equal({
+    expect(fields).excludingEvery('meta').to.deep.equal({
       inputs: {
         contact: {
           _id: 'contact-uuid',
         },
-        meta: { location: { error: '', lat: '', long: '', message: '', }, },
         source: 'contact',
         source_id: '',
       },

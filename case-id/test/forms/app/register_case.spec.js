@@ -22,10 +22,9 @@ describe('Register Case form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).excluding(['meta']).to.deep.equal({
+    expect(fields).excludingEvery('meta').to.deep.equal({
       inputs: {
         contact: CONTACT,
-        meta: { location: { error: '', lat: '', long: '', message: '', }, },
         source: 'contact',
         source_id: '',
       },

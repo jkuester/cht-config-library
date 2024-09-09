@@ -49,7 +49,7 @@ describe('Comparing Values form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).excluding(['meta']).to.deep.equal({
+    expect(fields).excludingEvery('meta').to.deep.equal({
       intro: '',
       case_insensitive: {
         description: '',

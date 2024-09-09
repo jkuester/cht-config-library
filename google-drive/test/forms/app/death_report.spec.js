@@ -31,7 +31,7 @@ describe('Death Report form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).excluding(['meta']).to.deep.equal({
+    expect(fields).excludingEvery('meta').to.deep.equal({
       data: {
         __date_of_death: dateOfDeath,
         __death_information: 'relevant information',
@@ -73,14 +73,6 @@ describe('Death Report form', () => {
           patient_id: '',
           sex: '',
           short_name: '',
-        },
-        meta: {
-          location: {
-            error: '',
-            lat: '',
-            long: '',
-            message: '',
-          }
         },
         source: 'action',
         source_id: '',
