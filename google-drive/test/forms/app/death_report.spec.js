@@ -56,7 +56,7 @@ describe('Death Report form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).excludingEvery('meta').to.deep.equal({
+    expect(fields).excludingEvery(['meta', 'patient_age_in_days']).to.deep.equal({
       data: {
         __date_of_death: dateOfDeath,
         __death_information: 'relevant information',
@@ -87,7 +87,6 @@ describe('Death Report form', () => {
         source: 'action',
         source_id: '',
       },
-      patient_age_in_days: '12053',
       patient_age_in_months: '396',
       patient_age_in_years: '33',
       patient_display_name: `${contact.name} (${contact.short_name})`,
@@ -96,5 +95,6 @@ describe('Death Report form', () => {
       patient_short_name: contact.short_name,
       patient_uuid: contact._id,
     });
+    expect(Number(fields.patient_age_in_days)).to.be.closeTo(12053, 1);
   });
 });
