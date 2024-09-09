@@ -30,7 +30,7 @@ _(On a mobile device, this should open the phone app with the number pre-entered
         </translation>
       </itext>
       <instance>
-        <dynamic_url delimiter="#" id="dynamic_url" prefix="J1!dynamic_url!" version="2024-09-09 08:55:18">
+        <dynamic_url delimiter="#" id="dynamic_url" prefix="J1!dynamic_url!" version="2024-09-09 10:52:21">
           <web_link>
             <web_query/>
             <link/>
