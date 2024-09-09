@@ -3,8 +3,30 @@ const { harness } = require('../../../../util/test-harness');
 
 const form = 'death_report';
 
+const CONTACT = {
+  _id: 'patient_id',
+  name: 'Current Patient',
+  parent: {
+    parent: {
+      contact: {
+        name: 'chw',
+        phone: '+123456789',
+      }
+    }
+  },
+  patient_id: '123456',
+  sex: 'female',
+  short_name: 'Current',
+};
+
 describe('Death Report form', () => {
-  const dateOfDeath = new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const dateOfDeath = now.toISOString().split('T')[0];
+  const dateOfBirth = new Date(new Date().setFullYear(now.getFullYear() - 33)).toISOString().split('T')[0];
+  const contact = {
+    ...CONTACT,
+    date_of_birth: dateOfBirth,
+  };
 
   it('submits form successfully', async () => {
     const death_details = {
@@ -19,7 +41,10 @@ describe('Death Report form', () => {
       report: { fields },
       additionalDocs
     } = await harness.fillForm(
-      form,
+      {
+        form,
+        subject: contact,
+      },
       [
         death_details.date_of_death,
         death_details.place_of_death,
@@ -31,7 +56,7 @@ describe('Death Report form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).excluding(['meta']).to.deep.equal({
+    expect(fields).excludingEvery(['meta', 'patient_age_in_days']).to.deep.equal({
       data: {
         __date_of_death: dateOfDeath,
         __death_information: 'relevant information',
@@ -48,7 +73,7 @@ describe('Death Report form', () => {
       death_details,
       group_review: {
         blank_note: '',
-        c_patient_age: '54 years old',
+        c_patient_age: '33 years old',
         r_death_info: '',
         r_key_instruction: '',
         r_patient_details: '',
@@ -58,41 +83,18 @@ describe('Death Report form', () => {
         submit: '',
       },
       inputs: {
-        contact: {
-          _id: 'default_subject',
-          date_of_birth: '0',
-          name: '',
-          parent: {
-            parent: {
-              contact: {
-                name: '',
-                phone: '',
-              }
-            }
-          },
-          patient_id: '',
-          sex: '',
-          short_name: '',
-        },
-        meta: {
-          location: {
-            error: '',
-            lat: '',
-            long: '',
-            message: '',
-          }
-        },
+        contact,
         source: 'action',
         source_id: '',
       },
-      patient_age_in_days: 'NaN',
-      patient_age_in_months: '655',
-      patient_age_in_years: '54',
-      patient_display_name: '',
-      patient_id: '',
-      patient_name: '',
-      patient_short_name: '',
-      patient_uuid: 'default_subject',
+      patient_age_in_months: '396',
+      patient_age_in_years: '33',
+      patient_display_name: `${contact.name} (${contact.short_name})`,
+      patient_id: contact.patient_id,
+      patient_name: contact.name,
+      patient_short_name: contact.short_name,
+      patient_uuid: contact._id,
     });
+    expect(Number(fields.patient_age_in_days)).to.be.closeTo(12053, 1);
   });
 });

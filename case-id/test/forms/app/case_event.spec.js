@@ -13,6 +13,6 @@ describe('Case Event form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).excluding(['meta']).to.deep.equal({ case_id: '' });
+    expect(fields).excludingEvery('meta').to.deep.equal({ case_id: '' });
   });
 });

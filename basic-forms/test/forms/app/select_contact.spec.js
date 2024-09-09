@@ -25,10 +25,9 @@ describe('Select Contact form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).excluding(['meta']).to.deep.equal({
+    expect(fields).excludingEvery('meta').to.deep.equal({
       intro: '',
       inputs: {
-        meta: { location: { error: '', lat: '', long: '', message: '', }, },
         user: {
           contact_id: 'patient_id'
         }

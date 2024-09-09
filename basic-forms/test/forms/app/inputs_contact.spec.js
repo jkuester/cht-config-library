@@ -25,12 +25,11 @@ describe('Inputs Contact form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    expect(fields).excluding(['meta']).to.deep.equal({
+    expect(fields).excludingEvery('meta').to.deep.equal({
       intro: '',
       inputs: {
         source: 'contact',
         contact: CONTACT,
-        meta: { location: { error: '', lat: '', long: '', message: '', }, },
       },
       patient_uuid: CONTACT._id,
       contact_name: CONTACT.name,
@@ -55,7 +54,7 @@ describe('Inputs Contact form', () => {
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
     // The harness currently does not support using the db-object widget to load a contact doc. So, cannot assert much.
-    expect(fields).excluding(['meta']).to.deep.equal({
+    expect(fields).excludingEvery('meta').to.deep.equal({
       intro: '',
       inputs: {
         source: 'user',
@@ -63,7 +62,6 @@ describe('Inputs Contact form', () => {
           _id: '',
           name: '',
         },
-        meta: { location: { error: '', lat: '', long: '', message: '', }, },
       },
       patient_uuid: '',
       contact_name: '',
