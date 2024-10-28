@@ -2,7 +2,5 @@
   "image": "docker.io/medicmobile/cht-app-ide:v4.1.0",
   // Required to run tests with Puppeteer
   // https://pptr.dev/guides/docker
-  "capAdd": ["SYS_ADMIN"],
-  // Makes sure the file permissions still work with rootless podman
-  "runArgs": ["--userns=keep-id:uid=1000,gid=1000"]
+  "capAdd": ["SYS_ADMIN"]
 }
