@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
   <h:head>
     <h:title>Embedded Multimedia</h:title>
     <model>
@@ -160,7 +160,7 @@
         </translation>
       </itext>
       <instance>
-        <embedded_multimedia delimiter="#" id="embedded_multimedia" prefix="J1!embedded_multimedia!" version="2024-07-24 00:00:00">
+        <embedded_multimedia id="embedded_multimedia" prefix="J1!embedded_multimedia!" delimiter="#" version="2024-07-24 00:00:00">
           <questions_with_media>
             <image_question/>
             <audio_question/>
@@ -217,12 +217,12 @@
       <bind nodeset="/embedded_multimedia/notes_with_media/fa_note" readonly="true()" type="string"/>
       <bind nodeset="/embedded_multimedia/notes_with_media/svg_note" readonly="true()" type="string"/>
       <bind nodeset="/embedded_multimedia/notes_with_media/inline_image_note" readonly="true()" type="string"/>
-      <bind nodeset="/embedded_multimedia/notes_with_media/import_happy" readonly="true()" relevant="false()" type="string"/>
+      <bind nodeset="/embedded_multimedia/notes_with_media/import_happy" readonly="true()" type="string" relevant="false()"/>
       <bind nodeset="/embedded_multimedia/summary_with_media/summary_note" readonly="true()" type="string"/>
       <bind nodeset="/embedded_multimedia/summary_with_media/fa_header" readonly="true()" type="string"/>
       <bind nodeset="/embedded_multimedia/summary_with_media/svg_header" readonly="true()" type="string"/>
       <bind nodeset="/embedded_multimedia/summary_with_media/inline_image_header" readonly="true()" type="string"/>
-      <bind calculate="concat('uuid:', uuid())" nodeset="/embedded_multimedia/meta/instanceID" readonly="true()" type="string"/>
+      <bind nodeset="/embedded_multimedia/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
     </model>
   </h:head>
   <h:body class="pages">

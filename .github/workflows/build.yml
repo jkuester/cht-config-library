@@ -11,7 +11,7 @@ env:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
@@ -35,6 +35,9 @@ jobs:
           }' > google-drive/.gdrive.session.json
       - run: sudo python -m pip install git+https://github.com/medic/pyxform.git@medic-conf-1.17#egg=pyxform-medic
       - run: sudo apt install -y xsltproc
+      - run: sudo chmod 4755 /opt/google/chrome/chrome-sandbox
       - run: npm ci
       - run: npm run lint
-      - run: npm test
+      - run: |
+          export CHROME_DEVEL_SANDBOX=/opt/google/chrome/chrome-sandbox
+          npm test

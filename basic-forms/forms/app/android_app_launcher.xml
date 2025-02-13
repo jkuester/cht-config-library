@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
   <h:head>
     <h:title>Android App Launcher</h:title>
     <model>
@@ -23,7 +23,7 @@
         </translation>
       </itext>
       <instance>
-        <android_app_launcher delimiter="#" id="android_app_launcher" prefix="J1!android_app_launcher!" version="2024-08-13 00:00:00">
+        <android_app_launcher id="android_app_launcher" prefix="J1!android_app_launcher!" delimiter="#" version="2024-08-13 00:00:00">
           <intro/>
           <camera_image>
             <camera_app>
@@ -51,8 +51,8 @@
       <bind nodeset="/android_app_launcher/camera_image/camera_app/action" type="string"/>
       <bind nodeset="/android_app_launcher/camera_image/camera_app/camera_app_outputs/data" type="string"/>
       <bind nodeset="/android_app_launcher/qr_code/qr_code_app/action" type="string"/>
-      <bind calculate="coalesce(., &quot;&quot;)" nodeset="/android_app_launcher/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT" readonly="true()" type="string"/>
-      <bind calculate="concat('uuid:', uuid())" nodeset="/android_app_launcher/meta/instanceID" readonly="true()" type="string"/>
+      <bind nodeset="/android_app_launcher/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT" type="string" calculate="coalesce(., &quot;&quot;)" readonly="true()"/>
+      <bind nodeset="/android_app_launcher/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
     </model>
   </h:head>
   <h:body class="pages">
