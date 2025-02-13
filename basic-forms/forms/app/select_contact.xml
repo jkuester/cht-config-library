@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
   <h:head>
     <h:title>Select Contact</h:title>
     <model>
@@ -37,7 +37,7 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
         </translation>
       </itext>
       <instance>
-        <select_contact delimiter="#" id="select_contact" prefix="J1!select_contact!" version="2024-08-22 00:00:00">
+        <select_contact id="select_contact" prefix="J1!select_contact!" delimiter="#" version="2024-08-22 00:00:00">
           <intro/>
           <inputs>
             <meta>
@@ -79,17 +79,17 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
       <bind nodeset="/select_contact/intro" readonly="true()" type="string"/>
       <bind nodeset="/select_contact/inputs" relevant="false()"/>
       <bind nodeset="/select_contact/inputs/user/contact_id" type="string"/>
-      <bind calculate="../../../inputs/user/contact_id" nodeset="/select_contact/user_page/user_contact/_id" type="string"/>
+      <bind nodeset="/select_contact/user_page/user_contact/_id" type="string" calculate="../../../inputs/user/contact_id"/>
       <bind nodeset="/select_contact/user_page/user_contact/name" type="string"/>
       <bind nodeset="/select_contact/user_page/user_contact/role" type="string"/>
-      <bind calculate="../user_contact/name" nodeset="/select_contact/user_page/user_name" type="string"/>
-      <bind calculate="../user_contact/role" nodeset="/select_contact/user_page/user_role" type="string"/>
+      <bind nodeset="/select_contact/user_page/user_name" type="string" calculate="../user_contact/name"/>
+      <bind nodeset="/select_contact/user_page/user_role" type="string" calculate="../user_contact/role"/>
       <bind nodeset="/select_contact/user_page/description" readonly="true()" type="string"/>
       <bind nodeset="/select_contact/contact_page/contact/_id" type="string"/>
       <bind nodeset="/select_contact/contact_page/contact/name" type="string"/>
-      <bind calculate="../contact/name" nodeset="/select_contact/contact_page/selected_contact_name" type="string"/>
-      <bind nodeset="/select_contact/contact_page/description" readonly="true()" relevant=" /select_contact/contact_page/selected_contact_name  != &quot;&quot;" type="string"/>
-      <bind calculate="concat('uuid:', uuid())" nodeset="/select_contact/meta/instanceID" readonly="true()" type="string"/>
+      <bind nodeset="/select_contact/contact_page/selected_contact_name" type="string" calculate="../contact/name"/>
+      <bind nodeset="/select_contact/contact_page/description" readonly="true()" type="string" relevant=" /select_contact/contact_page/selected_contact_name  != &quot;&quot;"/>
+      <bind nodeset="/select_contact/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
     </model>
   </h:head>
   <h:body class="pages">

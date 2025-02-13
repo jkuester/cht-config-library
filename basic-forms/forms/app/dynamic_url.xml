@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:cht="https://communityhealthtoolkit.org" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Dynamic URL</h:title>
     <model>
@@ -65,7 +65,7 @@ _(On a mobile device, this should open the message app with the number and messa
         </translation>
       </itext>
       <instance>
-        <dynamic_url delimiter="#" id="dynamic_url" prefix="J1!dynamic_url!" version="2024-09-09 12:03:35">
+        <dynamic_url id="dynamic_url" prefix="J1!dynamic_url!" delimiter="#" version="2024-09-09 12:03:35">
           <web_link>
             <intro/>
             <web_query/>
@@ -96,19 +96,19 @@ _(On a mobile device, this should open the message app with the number and messa
       <instance id="contact-summary"/>
       <bind nodeset="/dynamic_url/web_link/intro" readonly="true()" type="string"/>
       <bind nodeset="/dynamic_url/web_link/web_query" type="string"/>
-      <bind nodeset="/dynamic_url/web_link/link" readonly="true()" relevant=" /dynamic_url/web_link/web_query  != &quot;&quot;" type="string"/>
-      <bind calculate="concat(&quot;https://google.com/search?q=&quot;,  /dynamic_url/web_link/web_query )" nodeset="/dynamic_url/web_link/text_url" relevant=" /dynamic_url/web_link/web_query  != &quot;&quot;" type="string"/>
+      <bind nodeset="/dynamic_url/web_link/link" readonly="true()" type="string" relevant=" /dynamic_url/web_link/web_query  != &quot;&quot;"/>
+      <bind nodeset="/dynamic_url/web_link/text_url" type="string" relevant=" /dynamic_url/web_link/web_query  != &quot;&quot;" calculate="concat(&quot;https://google.com/search?q=&quot;,  /dynamic_url/web_link/web_query )"/>
       <bind nodeset="/dynamic_url/phone_link/intro" readonly="true()" type="string"/>
       <bind nodeset="/dynamic_url/phone_link/phone_query" type="string"/>
-      <bind nodeset="/dynamic_url/phone_link/link" readonly="true()" relevant=" /dynamic_url/phone_link/phone_query  != &quot;&quot;" type="string"/>
+      <bind nodeset="/dynamic_url/phone_link/link" readonly="true()" type="string" relevant=" /dynamic_url/phone_link/phone_query  != &quot;&quot;"/>
       <bind nodeset="/dynamic_url/sms_link/intro" readonly="true()" type="string"/>
       <bind nodeset="/dynamic_url/sms_link/sms_query" type="string"/>
       <bind nodeset="/dynamic_url/sms_link/sms_text" type="string"/>
-      <bind nodeset="/dynamic_url/sms_link/link" readonly="true()" relevant=" /dynamic_url/sms_link/sms_query  != &quot;&quot; and  /dynamic_url/sms_link/sms_text  != &quot;&quot;" type="string"/>
+      <bind nodeset="/dynamic_url/sms_link/link" readonly="true()" type="string" relevant=" /dynamic_url/sms_link/sms_query  != &quot;&quot; and  /dynamic_url/sms_link/sms_text  != &quot;&quot;"/>
       <bind nodeset="/dynamic_url/app_link/app_query" type="string"/>
       <bind nodeset="/dynamic_url/app_link/name" type="string"/>
-      <bind nodeset="/dynamic_url/app_link/link" readonly="true()" relevant=" /dynamic_url/app_link/app_query  != &quot;&quot;" type="string"/>
-      <bind calculate="concat('uuid:', uuid())" nodeset="/dynamic_url/meta/instanceID" readonly="true()" type="string"/>
+      <bind nodeset="/dynamic_url/app_link/link" readonly="true()" type="string" relevant=" /dynamic_url/app_link/app_query  != &quot;&quot;"/>
+      <bind nodeset="/dynamic_url/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
     </model>
   </h:head>
   <h:body class="pages">
