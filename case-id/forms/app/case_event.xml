@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
   <h:head>
     <h:title>Add Case Event</h:title>
     <model>
@@ -11,7 +11,7 @@
         </translation>
       </itext>
       <instance>
-        <case_event delimiter="#" id="case_event" prefix="J1!case_event!" version="2024-08-27 14:09:31">
+        <case_event id="case_event" prefix="J1!case_event!" delimiter="#" version="2024-08-27 14:09:31">
           <case_id/>
           <meta tag="hidden">
             <instanceID/>
@@ -20,7 +20,7 @@
       </instance>
       <instance id="contact-summary"/>
       <bind nodeset="/case_event/case_id" type="string"/>
-      <bind calculate="concat('uuid:', uuid())" nodeset="/case_event/meta/instanceID" readonly="true()" type="string"/>
+      <bind nodeset="/case_event/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
     </model>
   </h:head>
   <h:body class="pages">

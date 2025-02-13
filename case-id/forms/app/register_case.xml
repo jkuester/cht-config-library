@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
   <h:head>
     <h:title>Register Case</h:title>
     <model>
@@ -26,7 +26,7 @@
         </translation>
       </itext>
       <instance>
-        <register_case delimiter="#" id="register_case" prefix="J1!register_case!" version="2024-08-27 14:14:42">
+        <register_case id="register_case" prefix="J1!register_case!" delimiter="#" version="2024-08-27 14:14:42">
           <inputs>
             <meta>
               <location>
@@ -54,11 +54,11 @@
       <bind nodeset="/register_case/inputs" relevant="./source = 'user'"/>
       <bind nodeset="/register_case/inputs/source" type="string"/>
       <bind nodeset="/register_case/inputs/source_id" type="string"/>
-      <bind nodeset="/register_case/inputs/contact/_id" required="true()" type="string"/>
+      <bind nodeset="/register_case/inputs/contact/_id" type="string" required="true()"/>
       <bind nodeset="/register_case/inputs/contact/name" type="string"/>
-      <bind calculate="../inputs/contact/_id" nodeset="/register_case/patient_uuid" type="string"/>
+      <bind nodeset="/register_case/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
       <bind nodeset="/register_case/submit" readonly="true()" type="string"/>
-      <bind calculate="concat('uuid:', uuid())" nodeset="/register_case/meta/instanceID" readonly="true()" type="string"/>
+      <bind nodeset="/register_case/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
     </model>
   </h:head>
   <h:body class="pages">

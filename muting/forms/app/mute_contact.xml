@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
   <h:head>
     <h:title>Mute Contact</h:title>
     <model>
@@ -23,7 +23,7 @@
         </translation>
       </itext>
       <instance>
-        <mute_contact delimiter="#" id="mute_contact" prefix="J1!mute_contact!" version="2024-06-20 11:21:06">
+        <mute_contact id="mute_contact" prefix="J1!mute_contact!" delimiter="#" version="2024-06-20 11:21:06">
           <inputs>
             <meta>
               <location>
@@ -50,10 +50,10 @@
       <bind nodeset="/mute_contact/inputs" relevant="./source = 'user'"/>
       <bind nodeset="/mute_contact/inputs/source" type="string"/>
       <bind nodeset="/mute_contact/inputs/source_id" type="string"/>
-      <bind nodeset="/mute_contact/inputs/contact/_id" required="true()" type="string"/>
-      <bind calculate="../inputs/contact/_id" nodeset="/mute_contact/patient_uuid" type="string"/>
+      <bind nodeset="/mute_contact/inputs/contact/_id" type="string" required="true()"/>
+      <bind nodeset="/mute_contact/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
       <bind nodeset="/mute_contact/submit" readonly="true()" type="string"/>
-      <bind calculate="concat('uuid:', uuid())" nodeset="/mute_contact/meta/instanceID" readonly="true()" type="string"/>
+      <bind nodeset="/mute_contact/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
     </model>
   </h:head>
   <h:body class="pages">

@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
   <h:head>
     <h:title>Inputs Contact</h:title>
     <model>
@@ -21,7 +21,7 @@ Setting the top level &lt;code&gt;patient\_uuid&lt;/code&gt; (or &lt;code&gt;pla
         </translation>
       </itext>
       <instance>
-        <inputs_contact delimiter="#" id="inputs_contact" prefix="J1!inputs_contact!" version="2024-08-22 00:00:00">
+        <inputs_contact id="inputs_contact" prefix="J1!inputs_contact!" delimiter="#" version="2024-08-22 00:00:00">
           <intro/>
           <inputs>
             <meta>
@@ -52,10 +52,10 @@ Setting the top level &lt;code&gt;patient\_uuid&lt;/code&gt; (or &lt;code&gt;pla
       <bind nodeset="/inputs_contact/inputs/source" type="string"/>
       <bind nodeset="/inputs_contact/inputs/contact/_id" type="string"/>
       <bind nodeset="/inputs_contact/inputs/contact/name" type="string"/>
-      <bind calculate="../inputs/contact/_id" nodeset="/inputs_contact/patient_uuid" type="string"/>
-      <bind calculate="../inputs/contact/name" nodeset="/inputs_contact/contact_name" type="string"/>
+      <bind nodeset="/inputs_contact/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
+      <bind nodeset="/inputs_contact/contact_name" type="string" calculate="../inputs/contact/name"/>
       <bind nodeset="/inputs_contact/hello" readonly="true()" type="string"/>
-      <bind calculate="concat('uuid:', uuid())" nodeset="/inputs_contact/meta/instanceID" readonly="true()" type="string"/>
+      <bind nodeset="/inputs_contact/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
     </model>
   </h:head>
   <h:body class="pages">

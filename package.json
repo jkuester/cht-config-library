@@ -5,14 +5,14 @@
   },
   "devDependencies": {
     "@medic/eslint-config": "^1.1.0",
-    "chai": "^4.4.1",
+    "chai": "^4.5.0",
     "chai-exclude": "^2.1.1",
-    "cht-conf": "^4.0.0",
-    "cht-conf-test-harness": "^4.0.1",
+    "cht-conf": "^4.4.1",
+    "cht-conf-test-harness": "^5.0.2",
     "eslint": "^8.57.0",
-    "eslint-plugin-json": "^4.0.0",
+    "eslint-plugin-json": "^4.0.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.4.0",
-    "mocha": "^10.6.0"
+    "eslint-plugin-promise": "^6.6.0",
+    "mocha": "^11.1.0"
   }
 }
