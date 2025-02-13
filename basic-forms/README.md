@@ -8,3 +8,9 @@ The goal of this project is not to encompass all supported form features, but ju
 
 Almost all the official [ODK form Docs](https://docs.getodk.org/form-reference/) are applicable to CHT forms. Additionally, 
 the ODK team has provided a [XLSForm Template](https://forum.getodk.org/t/odk-xlsform-template/43459) that is an excellent reference for creating forms.
+
+## Training Cards
+
+See [the documentation](https://docs.communityhealthtoolkit.org/building/training/training-cards/) for more information about training forms. 
+
+The training cards here include the resources [provided in the documentation](https://docs.communityhealthtoolkit.org/building/training/training-cards-resources/).
