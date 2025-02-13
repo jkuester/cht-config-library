@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Mute Contact</h:title>
     <model>
       <itext>
-        <translation lang="en">
+        <translation lang="English (en)">
           <text id="/mute_contact/inputs/contact/_id:label">
             <value>Which contact do you want to mute?</value>
           </text>
@@ -23,7 +23,7 @@
         </translation>
       </itext>
       <instance>
-        <mute_contact id="mute_contact" prefix="J1!mute_contact!" delimiter="#" version="2024-06-20 11:21:06">
+        <mute_contact id="mute_contact" prefix="J1!mute_contact!" delimiter="#" version="20250213160600">
           <inputs>
             <meta>
               <location>
