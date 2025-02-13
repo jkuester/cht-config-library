@@ -32,7 +32,7 @@
         </translation>
       </itext>
       <instance>
-        <android_app_launcher id="android_app_launcher" prefix="J1!android_app_launcher!" delimiter="#" version="20250213143751">
+        <android_app_launcher id="android_app_launcher" prefix="J1!android_app_launcher!" delimiter="#" version="20250213161449">
           <intro/>
           <camera_image>
             <camera_app>

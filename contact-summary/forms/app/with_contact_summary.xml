@@ -15,7 +15,7 @@
         </translation>
       </itext>
       <instance>
-        <with_contact_summary id="with_contact_summary" prefix="J1!with_contact_summary!" delimiter="#" version="20250213160007">
+        <with_contact_summary id="with_contact_summary" prefix="J1!with_contact_summary!" delimiter="#" version="20250213162757">
           <my_page>
             <favorite_chw_name/>
             <favorite_chw_hh_visits/>

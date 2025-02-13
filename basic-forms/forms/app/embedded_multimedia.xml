@@ -190,7 +190,7 @@
         </translation>
       </itext>
       <instance>
-        <embedded_multimedia id="embedded_multimedia" prefix="J1!embedded_multimedia!" delimiter="#" version="20250213145534">
+        <embedded_multimedia id="embedded_multimedia" prefix="J1!embedded_multimedia!" delimiter="#" version="20250213161619">
           <questions_with_media>
             <image_question/>
             <audio_question/>

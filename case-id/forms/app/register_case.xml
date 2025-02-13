@@ -26,7 +26,7 @@
         </translation>
       </itext>
       <instance>
-        <register_case id="register_case" prefix="J1!register_case!" delimiter="#" version="20250213155632">
+        <register_case id="register_case" prefix="J1!register_case!" delimiter="#" version="20250213162705">
           <inputs>
             <meta>
               <location>
@@ -63,10 +63,19 @@
   </h:head>
   <h:body class="pages">
     <group appearance="field-list" ref="/register_case/inputs">
+      <input appearance="hidden" ref="/register_case/inputs/source">
+        <label ref="jr:itext('/register_case/inputs/source:label')"/>
+      </input>
+      <input appearance="hidden" ref="/register_case/inputs/source_id">
+        <label ref="jr:itext('/register_case/inputs/source_id:label')"/>
+      </input>
       <group ref="/register_case/inputs/contact">
         <label ref="jr:itext('/register_case/inputs/contact:label')"/>
         <input appearance="select-contact type-person" ref="/register_case/inputs/contact/_id">
           <label ref="jr:itext('/register_case/inputs/contact/_id:label')"/>
+        </input>
+        <input appearance="hidden" ref="/register_case/inputs/contact/name">
+          <label ref="jr:itext('/register_case/inputs/contact/name:label')"/>
         </input>
       </group>
     </group>

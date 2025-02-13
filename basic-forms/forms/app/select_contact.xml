@@ -37,7 +37,7 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
         </translation>
       </itext>
       <instance>
-        <select_contact id="select_contact" prefix="J1!select_contact!" delimiter="#" version="20250213154848">
+        <select_contact id="select_contact" prefix="J1!select_contact!" delimiter="#" version="20250213162054">
           <intro/>
           <inputs>
             <meta>
@@ -99,6 +99,7 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
     <group ref="/select_contact/inputs">
       <group ref="/select_contact/inputs/user">
         <label ref="jr:itext('/select_contact/inputs/user:label')"/>
+        <input appearance="hidden" ref="/select_contact/inputs/user/contact_id"/>
       </group>
     </group>
     <group appearance="field-list" ref="/select_contact/user_page">
@@ -106,6 +107,8 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
       <group appearance="hidden" ref="/select_contact/user_page/user_contact">
         <label ref="jr:itext('/select_contact/user_page/user_contact:label')"/>
         <input appearance="select-contact type-person" ref="/select_contact/user_page/user_contact/_id"/>
+        <input appearance="hidden" ref="/select_contact/user_page/user_contact/name"/>
+        <input appearance="hidden" ref="/select_contact/user_page/user_contact/role"/>
       </group>
       <input ref="/select_contact/user_page/description">
         <label ref="jr:itext('/select_contact/user_page/description:label')"/>
@@ -117,6 +120,7 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
         <input appearance="select-contact" ref="/select_contact/contact_page/contact/_id">
           <label ref="jr:itext('/select_contact/contact_page/contact/_id:label')"/>
         </input>
+        <input appearance="hidden" ref="/select_contact/contact_page/contact/name"/>
       </group>
       <input ref="/select_contact/contact_page/description">
         <label ref="jr:itext('/select_contact/contact_page/description:label')"/>

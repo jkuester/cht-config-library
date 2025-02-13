@@ -21,7 +21,7 @@ Setting the top level &lt;code&gt;patient\_uuid&lt;/code&gt; (or &lt;code&gt;pla
         </translation>
       </itext>
       <instance>
-        <inputs_contact id="inputs_contact" prefix="J1!inputs_contact!" delimiter="#" version="20250213154452">
+        <inputs_contact id="inputs_contact" prefix="J1!inputs_contact!" delimiter="#" version="20250213161859">
           <intro/>
           <inputs>
             <meta>
@@ -63,10 +63,12 @@ Setting the top level &lt;code&gt;patient\_uuid&lt;/code&gt; (or &lt;code&gt;pla
       <label ref="jr:itext('/inputs_contact/intro:label')"/>
     </input>
     <group ref="/inputs_contact/inputs">
+      <input appearance="hidden" ref="/inputs_contact/inputs/source"/>
       <group ref="/inputs_contact/inputs/contact">
         <input appearance="select-contact" ref="/inputs_contact/inputs/contact/_id">
           <label ref="jr:itext('/inputs_contact/inputs/contact/_id:label')"/>
         </input>
+        <input appearance="hidden" ref="/inputs_contact/inputs/contact/name"/>
       </group>
     </group>
     <input ref="/inputs_contact/hello">
