@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Select Contact</h:title>
     <model>
       <itext>
-        <translation lang="en">
+        <translation lang="English (en)">
           <text id="/select_contact/contact_page/contact/_id:label">
             <value>Select any contact</value>
           </text>
@@ -37,7 +37,7 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
         </translation>
       </itext>
       <instance>
-        <select_contact id="select_contact" prefix="J1!select_contact!" delimiter="#" version="2024-08-22 00:00:00">
+        <select_contact id="select_contact" prefix="J1!select_contact!" delimiter="#" version="20250213154848">
           <intro/>
           <inputs>
             <meta>

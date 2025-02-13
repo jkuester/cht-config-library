@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Comparing Values</h:title>
     <model>
       <itext>
-        <translation lang="en">
+        <translation lang="English (en)">
           <text id="/comparing_values/case_insensitive/description:label">
             <value>Case insensitive comparisons can be accomplished via the `translate` function.</value>
           </text>
@@ -20,13 +20,16 @@
           <text id="/comparing_values/case_insensitive:label">
             <value>Case insensitive string comparison</value>
           </text>
+          <text id="/comparing_values/intro:hint">
+            <value>For more complex comparisons, consider implementing the comparison logic in an [extension-lib](https://docs.communityhealthtoolkit.org/apps/reference/extension-libs/).</value>
+          </text>
           <text id="/comparing_values/intro:label">
             <value>This form demonstrates various methods for comparing values.</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <comparing_values id="comparing_values" prefix="J1!comparing_values!" delimiter="#" version="2024-08-14 00:00:00">
+        <comparing_values id="comparing_values" prefix="J1!comparing_values!" delimiter="#" version="20250213144132">
           <intro/>
           <case_insensitive>
             <description/>
@@ -58,7 +61,7 @@
   <h:body class="pages">
     <input ref="/comparing_values/intro">
       <label ref="jr:itext('/comparing_values/intro:label')"/>
-      <hint>For more complex comparisons, consider implementing the comparison logic in an [extension-lib](https://docs.communityhealthtoolkit.org/apps/reference/extension-libs/).</hint>
+      <hint ref="jr:itext('/comparing_values/intro:hint')"/>
     </input>
     <group appearance="field-list" ref="/comparing_values/case_insensitive">
       <label ref="jr:itext('/comparing_values/case_insensitive:label')"/>

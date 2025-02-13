@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Inputs Contact</h:title>
     <model>
       <itext>
-        <translation lang="en">
+        <translation lang="English (en)">
           <text id="/inputs_contact/hello:label">
             <value>Hello: <output value=" /inputs_contact/contact_name "/></value>
           </text>
@@ -21,7 +21,7 @@ Setting the top level &lt;code&gt;patient\_uuid&lt;/code&gt; (or &lt;code&gt;pla
         </translation>
       </itext>
       <instance>
-        <inputs_contact id="inputs_contact" prefix="J1!inputs_contact!" delimiter="#" version="2024-08-22 00:00:00">
+        <inputs_contact id="inputs_contact" prefix="J1!inputs_contact!" delimiter="#" version="20250213154452">
           <intro/>
           <inputs>
             <meta>

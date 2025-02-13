@@ -4,7 +4,7 @@
     <h:title>Dynamic URL</h:title>
     <model>
       <itext>
-        <translation lang="en">
+        <translation lang="English (en)">
           <text id="/dynamic_url/app_link/app_query:label">
             <value>Select a contact</value>
           </text>
@@ -65,7 +65,7 @@ _(On a mobile device, this should open the message app with the number and messa
         </translation>
       </itext>
       <instance>
-        <dynamic_url id="dynamic_url" prefix="J1!dynamic_url!" delimiter="#" version="2024-09-09 12:03:35">
+        <dynamic_url id="dynamic_url" prefix="J1!dynamic_url!" delimiter="#" version="20250213144412">
           <web_link>
             <intro/>
             <web_query/>
