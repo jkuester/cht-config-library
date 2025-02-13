@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Add Case Event</h:title>
     <model>
       <itext>
-        <translation lang="en">
+        <translation lang="English (en)">
           <text id="/case_event/case_id:label">
             <value>Enter your Case Id</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <case_event id="case_event" prefix="J1!case_event!" delimiter="#" version="2024-08-27 14:09:31">
+        <case_event id="case_event" prefix="J1!case_event!" delimiter="#" version="20250213155202">
           <case_id/>
           <meta tag="hidden">
             <instanceID/>

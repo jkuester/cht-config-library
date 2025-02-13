@@ -4,7 +4,7 @@
     <h:title>Dynamic URL</h:title>
     <model>
       <itext>
-        <translation lang="en">
+        <translation lang="English (en)">
           <text id="/dynamic_url/app_link/app_query:label">
             <value>Select a contact</value>
           </text>
@@ -65,7 +65,7 @@ _(On a mobile device, this should open the message app with the number and messa
         </translation>
       </itext>
       <instance>
-        <dynamic_url id="dynamic_url" prefix="J1!dynamic_url!" delimiter="#" version="2024-09-09 12:03:35">
+        <dynamic_url id="dynamic_url" prefix="J1!dynamic_url!" delimiter="#" version="20250213144412">
           <web_link>
             <intro/>
             <web_query/>
@@ -97,7 +97,7 @@ _(On a mobile device, this should open the message app with the number and messa
       <bind nodeset="/dynamic_url/web_link/intro" readonly="true()" type="string"/>
       <bind nodeset="/dynamic_url/web_link/web_query" type="string"/>
       <bind nodeset="/dynamic_url/web_link/link" readonly="true()" type="string" relevant=" /dynamic_url/web_link/web_query  != &quot;&quot;"/>
-      <bind nodeset="/dynamic_url/web_link/text_url" type="string" relevant=" /dynamic_url/web_link/web_query  != &quot;&quot;" calculate="concat(&quot;https://google.com/search?q=&quot;,  /dynamic_url/web_link/web_query )"/>
+      <bind nodeset="/dynamic_url/web_link/text_url" type="string" calculate="concat(&quot;https://google.com/search?q=&quot;,  /dynamic_url/web_link/web_query )" relevant=" /dynamic_url/web_link/web_query  != &quot;&quot;"/>
       <bind nodeset="/dynamic_url/phone_link/intro" readonly="true()" type="string"/>
       <bind nodeset="/dynamic_url/phone_link/phone_query" type="string"/>
       <bind nodeset="/dynamic_url/phone_link/link" readonly="true()" type="string" relevant=" /dynamic_url/phone_link/phone_query  != &quot;&quot;"/>

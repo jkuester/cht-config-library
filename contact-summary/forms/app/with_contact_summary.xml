@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Contact Summary Test</h:title>
     <model>
       <itext>
-        <translation lang="en">
+        <translation lang="English (en)">
           <text id="/with_contact_summary/my_page/favorite_note:label">
             <value>Favorite CHW: <output value=" /with_contact_summary/my_page/favorite_chw_name "/> – Visits: <output value=" /with_contact_summary/my_page/favorite_chw_hh_visits "/> – Referrals: <output value=" /with_contact_summary/my_page/favorite_chw_referrals "/></value></text>
           <text id="/with_contact_summary/my_page/my_repeat/repeated_note:label">
@@ -15,7 +15,7 @@
         </translation>
       </itext>
       <instance>
-        <with_contact_summary id="with_contact_summary" prefix="J1!with_contact_summary!" delimiter="#" version="2024-07-10 00:00:00">
+        <with_contact_summary id="with_contact_summary" prefix="J1!with_contact_summary!" delimiter="#" version="20250213162757">
           <my_page>
             <favorite_chw_name/>
             <favorite_chw_hh_visits/>

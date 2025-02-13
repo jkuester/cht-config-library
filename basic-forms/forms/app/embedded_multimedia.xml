@@ -1,19 +1,31 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Embedded Multimedia</h:title>
     <model>
       <itext>
-        <translation lang="en">
+        <translation lang="English (en)">
+          <text id="/embedded_multimedia/notes_with_media/base64_note:hint">
+            <value>(appearance=display-base64-image, default=your-base64-string)</value>
+          </text>
           <text id="/embedded_multimedia/notes_with_media/base64_note:label">
             <value>Also works for Base64 images.</value>
+          </text>
+          <text id="/embedded_multimedia/notes_with_media/fa_note:hint">
+            <value>It also works in hints: &lt;i class="fa fa-user"&gt;&lt;/i&gt;</value>
           </text>
           <text id="/embedded_multimedia/notes_with_media/fa_note:label">
             <value>[Font Awesome v4](https://fontawesome.com/v4/icons/) icons &lt;i class="fa fa-user"&gt;&lt;/i&gt; can be included inline.</value>
           </text>
+          <text id="/embedded_multimedia/notes_with_media/image_note:hint">
+            <value>(image::en=croc.png)</value>
+          </text>
           <text id="/embedded_multimedia/notes_with_media/image_note:label">
             <value>Images can be inserted after the note text.</value>
             <value form="image">jr://images/croc.png</value>
+          </text>
+          <text id="/embedded_multimedia/notes_with_media/inline_image_note:hint">
+            <value>Only images referenced from the `image` column will be included when uploading the form to the server. So, inline images need to also be referenced by a different field's `image` column (can be always non-relevant).</value>
           </text>
           <text id="/embedded_multimedia/notes_with_media/inline_image_note:label">
             <value>You can include image files inline with some HTML: &lt;img data-media-src=images/happy.png style=display:inline&gt;</value>
@@ -24,13 +36,22 @@
           <text id="/embedded_multimedia/notes_with_media:label">
             <value>Notes with media</value>
           </text>
+          <text id="/embedded_multimedia/questions_with_media/audio_question:hint">
+            <value>(audio::en=sample.mp3)</value>
+          </text>
           <text id="/embedded_multimedia/questions_with_media/audio_question:label">
             <value>Question with audio</value>
             <value form="audio">jr://audio/sample.mp3</value>
           </text>
+          <text id="/embedded_multimedia/questions_with_media/image_question:hint">
+            <value>(image::en=croc.png)</value>
+          </text>
           <text id="/embedded_multimedia/questions_with_media/image_question:label">
             <value>Question with image</value>
             <value form="image">jr://images/croc.png</value>
+          </text>
+          <text id="/embedded_multimedia/questions_with_media/video_question:hint">
+            <value>(video::en=sample.mp4)</value>
           </text>
           <text id="/embedded_multimedia/questions_with_media/video_question:label">
             <value>Question with video</value>
@@ -106,6 +127,9 @@
             <value>Whale</value>
             <value form="image">jr://images/whale.png</value>
           </text>
+          <text id="/embedded_multimedia/selects_with_media/select_media:hint">
+            <value>(type=select_one)</value>
+          </text>
           <text id="/embedded_multimedia/selects_with_media/select_media:label">
             <value>You can add media to choices. Choose your favorite animal.</value>
           </text>
@@ -121,6 +145,9 @@
           <text id="/embedded_multimedia/selects_with_media/select_media_no_buttons/whale:label">
             <value form="image">jr://images/whale.png</value>
           </text>
+          <text id="/embedded_multimedia/selects_with_media/select_media_no_buttons:hint">
+            <value>Make sure your choices list does not include labels. (type=select_one, appearance=columns-1 no-buttons)</value>
+          </text>
           <text id="/embedded_multimedia/selects_with_media/select_media_no_buttons:label">
             <value>Your choices list does not need to include text labels</value>
           </text>
@@ -135,6 +162,9 @@
           </text>
           <text id="/embedded_multimedia/selects_with_media/select_media_no_buttons_columns/whale:label">
             <value form="image">jr://images/whale.png</value>
+          </text>
+          <text id="/embedded_multimedia/selects_with_media/select_media_no_buttons_columns:hint">
+            <value>(type=select_one, appearance=columns-2 no-buttons)</value>
           </text>
           <text id="/embedded_multimedia/selects_with_media/select_media_no_buttons_columns:label">
             <value>Grid of choices</value>
@@ -160,7 +190,7 @@
         </translation>
       </itext>
       <instance>
-        <embedded_multimedia id="embedded_multimedia" prefix="J1!embedded_multimedia!" delimiter="#" version="2024-07-24 00:00:00">
+        <embedded_multimedia id="embedded_multimedia" prefix="J1!embedded_multimedia!" delimiter="#" version="20250213161619">
           <questions_with_media>
             <image_question/>
             <audio_question/>
@@ -230,15 +260,15 @@
       <label ref="jr:itext('/embedded_multimedia/questions_with_media:label')"/>
       <input ref="/embedded_multimedia/questions_with_media/image_question">
         <label ref="jr:itext('/embedded_multimedia/questions_with_media/image_question:label')"/>
-        <hint>(image::en=croc.png)</hint>
+        <hint ref="jr:itext('/embedded_multimedia/questions_with_media/image_question:hint')"/>
       </input>
       <input ref="/embedded_multimedia/questions_with_media/audio_question">
         <label ref="jr:itext('/embedded_multimedia/questions_with_media/audio_question:label')"/>
-        <hint>(audio::en=sample.mp3)</hint>
+        <hint ref="jr:itext('/embedded_multimedia/questions_with_media/audio_question:hint')"/>
       </input>
       <input ref="/embedded_multimedia/questions_with_media/video_question">
         <label ref="jr:itext('/embedded_multimedia/questions_with_media/video_question:label')"/>
-        <hint>(video::en=sample.mp4)</hint>
+        <hint ref="jr:itext('/embedded_multimedia/questions_with_media/video_question:hint')"/>
       </input>
     </group>
     <group appearance="field-list" ref="/embedded_multimedia/selects_with_media">
@@ -248,7 +278,7 @@
       </input>
       <select1 ref="/embedded_multimedia/selects_with_media/select_media">
         <label ref="jr:itext('/embedded_multimedia/selects_with_media/select_media:label')"/>
-        <hint>(type=select_one)</hint>
+        <hint ref="jr:itext('/embedded_multimedia/selects_with_media/select_media:hint')"/>
         <item>
           <label ref="jr:itext('/embedded_multimedia/selects_with_media/select_media/croc:label')"/>
           <value>croc</value>
@@ -268,7 +298,7 @@
       </select1>
       <select1 appearance="columns-1 no-buttons" ref="/embedded_multimedia/selects_with_media/select_media_no_buttons">
         <label ref="jr:itext('/embedded_multimedia/selects_with_media/select_media_no_buttons:label')"/>
-        <hint>Make sure your choices list does not include labels. (type=select_one, appearance=columns-1 no-buttons)</hint>
+        <hint ref="jr:itext('/embedded_multimedia/selects_with_media/select_media_no_buttons:hint')"/>
         <item>
           <label ref="jr:itext('/embedded_multimedia/selects_with_media/select_media_no_buttons/croc:label')"/>
           <value>croc</value>
@@ -288,7 +318,7 @@
       </select1>
       <select1 appearance="columns-2 no-buttons" ref="/embedded_multimedia/selects_with_media/select_media_no_buttons_columns">
         <label ref="jr:itext('/embedded_multimedia/selects_with_media/select_media_no_buttons_columns:label')"/>
-        <hint>(type=select_one, appearance=columns-2 no-buttons)</hint>
+        <hint ref="jr:itext('/embedded_multimedia/selects_with_media/select_media_no_buttons_columns:hint')"/>
         <item>
           <label ref="jr:itext('/embedded_multimedia/selects_with_media/select_media_no_buttons_columns/croc:label')"/>
           <value>croc</value>
@@ -376,22 +406,22 @@
       <label ref="jr:itext('/embedded_multimedia/notes_with_media:label')"/>
       <input ref="/embedded_multimedia/notes_with_media/image_note">
         <label ref="jr:itext('/embedded_multimedia/notes_with_media/image_note:label')"/>
-        <hint>(image::en=croc.png)</hint>
+        <hint ref="jr:itext('/embedded_multimedia/notes_with_media/image_note:hint')"/>
       </input>
       <input appearance="display-base64-image" ref="/embedded_multimedia/notes_with_media/base64_note">
         <label ref="jr:itext('/embedded_multimedia/notes_with_media/base64_note:label')"/>
-        <hint>(appearance=display-base64-image, default=your-base64-string)</hint>
+        <hint ref="jr:itext('/embedded_multimedia/notes_with_media/base64_note:hint')"/>
       </input>
       <input ref="/embedded_multimedia/notes_with_media/fa_note">
         <label ref="jr:itext('/embedded_multimedia/notes_with_media/fa_note:label')"/>
-        <hint>It also works in hints: &lt;i class="fa fa-user"&gt;&lt;/i&gt;</hint>
+        <hint ref="jr:itext('/embedded_multimedia/notes_with_media/fa_note:hint')"/>
       </input>
       <input ref="/embedded_multimedia/notes_with_media/svg_note">
         <label ref="jr:itext('/embedded_multimedia/notes_with_media/svg_note:label')"/>
       </input>
       <input ref="/embedded_multimedia/notes_with_media/inline_image_note">
         <label ref="jr:itext('/embedded_multimedia/notes_with_media/inline_image_note:label')"/>
-        <hint>Only images referenced from the `image` column will be included when uploading the form to the server. So, inline images need to also be referenced by a different field's `image` column (can be always non-relevant).</hint>
+        <hint ref="jr:itext('/embedded_multimedia/notes_with_media/inline_image_note:hint')"/>
       </input>
       <input ref="/embedded_multimedia/notes_with_media/import_happy">
         <label ref="jr:itext('/embedded_multimedia/notes_with_media/import_happy:label')"/>
