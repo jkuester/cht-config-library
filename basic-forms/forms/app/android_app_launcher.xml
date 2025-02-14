@@ -60,7 +60,7 @@
       <bind nodeset="/android_app_launcher/camera_image/camera_app/action" type="string"/>
       <bind nodeset="/android_app_launcher/camera_image/camera_app/camera_app_outputs/data" type="string"/>
       <bind nodeset="/android_app_launcher/qr_code/qr_code_app/action" type="string"/>
-      <bind nodeset="/android_app_launcher/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT" type="string" readonly="true()" calculate="coalesce(., &quot;&quot;)"/>
+      <bind nodeset="/android_app_launcher/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT" type="string" calculate="coalesce(., &quot;&quot;)" readonly="true()"/>
       <bind nodeset="/android_app_launcher/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
     </model>
   </h:head>

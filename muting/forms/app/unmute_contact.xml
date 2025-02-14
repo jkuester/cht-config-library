@@ -14,16 +14,13 @@
           <text id="/unmute_contact/inputs/source:label">
             <value>Source</value>
           </text>
-          <text id="/unmute_contact/inputs/source_id:label">
-            <value>Source ID</value>
-          </text>
           <text id="/unmute_contact/submit:label">
             <value>Are you sure you want to unmute this contact?</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <unmute_contact id="unmute_contact" prefix="J1!unmute_contact!" delimiter="#" version="20250213162920">
+        <unmute_contact id="unmute_contact" prefix="J1!unmute_contact!" delimiter="#" version="20250214131004">
           <inputs>
             <meta>
               <location>
@@ -34,7 +31,6 @@
               </location>
             </meta>
             <source>user</source>
-            <source_id/>
             <contact>
               <_id/>
             </contact>
@@ -49,7 +45,6 @@
       <instance id="contact-summary"/>
       <bind nodeset="/unmute_contact/inputs" relevant="./source = 'user'"/>
       <bind nodeset="/unmute_contact/inputs/source" type="string"/>
-      <bind nodeset="/unmute_contact/inputs/source_id" type="string"/>
       <bind nodeset="/unmute_contact/inputs/contact/_id" type="string" required="true()"/>
       <bind nodeset="/unmute_contact/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
       <bind nodeset="/unmute_contact/submit" readonly="true()" type="string"/>
@@ -60,9 +55,6 @@
     <group appearance="field-list" ref="/unmute_contact/inputs">
       <input appearance="hidden" ref="/unmute_contact/inputs/source">
         <label ref="jr:itext('/unmute_contact/inputs/source:label')"/>
-      </input>
-      <input appearance="hidden" ref="/unmute_contact/inputs/source_id">
-        <label ref="jr:itext('/unmute_contact/inputs/source_id:label')"/>
       </input>
       <group ref="/unmute_contact/inputs/contact">
         <label ref="jr:itext('/unmute_contact/inputs/contact:label')"/>

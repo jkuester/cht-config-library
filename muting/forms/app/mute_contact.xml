@@ -14,16 +14,13 @@
           <text id="/mute_contact/inputs/source:label">
             <value>Source</value>
           </text>
-          <text id="/mute_contact/inputs/source_id:label">
-            <value>Source ID</value>
-          </text>
           <text id="/mute_contact/submit:label">
             <value>Are you sure you want to mute this contact?</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <mute_contact id="mute_contact" prefix="J1!mute_contact!" delimiter="#" version="20250213162852">
+        <mute_contact id="mute_contact" prefix="J1!mute_contact!" delimiter="#" version="20250214130942">
           <inputs>
             <meta>
               <location>
@@ -34,7 +31,6 @@
               </location>
             </meta>
             <source>user</source>
-            <source_id/>
             <contact>
               <_id/>
             </contact>
@@ -49,7 +45,6 @@
       <instance id="contact-summary"/>
       <bind nodeset="/mute_contact/inputs" relevant="./source = 'user'"/>
       <bind nodeset="/mute_contact/inputs/source" type="string"/>
-      <bind nodeset="/mute_contact/inputs/source_id" type="string"/>
       <bind nodeset="/mute_contact/inputs/contact/_id" type="string" required="true()"/>
       <bind nodeset="/mute_contact/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
       <bind nodeset="/mute_contact/submit" readonly="true()" type="string"/>
@@ -60,9 +55,6 @@
     <group appearance="field-list" ref="/mute_contact/inputs">
       <input appearance="hidden" ref="/mute_contact/inputs/source">
         <label ref="jr:itext('/mute_contact/inputs/source:label')"/>
-      </input>
-      <input appearance="hidden" ref="/mute_contact/inputs/source_id">
-        <label ref="jr:itext('/mute_contact/inputs/source_id:label')"/>
       </input>
       <group ref="/mute_contact/inputs/contact">
         <label ref="jr:itext('/mute_contact/inputs/contact:label')"/>
