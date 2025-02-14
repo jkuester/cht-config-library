@@ -4,6 +4,6 @@
     "compile-app-settings": "npx cht compile-app-settings",
     "compile-forms": "npm run fetch-forms && npx cht convert-app-forms convert-contact-forms",
     "fetch-forms": "npx cht fetch-forms-from-google-drive",
-    "unittest": "mocha test/**/*.spec.js --timeout 20000"
+    "unittest": "mocha 'test/**/*.spec.js' --timeout 20000"
   }
 }

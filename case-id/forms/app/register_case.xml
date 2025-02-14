@@ -17,16 +17,13 @@
           <text id="/register_case/inputs/source:label">
             <value>Source</value>
           </text>
-          <text id="/register_case/inputs/source_id:label">
-            <value>Source ID</value>
-          </text>
           <text id="/register_case/submit:label">
             <value>Submitting this form will create a new case that will automatically be associated with <output value=" /register_case/inputs/contact/name "/>'s parent.</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <register_case id="register_case" prefix="J1!register_case!" delimiter="#" version="20250213162705">
+        <register_case id="register_case" prefix="J1!register_case!" delimiter="#" version="20250214130852">
           <inputs>
             <meta>
               <location>
@@ -37,7 +34,6 @@
               </location>
             </meta>
             <source>user</source>
-            <source_id/>
             <contact>
               <_id/>
               <name/>
@@ -53,7 +49,6 @@
       <instance id="contact-summary"/>
       <bind nodeset="/register_case/inputs" relevant="./source = 'user'"/>
       <bind nodeset="/register_case/inputs/source" type="string"/>
-      <bind nodeset="/register_case/inputs/source_id" type="string"/>
       <bind nodeset="/register_case/inputs/contact/_id" type="string" required="true()"/>
       <bind nodeset="/register_case/inputs/contact/name" type="string"/>
       <bind nodeset="/register_case/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
@@ -65,9 +60,6 @@
     <group appearance="field-list" ref="/register_case/inputs">
       <input appearance="hidden" ref="/register_case/inputs/source">
         <label ref="jr:itext('/register_case/inputs/source:label')"/>
-      </input>
-      <input appearance="hidden" ref="/register_case/inputs/source_id">
-        <label ref="jr:itext('/register_case/inputs/source_id:label')"/>
       </input>
       <group ref="/register_case/inputs/contact">
         <label ref="jr:itext('/register_case/inputs/contact:label')"/>

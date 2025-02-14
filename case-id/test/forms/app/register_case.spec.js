@@ -26,7 +26,6 @@ describe('Register Case form', () => {
       inputs: {
         contact: CONTACT,
         source: 'contact',
-        source_id: '',
       },
       patient_uuid: CONTACT._id,
       submit: ''

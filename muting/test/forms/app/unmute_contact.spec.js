@@ -23,7 +23,6 @@ describe('Unmute Contact form', () => {
           _id: 'contact-uuid',
         },
         source: 'contact',
-        source_id: '',
       },
       patient_uuid: contact._id,
       submit: ''
