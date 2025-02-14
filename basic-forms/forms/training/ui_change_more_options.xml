@@ -31,7 +31,7 @@
         </translation>
       </itext>
       <instance>
-        <ui_change_more_options id="training:ui_change_more_options" prefix="J1!training:ui_change_more_options!" delimiter="#" version="20250213140035">
+        <ui_change_more_options id="training:ui_change_more_options" prefix="J1!training:ui_change_more_options!" delimiter="#" version="20250213162515">
           <intro>
             <intro_txt_1/>
             <intro_txt_2/>
