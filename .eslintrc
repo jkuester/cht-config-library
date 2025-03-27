@@ -49,7 +49,8 @@
   "globals": {
     "reports": true,
     "lineage": true,
-    "contact": true
+    "contact": true,
+    "cht": true
   },
   "ignorePatterns": [
     "**/node_modules/**"
