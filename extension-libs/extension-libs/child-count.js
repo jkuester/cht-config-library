@@ -17,7 +17,7 @@ const getChildCount = async (db, contactId) => db
 
 const setChildCount = async (label, contactId) => {
   const element = document.querySelector(getSelector(label));
-  const dbSvc = window.CHTCore.DB;
+  const dbSvc = window && window.CHTCore && window.CHTCore.DB;
   if (!element || !dbSvc) {
     return;
   }
