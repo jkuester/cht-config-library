@@ -1,5 +1,12 @@
 /* global document, window */
-const SELECTOR = '#contact_summary .cell.child.count > div > p';
+
+const getSelector = label => {
+  const classes = label
+    .toLowerCase()
+    .replace(/\./g, '\\.')
+    .split(/\s+/);
+  return `#contact_summary .cell.${classes.join('.')} > div > p`;
+};
 
 const getChildCount = async (db, contactId) => db
   .query('medic-client/contacts_by_parent', {
@@ -8,14 +15,14 @@ const getChildCount = async (db, contactId) => db
   })
   .then(({ rows }) => rows.length);
 
-const setChildCount = async (contact) => {
-  const element = document.querySelector(SELECTOR);
+const setChildCount = async (label, contactId) => {
+  const element = document.querySelector(getSelector(label));
   const dbSvc = window.CHTCore.DB;
   if (!element || !dbSvc) {
     return;
   }
-  element.textContent = await getChildCount(dbSvc.get(), contact._id);
+  element.textContent = await getChildCount(dbSvc.get(), contactId);
 };
 
 // Timeout to allow the DOM to be ready
-module.exports = (contact) => setTimeout(() => setChildCount(contact));
+module.exports = (label, contactId) => setTimeout(() => setChildCount(label, contactId));
