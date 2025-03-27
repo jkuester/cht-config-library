@@ -1,5 +1,9 @@
+cht.v1.getExtensionLib('child-count.js')(contact);
+
 module.exports = {
-  fields: [],
+  fields: [
+    { appliesToType: '!person', label: 'Child Count', value: '', width: 4 }
+  ],
   cards: [],
   context: {}
 };
