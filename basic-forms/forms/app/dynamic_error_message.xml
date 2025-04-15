@@ -5,6 +5,9 @@
     <model>
       <itext>
         <translation lang="en">
+          <text id="/dynamic_error_message/page/my_num:hint">
+            <value>See [this forum thread](https://forum.communityhealthtoolkit.org/t/how-to-list-multiple-constraint-messages-on-a-single-field-in-xlsform/960) for more context.</value>
+          </text>
           <text id="/dynamic_error_message/page/my_num:jr:constraintMsg">
             <value><output value=" /dynamic_error_message/page/my_num_issue_msg "/></value>
           </text>
@@ -19,8 +22,11 @@
           </text>
         </translation>
         <translation lang="fr">
+          <text id="/dynamic_error_message/page/my_num:hint">
+            <value>Voir [ce fil de discussion du forum](https://forum.communityhealthtoolkit.org/t/how-to-list-multiple-constraint-messages-on-a-single-field-in-xlsform/960) pour plus de contexte.</value>
+          </text>
           <text id="/dynamic_error_message/page/my_num:jr:constraintMsg">
-            <value>-</value>
+            <value><output value=" /dynamic_error_message/page/my_num_issue_msg "/></value>
           </text>
           <text id="/dynamic_error_message/page/my_num:label">
             <value>Entrez un nombre de 2 à 4</value>
@@ -34,7 +40,7 @@
         </translation>
       </itext>
       <instance>
-        <dynamic_error_message id="dynamic_error_message" prefix="J1!dynamic_error_message!" delimiter="#" version="20250414133825">
+        <dynamic_error_message id="dynamic_error_message" prefix="J1!dynamic_error_message!" delimiter="#" version="20250415081630">
           <page>
             <my_num/>
             <my_num_issue/>
@@ -56,6 +62,7 @@
     <group appearance="field-list" ref="/dynamic_error_message/page">
       <input ref="/dynamic_error_message/page/my_num">
         <label ref="jr:itext('/dynamic_error_message/page/my_num:label')"/>
+        <hint ref="jr:itext('/dynamic_error_message/page/my_num:hint')"/>
       </input>
       <select1 appearance="hidden" ref="/dynamic_error_message/page/my_num_issue">
         <item>
