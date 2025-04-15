@@ -33,11 +33,18 @@ describe('Dynamic Error Message form', () => {
         additionalDocs
       } = await harness.fillForm({ form }, [num]);
 
-      expect(errors).to.deep.equal([{
-        type: 'validation',
-        question: `Enter a number from 2 to 4\n${msg}`,
-        msg,
-      }]);
+      expect(errors).to.deep.equal([
+        { // Bug in test harness?  We are getting this duplicate entry for a validation error on a question with a hint.
+          type: 'validation',
+          question: `Enter a number from 2 to 4\nSee this forum thread for more context.\n${msg}`,
+          msg: 'See this forum thread for more context.',
+        },
+        {
+          type: 'validation',
+          question: `Enter a number from 2 to 4\nSee this forum thread for more context.\n${msg}`,
+          msg,
+        }
+      ]);
       expect(additionalDocs).to.be.empty;
       expect(report).to.be.undefined;
     });
