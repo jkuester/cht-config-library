@@ -1,19 +1,24 @@
-const getValue = function(obj) {
-  let val;
-  if (obj.t === 'arr') {
-    val = obj.v && obj.v.length && obj.v[0];
-  } else {
-    val = obj.v;
+const asString = (r) => {
+  if (r.t === 'arr') {
+    return r.v.length ? r.v[0].textContent || '' : '';
   }
-  if (!val) {
-    return 0;
+  return r.v.toString();
+};
+
+const asNumber = (r) => {
+  if (r.t === 'num') {
+    return r.v;
   }
-  const parsed = parseInt(val.textContent);
-  return isNaN(parsed) ? 0 : parsed;
+
+  const str = asString(r).trim();
+  if (str === '') {
+    return NaN;
+  }
+  return +str;
 };
 
 module.exports = function(first, second) {
-  const average = (getValue(first) + getValue(second)) / 2;
+  const average = (asNumber(first) + asNumber(second)) / 2;
   return {
     t: 'num',
     v: average
