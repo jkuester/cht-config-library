@@ -84,7 +84,7 @@ module.exports = [
       end: 1,
     }],
     appliesIf: ({ contact }) => {
-      return !contact.role || !contact.role.length;
+      return !contact.role;
     },
     resolvedIf: () => false,
     actions: [{
