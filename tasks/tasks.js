@@ -60,7 +60,7 @@ module.exports = [
       {
         type: 'contact',
         label: 'Add person to household',
-        modifyContent: function (content, { contact }) {
+        modifyContent: (content, { contact }) => {
           content.type = 'person';
           content.parent_id = contact._id;
         },
@@ -73,25 +73,24 @@ module.exports = [
     ],
   },
   {
-    name: 'add_short_name_task',
-    title: 'Add Short Name',
+    name: 'add_role_task',
+    title: 'Add Role',
     appliesTo: 'contacts',
     appliesToType: ['person'],
     events: [{
-      id: 'add_short_name_event_id',
+      id: 'add_role_event_id',
       days: 0,
       start: 0,
       end: 1,
     }],
     appliesIf: ({ contact }) => {
-      return !contact.short_name;
+      return !contact.role || !contact.role.length;
     },
     resolvedIf: () => false,
     actions: [{
       type: 'contact',
-      label: 'Add short name to person',
-      modifyContent: function (content, { contact }) {
-        content.id = contact._id;
+      modifyContent: (content, { contact }) => {
+        content.edit_id = contact._id;
       },
     }],
   }
