@@ -110,7 +110,8 @@ describe('Extension Lib: child-count', () => {
 
     expect(global.document.querySelector).to.have.been.calledOnceWithExactly(
       '#contact_summary .cell.missing.element > div > p'
-    );    expect(mockDb.query).to.not.have.been.called;
+    );
+    expect(mockDb.query).to.not.have.been.called;
     expect(mockElement.textContent).to.equal('');
   });
 });
