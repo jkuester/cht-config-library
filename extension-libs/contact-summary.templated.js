@@ -1,4 +1,5 @@
-cht.v1.getExtensionLib('child-count.js')('Child Count', contact._id);
+const populateChildCount = cht.v1.getExtensionLib('child-count.js');
+populateChildCount && populateChildCount('Child Count', contact._id);
 
 module.exports = {
   fields: [
