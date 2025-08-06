@@ -4,7 +4,8 @@ const getSelector = label => {
   const classes = label
     .toLowerCase()
     .replace(/\./g, '\\.')
-    .split(/\s+/);
+    .split(/\s+/)
+    .filter(cls => cls.length > 0);
   return `#contact_summary .cell.${classes.join('.')} > div > p`;
 };
 

@@ -1,223 +1,116 @@
 const { expect } = require('chai');
 const sinon = require('sinon');
+const childCount = require('../../extension-libs/child-count');
 
 describe('Extension Lib: child-count', () => {
-  let sandbox;
+  const originalDocument = global.document;
+  const originalWindow = global.window;
+  const contactId = 'contact123';
+
+  let mockElement;
+  let mockDb;
+  let clock;
 
   beforeEach(() => {
-    sandbox = sinon.createSandbox();
+    mockElement = { textContent: '' };
+    mockDb = { query: sinon.stub() };
+
+    global.document = { querySelector: sinon.stub() };
+    global.window = {
+      CHTCore: {
+        DB: { get: sinon.stub().returns(mockDb) }
+      }
+    };
+
+    clock = sinon.useFakeTimers();
   });
 
   afterEach(() => {
-    sandbox.restore();
+    clock.restore();
+    global.document = originalDocument;
+    global.window = originalWindow;
   });
 
-  describe('internal functions', () => {
-    let getSelector;
-    let getChildCount;
-    let setChildCount;
+  describe('when the environment is properly configured', () => {
+    beforeEach(() => global.document.querySelector.returns(mockElement));
 
-    beforeEach(() => {
-      // Create a version of the module that exports internal functions for testing
-      const moduleCode = `
-        const getSelector = label => {
-          const classes = label
-            .toLowerCase()
-            .replace(/\\./g, '\\\\.')
-            .split(/\\s+/)
-            .filter(cls => cls.length > 0);
-          return \`#contact_summary .cell.\${classes.join('.')} > div > p\`;
-        };
-
-        const getChildCount = async (db, contactId) => db
-          .query('medic-client/contacts_by_parent', {
-            startkey: [contactId],
-            endkey: [contactId, {}]
-          })
-          .then(({ rows }) => rows.length);
-
-        const setChildCount = async (label, contactId) => {
-          const element = document.querySelector(getSelector(label));
-          const dbSvc = window && window.CHTCore && window.CHTCore.DB;
-          if (!element || !dbSvc) {
-            return;
-          }
-          element.textContent = await getChildCount(dbSvc.get(), contactId);
-        };
-
-        module.exports = { getSelector, getChildCount, setChildCount };
-      `;
-
-      const testModule = eval(`(function() { ${moduleCode}; return module.exports; })()`);
-      getSelector = testModule.getSelector;
-      getChildCount = testModule.getChildCount;
-      setChildCount = testModule.setChildCount;
+    afterEach(() => {
+      expect(global.window.CHTCore.DB.get).to.have.been.calledOnceWithExactly();
+      expect(mockDb.query).to.have.been.calledOnceWithExactly(
+        'medic-client/contacts_by_parent',
+        { startkey: [contactId], endkey: [contactId, {}] }
+      );
     });
 
-    describe('getSelector', () => {
-      it('should generate correct selector for single word label', () => {
-        const result = getSelector('Children');
-        expect(result).to.equal('#contact_summary .cell.children > div > p');
-      });
+    it('sets the child count on the DOM element', async () => {
+      const label = 'children Count   total';
+      mockDb.query.resolves({ rows: [{ id: 'child1' }, { id: 'child2' }, { id: 'child3' }] });
 
-      it('should generate correct selector for multi-word label', () => {
-        const result = getSelector('Child Count');
-        expect(result).to.equal('#contact_summary .cell.child.count > div > p');
-      });
+      childCount(label, contactId);
+      await clock.tickAsync(1);
 
-      it('should escape dots in label', () => {
-        const result = getSelector('Version.1');
-        expect(result).to.equal('#contact_summary .cell.version\\.1 > div > p');
-      });
-
-      it('should handle multiple spaces and dots', () => {
-        const result = getSelector('Child Count  V.1.2');
-        expect(result).to.equal('#contact_summary .cell.child.count.v\\.1\\.2 > div > p');
-      });
-
-      it('should convert to lowercase', () => {
-        const result = getSelector('CHILDREN');
-        expect(result).to.equal('#contact_summary .cell.children > div > p');
-      });
-
-      it('should handle empty spaces correctly', () => {
-        const result = getSelector('  Test   Label  ');
-        expect(result).to.equal('#contact_summary .cell.test.label > div > p');
-      });
+      expect(global.document.querySelector).to.have.been.calledOnceWithExactly(
+        '#contact_summary .cell.children.count.total > div > p'
+      );
+      expect(mockElement.textContent).to.equal(3);
     });
 
-    describe('getChildCount', () => {
-      it('should return the number of rows from database query', async () => {
-        const mockDb = {
-          query: sandbox.stub().resolves({
-            rows: [{ id: '1' }, { id: '2' }, { id: '3' }]
-          })
-        };
+    it('properly escapes dots in label', async () => {
+      const label = 'children.count.total';
+      mockDb.query.resolves({ rows: [{ id: 'child1' }, { id: 'child2' }, { id: 'child3' }] });
 
-        const result = await getChildCount(mockDb, 'parent-id');
+      childCount(label, contactId);
+      await clock.tickAsync(1);
 
-        expect(result).to.equal(3);
-        expect(mockDb.query).to.have.been.calledWith('medic-client/contacts_by_parent', {
-          startkey: ['parent-id'],
-          endkey: ['parent-id', {}]
-        });
-      });
-
-      it('should return 0 when no children found', async () => {
-        const mockDb = {
-          query: sandbox.stub().resolves({ rows: [] })
-        };
-
-        const result = await getChildCount(mockDb, 'parent-id');
-
-        expect(result).to.equal(0);
-      });
-
-      it('should handle database query with different contact ID', async () => {
-        const mockDb = {
-          query: sandbox.stub().resolves({
-            rows: [{ id: '1' }]
-          })
-        };
-
-        const result = await getChildCount(mockDb, 'different-parent-id');
-
-        expect(result).to.equal(1);
-        expect(mockDb.query).to.have.been.calledWith('medic-client/contacts_by_parent', {
-          startkey: ['different-parent-id'],
-          endkey: ['different-parent-id', {}]
-        });
-      });
+      expect(global.document.querySelector).to.have.been.calledOnceWithExactly(
+        '#contact_summary .cell.children\\.count\\.total > div > p'
+      );
+      expect(mockElement.textContent).to.equal(3);
     });
 
-    describe('setChildCount', () => {
-      let mockElement;
-      let mockDocument;
-      let mockWindow;
-      let originalDocument;
-      let originalWindow;
+    it('sets count properly when no children are found', async () => {
+      mockDb.query.resolves({ rows: [] });
+      const label = 'no children';
 
-      beforeEach(() => {
-        mockElement = { textContent: null };
-        mockDocument = {
-          querySelector: sandbox.stub().returns(mockElement)
-        };
-        mockWindow = {
-          CHTCore: {
-            DB: {
-              get: () => ({
-                query: sandbox.stub().resolves({ rows: [1, 2] })
-              })
-            }
-          }
-        };
+      childCount(label, contactId);
+      await clock.tickAsync(1);
 
-        originalDocument = global.document;
-        originalWindow = global.window;
-        global.document = mockDocument;
-        global.window = mockWindow;
-      });
-
-      afterEach(() => {
-        global.document = originalDocument;
-        global.window = originalWindow;
-      });
-
-      it('should set element textContent with child count', async () => {
-        await setChildCount('Children', 'parent-id');
-
-        expect(mockDocument.querySelector).to.have.been.calledWith('#contact_summary .cell.children > div > p');
-        expect(mockElement.textContent).to.equal(2);
-      });
-
-      it('should return early if element not found', async () => {
-        mockDocument.querySelector.returns(null);
-
-        const result = await setChildCount('Children', 'parent-id');
-
-        expect(result).to.be.undefined;
-      });
-
-      it('should return early if window is not available', async () => {
-        global.window = null;
-
-        const result = await setChildCount('Children', 'parent-id');
-
-        expect(result).to.be.undefined;
-      });
-
-      it('should return early if CHTCore is not available', async () => {
-        global.window = {};
-
-        const result = await setChildCount('Children', 'parent-id');
-
-        expect(result).to.be.undefined;
-      });
-
-      it('should return early if DB service is not available', async () => {
-        global.window = { CHTCore: {} };
-
-        const result = await setChildCount('Children', 'parent-id');
-
-        expect(result).to.be.undefined;
-      });
+      expect(global.document.querySelector).to.have.been.calledOnceWithExactly(
+        '#contact_summary .cell.no.children > div > p'
+      );
+      expect(mockElement.textContent).to.equal(0);
     });
   });
 
-  describe('module export', () => {
-    it('should export a function that calls setTimeout', () => {
-      const childCount = require('../../extension-libs/child-count');
-      expect(childCount).to.be.a('function');
+  [
+    null, {}, { CHTCore: {} }
+  ].forEach(window => {
+    it('handles missing CHTCore service gracefully', async () => {
+      global.document.querySelector.returns(mockElement);
+      global.window = window;
+      const label = 'test label';
+
+      childCount(label, contactId);
+      clock.tick(1);
+
+      expect(global.document.querySelector).to.have.been.calledOnceWithExactly(
+        '#contact_summary .cell.test.label > div > p'
+      );
+      expect(mockDb.query).to.not.have.been.called;
+      expect(mockElement.textContent).to.equal('');
     });
+  });
 
-    it('should call setTimeout when invoked', () => {
-      const setTimeoutSpy = sandbox.spy(global, 'setTimeout');
-      const childCount = require('../../extension-libs/child-count');
+  it('handles missing DOM element gracefully', async () => {
+    global.document.querySelector.returns(null);
+    const label = 'missing element';
 
-      childCount('Children', 'parent-id');
+    childCount(label, contactId);
+    clock.tick(1);
 
-      expect(setTimeoutSpy).to.have.been.called;
-      expect(setTimeoutSpy.firstCall.args[1]).to.be.undefined; // default timeout
-    });
+    expect(global.document.querySelector).to.have.been.calledOnceWithExactly(
+      '#contact_summary .cell.missing.element > div > p'
+    );    expect(mockDb.query).to.not.have.been.called;
+    expect(mockElement.textContent).to.equal('');
   });
 });
