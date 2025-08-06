@@ -25,6 +25,7 @@
         </with_extended_select>
       </instance>
       <instance id="contact-summary"/>
+      <instance id="user-contact-summary"/>
       <bind nodeset="/with_extended_select/page/select_0" type="string" calculate="cht:extension-lib(&quot;extended-select-widget.js&quot;, &quot;/with_extended_select/page/select_0&quot;)"/>
       <bind nodeset="/with_extended_select/page/select_1" type="string" calculate="cht:extension-lib(&quot;extended-select-widget.js&quot;, &quot;/with_extended_select/page/select_1&quot;)"/>
       <bind nodeset="/with_extended_select/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
