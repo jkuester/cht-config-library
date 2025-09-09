@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+  <h:head>
+    <h:title>Create Household (with repeated children)</h:title>
+    <model>
+      <itext>
+        <translation lang="English (en)">
+          <text id="/data/clinic/info:label">
+            <value>This group for creating the place _must_ have the name of the contact type that is being created (e.g. `clinic`).</value>
+          </text>
+          <text id="/data/clinic/name:label">
+            <value>Household name</value>
+          </text>
+          <text id="/data/clinic:label">
+            <value>Household</value>
+          </text>
+          <text id="/data/contact/info:label">
+            <value>(This group for creating the primary contact _must_ be named `contact`.)</value>
+          </text>
+          <text id="/data/contact/name:label">
+            <value>Person name</value>
+          </text>
+          <text id="/data/contact:label">
+            <value>Head of the Household</value>
+          </text>
+          <text id="/data/intro:label">
+            <value>This form demonstrates the ability to add additional contacts in a contact form in a repeat.
+
+With this form you can create a Household along with it's primary contact. In addition you can create multiple other persons as household members (e.g. children).</value>
+          </text>
+          <text id="/data/repeat/child/info:label">
+            <value>This repeat is for adding additional contacts to the place. It _must_ be named `child` and _must_ have the `field-list` appearance.
+
+It must be nested in a group named `repeat`.</value>
+          </text>
+          <text id="/data/repeat/child/name:label">
+            <value>Member Name</value>
+          </text>
+          <text id="/data/repeat/child:label">
+            <value>Household member</value>
+          </text>
+          <text id="/data/repeat:label">
+            <value>Add household members</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <data id="contact:clinic:create" prefix="J1!contact:clinic:create!" delimiter="#" version="20250909130132">
+          <inputs>
+            <meta>
+              <location>
+                <lat/>
+                <long/>
+                <error/>
+                <message/>
+              </location>
+            </meta>
+            <user>
+              <contact_id/>
+              <facility_id/>
+              <name/>
+            </user>
+          </inputs>
+          <clinic>
+            <info/>
+            <parent>PARENT</parent>
+            <type/>
+            <name/>
+            <contact/>
+            <meta tag="hidden">
+              <created_by/>
+              <created_by_person_uuid/>
+              <created_by_place_uuid/>
+            </meta>
+          </clinic>
+          <user_name/>
+          <user_contact_id/>
+          <user_facility_id/>
+          <intro/>
+          <contact>
+            <info/>
+            <parent>PARENT</parent>
+            <type/>
+            <name/>
+            <meta tag="hidden">
+              <created_by/>
+              <created_by_person_uuid/>
+              <created_by_place_uuid/>
+            </meta>
+          </contact>
+          <repeat>
+            <child jr:template="">
+              <info/>
+              <parent>PARENT</parent>
+              <type/>
+              <name/>
+              <meta tag="hidden">
+                <created_by/>
+                <created_by_person_uuid/>
+                <created_by_place_uuid/>
+              </meta>
+            </child>
+          </repeat>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </data>
+      </instance>
+      <bind nodeset="/data/inputs" relevant="false()"/>
+      <bind nodeset="/data/inputs/user/contact_id" type="string"/>
+      <bind nodeset="/data/inputs/user/facility_id" type="string"/>
+      <bind nodeset="/data/inputs/user/name" type="string"/>
+      <bind nodeset="/data/user_name" type="string" calculate="../inputs/user/name"/>
+      <bind nodeset="/data/user_contact_id" type="string" calculate="../inputs/user/contact_id"/>
+      <bind nodeset="/data/user_facility_id" type="string" calculate="../inputs/user/facility_id"/>
+      <bind nodeset="/data/intro" readonly="true()" type="string"/>
+      <bind nodeset="/data/contact/info" readonly="true()" type="string"/>
+      <bind nodeset="/data/contact/parent" type="string"/>
+      <bind nodeset="/data/contact/type" type="string" calculate="&quot;person&quot;"/>
+      <bind nodeset="/data/contact/name" type="string" required="true()"/>
+      <bind nodeset="/data/contact/meta/created_by" type="string" calculate=" /data/user_name "/>
+      <bind nodeset="/data/contact/meta/created_by_person_uuid" type="string" calculate=" /data/user_contact_id "/>
+      <bind nodeset="/data/contact/meta/created_by_place_uuid" type="string" calculate=" /data/user_facility_id "/>
+      <bind nodeset="/data/clinic/info" readonly="true()" type="string"/>
+      <bind nodeset="/data/clinic/parent" type="string"/>
+      <bind nodeset="/data/clinic/type" type="string" calculate="&quot;clinic&quot;"/>
+      <bind nodeset="/data/clinic/name" type="string" required="true()"/>
+      <bind nodeset="/data/clinic/contact" type="string" calculate="&quot;NEW&quot;"/>
+      <bind nodeset="/data/clinic/meta/created_by" type="string" calculate=" /data/user_name "/>
+      <bind nodeset="/data/clinic/meta/created_by_person_uuid" type="string" calculate=" /data/user_contact_id "/>
+      <bind nodeset="/data/clinic/meta/created_by_place_uuid" type="string" calculate=" /data/user_facility_id "/>
+      <bind nodeset="/data/repeat/child/info" readonly="true()" type="string"/>
+      <bind nodeset="/data/repeat/child/parent" type="string"/>
+      <bind nodeset="/data/repeat/child/type" type="string" calculate="&quot;person&quot;"/>
+      <bind nodeset="/data/repeat/child/name" type="string" required="true()"/>
+      <bind nodeset="/data/repeat/child/meta/created_by" type="string" calculate=" /data/user_name "/>
+      <bind nodeset="/data/repeat/child/meta/created_by_person_uuid" type="string" calculate=" /data/user_contact_id "/>
+      <bind nodeset="/data/repeat/child/meta/created_by_place_uuid" type="string" calculate=" /data/user_facility_id "/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <group ref="/data/inputs">
+      <group ref="/data/inputs/user">
+        <input ref="/data/inputs/user/contact_id"/>
+        <input ref="/data/inputs/user/facility_id"/>
+        <input ref="/data/inputs/user/name"/>
+      </group>
+    </group>
+    <input ref="/data/intro">
+      <label ref="jr:itext('/data/intro:label')"/>
+    </input>
+    <group appearance="field-list" ref="/data/contact">
+      <label ref="jr:itext('/data/contact:label')"/>
+      <input ref="/data/contact/info">
+        <label ref="jr:itext('/data/contact/info:label')"/>
+      </input>
+      <input appearance="hidden" ref="/data/contact/parent"/>
+      <input ref="/data/contact/name">
+        <label ref="jr:itext('/data/contact/name:label')"/>
+      </input>
+      <group appearance="hidden" ref="/data/contact/meta"/>
+    </group>
+    <group appearance="field-list" ref="/data/clinic">
+      <label ref="jr:itext('/data/clinic:label')"/>
+      <input ref="/data/clinic/info">
+        <label ref="jr:itext('/data/clinic/info:label')"/>
+      </input>
+      <input appearance="hidden" ref="/data/clinic/parent"/>
+      <input ref="/data/clinic/name">
+        <label ref="jr:itext('/data/clinic/name:label')"/>
+      </input>
+      <group appearance="hidden" ref="/data/clinic/meta"/>
+    </group>
+    <group ref="/data/repeat">
+      <label ref="jr:itext('/data/repeat:label')"/>
+      <group ref="/data/repeat/child">
+        <label ref="jr:itext('/data/repeat/child:label')"/>
+        <repeat nodeset="/data/repeat/child" appearance="field-list">
+          <input ref="/data/repeat/child/info">
+            <label ref="jr:itext('/data/repeat/child/info:label')"/>
+          </input>
+          <input appearance="hidden" ref="/data/repeat/child/parent"/>
+          <input ref="/data/repeat/child/name">
+            <label ref="jr:itext('/data/repeat/child/name:label')"/>
+          </input>
+          <group appearance="hidden" ref="/data/repeat/child/meta"/>
+        </repeat>
+      </group>
+    </group>
+  </h:body>
+</h:html>
