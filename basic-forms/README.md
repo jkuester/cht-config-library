@@ -9,6 +9,12 @@ The goal of this project is not to encompass all supported form features, but ju
 Almost all the official [ODK form Docs](https://docs.getodk.org/form-reference/) are applicable to CHT forms. Additionally, 
 the ODK team has provided a [XLSForm Template](https://forum.getodk.org/t/odk-xlsform-template/43459) that is an excellent reference for creating forms.
 
+## Contact forms
+
+### Repeated Child Contacts
+
+The `clinic-create` form demonstrates how to create a contact with repeated child contacts.
+
 ## Training Cards
 
 See [the documentation](https://docs.communityhealthtoolkit.org/building/training/training-cards/) for more information about training forms. 
