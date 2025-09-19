@@ -1,23 +1,11 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Select Contact</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/select_contact/contact_page/contact/_id:label">
-            <value>Select any contact</value>
-          </text>
-          <text id="/select_contact/contact_page/description:label">
-            <value>You selected: <output value=" /select_contact/contact_page/selected_contact_name "/></value>
-          </text>
-          <text id="/select_contact/contact_page:label">
-            <value>Data dynamically loaded from the selected contact</value>
-          </text>
-          <text id="/select_contact/inputs/user:label">
-            <value>User Settings Doc</value>
-          </text>
-          <text id="/select_contact/intro:label">
+          <text id="/data/intro:label">
             <value>As described [in the docs](https://docs.communityhealthtoolkit.org/apps/guides/forms/form-inputs/#contact-selector), the contact selector loads data from a contact doc into a form group. 
 
 This can be triggered automatically to load contact data in the background (e.g. this form loads the contact document for the current user). 
@@ -26,104 +14,151 @@ Alternatively, the contact selector can be displayed to the user as a search box
 
 _(Note that because of [this issue](https://github.com/medic/cht-core/issues/8225) we have to load the user's contact outside of the &lt;code&gt;inputs&lt;/code&gt; group.)_</value>
           </text>
-          <text id="/select_contact/user_page/description:label">
-            <value><output value=" /select_contact/user_page/user_name "/>'s role: <output value=" /select_contact/user_page/user_role "/></value></text>
-          <text id="/select_contact/user_page/user_contact:label">
+          <text id="/data/inputs:label">
+            <value></value>
+          </text>
+          <text id="/data/inputs/user:label">
+            <value>User Settings Doc</value>
+          </text>
+          <text id="/data/inputs/user/contact_id:label">
+            <value></value>
+          </text>
+          <text id="/data/user_page:label">
+            <value>Data automatically loaded from the user's contact doc</value>
+          </text>
+          <text id="/data/user_page/user_contact:label">
             <value>User's Contact Doc</value>
           </text>
-          <text id="/select_contact/user_page:label">
-            <value>Data automatically loaded from the user's contact doc</value>
+          <text id="/data/user_page/user_contact/_id:label">
+            <value></value>
+          </text>
+          <text id="/data/user_page/user_contact/name:label">
+            <value></value>
+          </text>
+          <text id="/data/user_page/user_contact/role:label">
+            <value></value>
+          </text>
+          <text id="/data/user_page/description:label">
+            <value><output value=" /data/user_page/user_name "></output>'s role: <output value=" /data/user_page/user_role "></output> </value>
+          </text>
+          <text id="/data/contact_page:label">
+            <value>Data dynamically loaded from the selected contact</value>
+          </text>
+          <text id="/data/contact_page/contact:label">
+            <value></value>
+          </text>
+          <text id="/data/contact_page/contact/_id:label">
+            <value>Select any contact</value>
+          </text>
+          <text id="/data/contact_page/contact/name:label">
+            <value></value>
+          </text>
+          <text id="/data/contact_page/description:label">
+            <value> You selected: <output value=" /data/contact_page/selected_contact_name "></output> </value>
           </text>
         </translation>
       </itext>
       <instance>
-        <select_contact id="select_contact" prefix="J1!select_contact!" delimiter="#" version="20250213162054">
-          <intro/>
+        <data id="select_contact" version="20250213162054" prefix="J1!select_contact!" delimiter="#">
+          <intro></intro>
           <inputs>
             <meta>
               <location>
-                <lat/>
-                <long/>
-                <error/>
-                <message/>
+                <lat></lat>
+                <long></long>
+                <error></error>
+                <message></message>
               </location>
             </meta>
             <user>
-              <contact_id/>
+              <contact_id></contact_id>
             </user>
           </inputs>
           <user_page>
             <user_contact>
-              <_id/>
-              <name/>
-              <role/>
+              <_id></_id>
+              <name></name>
+              <role></role>
             </user_contact>
-            <user_name/>
-            <user_role/>
-            <description/>
+            <user_name></user_name>
+            <user_role></user_role>
+            <description></description>
           </user_page>
           <contact_page>
             <contact>
-              <_id/>
-              <name/>
+              <_id></_id>
+              <name></name>
             </contact>
-            <selected_contact_name/>
-            <description/>
+            <selected_contact_name></selected_contact_name>
+            <description></description>
           </contact_page>
           <meta tag="hidden">
-            <instanceID/>
+            <instanceID></instanceID>
           </meta>
-        </select_contact>
+        </data>
       </instance>
-      <instance id="contact-summary"/>
-      <bind nodeset="/select_contact/intro" readonly="true()" type="string"/>
-      <bind nodeset="/select_contact/inputs" relevant="false()"/>
-      <bind nodeset="/select_contact/inputs/user/contact_id" type="string"/>
-      <bind nodeset="/select_contact/user_page/user_contact/_id" type="string" calculate="../../../inputs/user/contact_id"/>
-      <bind nodeset="/select_contact/user_page/user_contact/name" type="string"/>
-      <bind nodeset="/select_contact/user_page/user_contact/role" type="string"/>
-      <bind nodeset="/select_contact/user_page/user_name" type="string" calculate="../user_contact/name"/>
-      <bind nodeset="/select_contact/user_page/user_role" type="string" calculate="../user_contact/role"/>
-      <bind nodeset="/select_contact/user_page/description" readonly="true()" type="string"/>
-      <bind nodeset="/select_contact/contact_page/contact/_id" type="string"/>
-      <bind nodeset="/select_contact/contact_page/contact/name" type="string"/>
-      <bind nodeset="/select_contact/contact_page/selected_contact_name" type="string" calculate="../contact/name"/>
-      <bind nodeset="/select_contact/contact_page/description" readonly="true()" type="string" relevant=" /select_contact/contact_page/selected_contact_name  != &quot;&quot;"/>
-      <bind nodeset="/select_contact/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="contact-summary"></instance>
+      <instance id="user-contact-summary"></instance>
+      <bind nodeset="/data/intro" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/inputs" relevant="false()"></bind>
+      <bind nodeset="/data/inputs/user/contact_id" type="string"></bind>
+      <bind nodeset="/data/user_page/user_contact/_id" type="string" calculate="../../../inputs/user/contact_id"></bind>
+      <bind nodeset="/data/user_page/user_contact/name" type="string"></bind>
+      <bind nodeset="/data/user_page/user_contact/role" type="string"></bind>
+      <bind nodeset="/data/user_page/user_name" type="string" calculate="../user_contact/name"></bind>
+      <bind nodeset="/data/user_page/user_role" type="string" calculate="../user_contact/role"></bind>
+      <bind nodeset="/data/user_page/description" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/contact_page/contact/_id" type="string"></bind>
+      <bind nodeset="/data/contact_page/contact/name" type="string"></bind>
+      <bind nodeset="/data/contact_page/selected_contact_name" type="string" calculate="../contact/name"></bind>
+      <bind nodeset="/data/contact_page/description" readonly="true()" type="string" relevant=" /data/contact_page/selected_contact_name  != &quot;&quot;"></bind>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
     </model>
   </h:head>
   <h:body class="pages">
-    <input ref="/select_contact/intro">
-      <label ref="jr:itext('/select_contact/intro:label')"/>
+    <input ref="/data/intro">
+      <label ref="jr:itext('/data/intro:label')"></label>
     </input>
-    <group ref="/select_contact/inputs">
-      <group ref="/select_contact/inputs/user">
-        <label ref="jr:itext('/select_contact/inputs/user:label')"/>
-        <input appearance="hidden" ref="/select_contact/inputs/user/contact_id"/>
+    <group ref="/data/inputs">
+      <label ref="jr:itext('/data/inputs:label')"></label>
+      <group ref="/data/inputs/user">
+        <label ref="jr:itext('/data/inputs/user:label')"></label>
+        <input ref="/data/inputs/user/contact_id" appearance="hidden">
+          <label ref="jr:itext('/data/inputs/user/contact_id:label')"></label>
+        </input>
       </group>
     </group>
-    <group appearance="field-list" ref="/select_contact/user_page">
-      <label ref="jr:itext('/select_contact/user_page:label')"/>
-      <group appearance="hidden" ref="/select_contact/user_page/user_contact">
-        <label ref="jr:itext('/select_contact/user_page/user_contact:label')"/>
-        <input appearance="select-contact type-person" ref="/select_contact/user_page/user_contact/_id"/>
-        <input appearance="hidden" ref="/select_contact/user_page/user_contact/name"/>
-        <input appearance="hidden" ref="/select_contact/user_page/user_contact/role"/>
+    <group appearance="field-list" ref="/data/user_page">
+      <label ref="jr:itext('/data/user_page:label')"></label>
+      <group appearance="hidden" ref="/data/user_page/user_contact">
+        <label ref="jr:itext('/data/user_page/user_contact:label')"></label>
+        <input ref="/data/user_page/user_contact/_id" appearance="select-contact type-person">
+          <label ref="jr:itext('/data/user_page/user_contact/_id:label')"></label>
+        </input>
+        <input ref="/data/user_page/user_contact/name" appearance="hidden">
+          <label ref="jr:itext('/data/user_page/user_contact/name:label')"></label>
+        </input>
+        <input ref="/data/user_page/user_contact/role" appearance="hidden">
+          <label ref="jr:itext('/data/user_page/user_contact/role:label')"></label>
+        </input>
       </group>
-      <input ref="/select_contact/user_page/description">
-        <label ref="jr:itext('/select_contact/user_page/description:label')"/>
+      <input ref="/data/user_page/description">
+        <label ref="jr:itext('/data/user_page/description:label')"></label>
       </input>
     </group>
-    <group appearance="field-list" ref="/select_contact/contact_page">
-      <label ref="jr:itext('/select_contact/contact_page:label')"/>
-      <group ref="/select_contact/contact_page/contact">
-        <input appearance="select-contact" ref="/select_contact/contact_page/contact/_id">
-          <label ref="jr:itext('/select_contact/contact_page/contact/_id:label')"/>
+    <group appearance="field-list" ref="/data/contact_page">
+      <label ref="jr:itext('/data/contact_page:label')"></label>
+      <group ref="/data/contact_page/contact">
+        <label ref="jr:itext('/data/contact_page/contact:label')"></label>
+        <input ref="/data/contact_page/contact/_id" appearance="select-contact">
+          <label ref="jr:itext('/data/contact_page/contact/_id:label')"></label>
         </input>
-        <input appearance="hidden" ref="/select_contact/contact_page/contact/name"/>
+        <input ref="/data/contact_page/contact/name" appearance="hidden">
+          <label ref="jr:itext('/data/contact_page/contact/name:label')"></label>
+        </input>
       </group>
-      <input ref="/select_contact/contact_page/description">
-        <label ref="jr:itext('/select_contact/contact_page/description:label')"/>
+      <input ref="/data/contact_page/description">
+        <label ref="jr:itext('/data/contact_page/description:label')"></label>
       </input>
     </group>
   </h:body>

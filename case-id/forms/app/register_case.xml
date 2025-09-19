@@ -1,78 +1,86 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Register Case</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/register_case/inputs/contact/_id:label">
-            <value>Select person</value>
+          <text id="/data/inputs:label">
+            <value></value>
           </text>
-          <text id="/register_case/inputs/contact/name:label">
-            <value>Name</value>
-          </text>
-          <text id="/register_case/inputs/contact:label">
-            <value>Contact</value>
-          </text>
-          <text id="/register_case/inputs/source:label">
+          <text id="/data/inputs/source:label">
             <value>Source</value>
           </text>
-          <text id="/register_case/submit:label">
-            <value>Submitting this form will create a new case that will automatically be associated with <output value=" /register_case/inputs/contact/name "/>'s parent.</value>
+          <text id="/data/inputs/contact:label">
+            <value>Contact</value>
+          </text>
+          <text id="/data/inputs/contact/_id:label">
+            <value>Select person</value>
+          </text>
+          <text id="/data/inputs/contact/name:label">
+            <value>Name</value>
+          </text>
+          <text id="/data/patient_uuid:label">
+            <value></value>
+          </text>
+          <text id="/data/submit:label">
+            <value> Submitting this form will create a new case that will automatically be associated with <output value=" /data/inputs/contact/name "></output>'s parent. </value>
           </text>
         </translation>
       </itext>
       <instance>
-        <register_case id="register_case" prefix="J1!register_case!" delimiter="#" version="20250214130852">
+        <data id="register_case" version="20250214130852" prefix="J1!register_case!" delimiter="#">
           <inputs>
             <meta>
               <location>
-                <lat/>
-                <long/>
-                <error/>
-                <message/>
+                <lat></lat>
+                <long></long>
+                <error></error>
+                <message></message>
               </location>
             </meta>
             <source>user</source>
             <contact>
-              <_id/>
-              <name/>
+              <_id></_id>
+              <name></name>
             </contact>
           </inputs>
-          <patient_uuid/>
-          <submit/>
+          <patient_uuid></patient_uuid>
+          <submit></submit>
           <meta tag="hidden">
-            <instanceID/>
+            <instanceID></instanceID>
           </meta>
-        </register_case>
+        </data>
       </instance>
-      <instance id="contact-summary"/>
-      <bind nodeset="/register_case/inputs" relevant="./source = 'user'"/>
-      <bind nodeset="/register_case/inputs/source" type="string"/>
-      <bind nodeset="/register_case/inputs/contact/_id" type="string" required="true()"/>
-      <bind nodeset="/register_case/inputs/contact/name" type="string"/>
-      <bind nodeset="/register_case/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
-      <bind nodeset="/register_case/submit" readonly="true()" type="string"/>
-      <bind nodeset="/register_case/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="contact-summary"></instance>
+      <instance id="user-contact-summary"></instance>
+      <bind nodeset="/data/inputs" relevant="./source = 'user'"></bind>
+      <bind nodeset="/data/inputs/source" type="string"></bind>
+      <bind nodeset="/data/inputs/contact/_id" type="string" required="true()"></bind>
+      <bind nodeset="/data/inputs/contact/name" type="string"></bind>
+      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"></bind>
+      <bind nodeset="/data/submit" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
     </model>
   </h:head>
   <h:body class="pages">
-    <group appearance="field-list" ref="/register_case/inputs">
-      <input appearance="hidden" ref="/register_case/inputs/source">
-        <label ref="jr:itext('/register_case/inputs/source:label')"/>
+    <group appearance="field-list" ref="/data/inputs">
+      <label ref="jr:itext('/data/inputs:label')"></label>
+      <input ref="/data/inputs/source" appearance="hidden">
+        <label ref="jr:itext('/data/inputs/source:label')"></label>
       </input>
-      <group ref="/register_case/inputs/contact">
-        <label ref="jr:itext('/register_case/inputs/contact:label')"/>
-        <input appearance="select-contact type-person" ref="/register_case/inputs/contact/_id">
-          <label ref="jr:itext('/register_case/inputs/contact/_id:label')"/>
+      <group ref="/data/inputs/contact">
+        <label ref="jr:itext('/data/inputs/contact:label')"></label>
+        <input ref="/data/inputs/contact/_id" appearance="select-contact type-person">
+          <label ref="jr:itext('/data/inputs/contact/_id:label')"></label>
         </input>
-        <input appearance="hidden" ref="/register_case/inputs/contact/name">
-          <label ref="jr:itext('/register_case/inputs/contact/name:label')"/>
+        <input ref="/data/inputs/contact/name" appearance="hidden">
+          <label ref="jr:itext('/data/inputs/contact/name:label')"></label>
         </input>
       </group>
     </group>
-    <input ref="/register_case/submit">
-      <label ref="jr:itext('/register_case/submit:label')"/>
+    <input ref="/data/submit">
+      <label ref="jr:itext('/data/submit:label')"></label>
     </input>
   </h:body>
 </h:html>

@@ -1,167 +1,173 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Dynamic URL</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/dynamic_url/app_link/app_query:label">
-            <value>Select a contact</value>
+          <text id="/data/web_link:label">
+            <value>Dynamic web link</value>
           </text>
-          <text id="/dynamic_url/app_link/link:label">
-            <value>Select the button to navigate to the contact's profile page.
-
-&lt;a target=&quot;_self&quot; href=&quot;#&quot; rel=&quot;noopener&quot; class=&quot;dynamic-url btn btn-primary&quot; style=&quot;display:inline-block;&quot;&gt; <output value=" /dynamic_url/app_link/name "/> &lt;div class=&quot;url hidden&quot;&gt;/#/contacts/<output value=" /dynamic_url/app_link/app_query "/>&lt;/div&gt; &lt;/a&gt;</value>
-          </text>
-          <text id="/dynamic_url/app_link:label">
-            <value>Dynamic contact link</value>
-          </text>
-          <text id="/dynamic_url/phone_link/intro:label">
-            <value>Check the [CHT Docs](https://docs.communityhealthtoolkit.org/apps/guides/forms/app-form-sms/#triggering-calls-and-sms) for more info.</value>
-          </text>
-          <text id="/dynamic_url/phone_link/link:label">
-            <value>Click link to call number: [<output value=" /dynamic_url/phone_link/phone_query "/>](tel:<output value=" /dynamic_url/phone_link/phone_query "/>)
-
-_(On a mobile device, this should open the phone app with the number pre-entered.)_</value>
-          </text>
-          <text id="/dynamic_url/phone_link/phone_query:label">
-            <value>Enter phone number</value>
-          </text>
-          <text id="/dynamic_url/phone_link:label">
-            <value>Dynamic phone link</value>
-          </text>
-          <text id="/dynamic_url/sms_link/intro:label">
-            <value>Check the [CHT Docs](https://docs.communityhealthtoolkit.org/apps/guides/forms/app-form-sms/#triggering-calls-and-sms) for more info.</value>
-          </text>
-          <text id="/dynamic_url/sms_link/link:label">
-            <value>[Send SMS](sms://<output value=" /dynamic_url/sms_link/sms_query "/>?body=<output value=" /dynamic_url/sms_link/sms_text "/>)
-
-_(On a mobile device, this should open the message app with the number and message pre-entered.)_</value>
-          </text>
-          <text id="/dynamic_url/sms_link/sms_query:label">
-            <value>Enter phone number</value>
-          </text>
-          <text id="/dynamic_url/sms_link/sms_text:label">
-            <value>Enter SMS message</value>
-          </text>
-          <text id="/dynamic_url/sms_link:label">
-            <value>Dynamic SMS link</value>
-          </text>
-          <text id="/dynamic_url/web_link/intro:label">
+          <text id="/data/web_link/intro:label">
             <value>For dynamically creating normal web links, you can simply include the field reference in the link markdown for a note or label.</value>
           </text>
-          <text id="/dynamic_url/web_link/link:label">
-            <value>Click link to search for [<output value=" /dynamic_url/web_link/web_query "/>](https://google.com/search?q=<output value=" /dynamic_url/web_link/web_query "/>)</value>
-          </text>
-          <text id="/dynamic_url/web_link/text_url:label">
-            <value>You can also just use a &lt;code&gt;text&lt;/code&gt; field with the &lt;code&gt;url&lt;/code&gt; appearance.</value>
-          </text>
-          <text id="/dynamic_url/web_link/web_query:label">
+          <text id="/data/web_link/web_query:label">
             <value>Enter search text</value>
           </text>
-          <text id="/dynamic_url/web_link:label">
-            <value>Dynamic web link</value>
+          <text id="/data/web_link/link:label">
+            <value> Click link to search for [<output value=" /data/web_link/web_query "></output>](https://google.com/search?q=<output value=" /data/web_link/web_query "></output>) </value>
+          </text>
+          <text id="/data/web_link/text_url:label">
+            <value>You can also just use a &lt;code&gt;text&lt;/code&gt; field with the &lt;code&gt;url&lt;/code&gt; appearance.</value>
+          </text>
+          <text id="/data/phone_link:label">
+            <value>Dynamic phone link</value>
+          </text>
+          <text id="/data/phone_link/intro:label">
+            <value>Check the [CHT Docs](https://docs.communityhealthtoolkit.org/apps/guides/forms/app-form-sms/#triggering-calls-and-sms) for more info.</value>
+          </text>
+          <text id="/data/phone_link/phone_query:label">
+            <value>Enter phone number</value>
+          </text>
+          <text id="/data/phone_link/link:label">
+            <value> Click link to call number: [<output value=" /data/phone_link/phone_query "></output>](tel:<output value=" /data/phone_link/phone_query "></output>)
+
+_(On a mobile device, this should open the phone app with the number pre-entered.)_ </value>
+          </text>
+          <text id="/data/sms_link:label">
+            <value>Dynamic SMS link</value>
+          </text>
+          <text id="/data/sms_link/intro:label">
+            <value>Check the [CHT Docs](https://docs.communityhealthtoolkit.org/apps/guides/forms/app-form-sms/#triggering-calls-and-sms) for more info.</value>
+          </text>
+          <text id="/data/sms_link/sms_query:label">
+            <value>Enter phone number</value>
+          </text>
+          <text id="/data/sms_link/sms_text:label">
+            <value>Enter SMS message</value>
+          </text>
+          <text id="/data/sms_link/link:label">
+            <value> [Send SMS](sms://<output value=" /data/sms_link/sms_query "></output>?body=<output value=" /data/sms_link/sms_text "></output>)
+
+_(On a mobile device, this should open the message app with the number and message pre-entered.)_ </value>
+          </text>
+          <text id="/data/app_link:label">
+            <value>Dynamic contact link</value>
+          </text>
+          <text id="/data/app_link/app_query:label">
+            <value>Select a contact</value>
+          </text>
+          <text id="/data/app_link/name:label">
+            <value></value>
+          </text>
+          <text id="/data/app_link/link:label">
+            <value> Select the button to navigate to the contact's profile page.
+
+&lt;a target="_self" href="#" rel="noopener" class="dynamic-url btn btn-primary" style="display:inline-block;"&gt; <output value=" /data/app_link/name "></output> &lt;div class="url hidden"&gt;/#/contacts/<output value=" /data/app_link/app_query "></output>&lt;/div&gt; &lt;/a&gt; </value>
           </text>
         </translation>
       </itext>
       <instance>
-        <dynamic_url id="dynamic_url" prefix="J1!dynamic_url!" delimiter="#" version="20250213144412">
+        <data id="dynamic_url" version="20250213144412" prefix="J1!dynamic_url!" delimiter="#">
           <web_link>
-            <intro/>
-            <web_query/>
+            <intro></intro>
+            <web_query></web_query>
             <link/>
-            <text_url/>
+            <text_url></text_url>
           </web_link>
           <phone_link>
-            <intro/>
-            <phone_query/>
+            <intro></intro>
+            <phone_query></phone_query>
             <link/>
           </phone_link>
           <sms_link>
-            <intro/>
-            <sms_query/>
-            <sms_text/>
+            <intro></intro>
+            <sms_query></sms_query>
+            <sms_text></sms_text>
             <link/>
           </sms_link>
           <app_link>
-            <app_query/>
-            <name/>
+            <app_query></app_query>
+            <name></name>
             <link/>
           </app_link>
           <meta tag="hidden">
-            <instanceID/>
+            <instanceID></instanceID>
           </meta>
-        </dynamic_url>
+        </data>
       </instance>
-      <instance id="contact-summary"/>
-      <bind nodeset="/dynamic_url/web_link/intro" readonly="true()" type="string"/>
-      <bind nodeset="/dynamic_url/web_link/web_query" type="string"/>
-      <bind nodeset="/dynamic_url/web_link/link" readonly="true()" type="string" relevant=" /dynamic_url/web_link/web_query  != &quot;&quot;"/>
-      <bind nodeset="/dynamic_url/web_link/text_url" type="string" calculate="concat(&quot;https://google.com/search?q=&quot;,  /dynamic_url/web_link/web_query )" relevant=" /dynamic_url/web_link/web_query  != &quot;&quot;"/>
-      <bind nodeset="/dynamic_url/phone_link/intro" readonly="true()" type="string"/>
-      <bind nodeset="/dynamic_url/phone_link/phone_query" type="string"/>
-      <bind nodeset="/dynamic_url/phone_link/link" readonly="true()" type="string" relevant=" /dynamic_url/phone_link/phone_query  != &quot;&quot;"/>
-      <bind nodeset="/dynamic_url/sms_link/intro" readonly="true()" type="string"/>
-      <bind nodeset="/dynamic_url/sms_link/sms_query" type="string"/>
-      <bind nodeset="/dynamic_url/sms_link/sms_text" type="string"/>
-      <bind nodeset="/dynamic_url/sms_link/link" readonly="true()" type="string" relevant=" /dynamic_url/sms_link/sms_query  != &quot;&quot; and  /dynamic_url/sms_link/sms_text  != &quot;&quot;"/>
-      <bind nodeset="/dynamic_url/app_link/app_query" type="string"/>
-      <bind nodeset="/dynamic_url/app_link/name" type="string"/>
-      <bind nodeset="/dynamic_url/app_link/link" readonly="true()" type="string" relevant=" /dynamic_url/app_link/app_query  != &quot;&quot;"/>
-      <bind nodeset="/dynamic_url/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="contact-summary"></instance>
+      <instance id="user-contact-summary"></instance>
+      <bind nodeset="/data/web_link/intro" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/web_link/web_query" type="string"></bind>
+      <bind nodeset="/data/web_link/link" readonly="true()" type="string" relevant=" /data/web_link/web_query  != &quot;&quot;"></bind>
+      <bind nodeset="/data/web_link/text_url" type="string" relevant=" /data/web_link/web_query  != &quot;&quot;" calculate="concat(&quot;https://google.com/search?q=&quot;,  /data/web_link/web_query )"></bind>
+      <bind nodeset="/data/phone_link/intro" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/phone_link/phone_query" type="string"></bind>
+      <bind nodeset="/data/phone_link/link" readonly="true()" type="string" relevant=" /data/phone_link/phone_query  != &quot;&quot;"></bind>
+      <bind nodeset="/data/sms_link/intro" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/sms_link/sms_query" type="string"></bind>
+      <bind nodeset="/data/sms_link/sms_text" type="string"></bind>
+      <bind nodeset="/data/sms_link/link" readonly="true()" type="string" relevant=" /data/sms_link/sms_query  != &quot;&quot; and  /data/sms_link/sms_text  != &quot;&quot;"></bind>
+      <bind nodeset="/data/app_link/app_query" type="string"></bind>
+      <bind nodeset="/data/app_link/name" type="string"></bind>
+      <bind nodeset="/data/app_link/link" readonly="true()" type="string" relevant=" /data/app_link/app_query  != &quot;&quot;"></bind>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
     </model>
   </h:head>
   <h:body class="pages">
-    <group appearance="field-list" ref="/dynamic_url/web_link">
-      <label ref="jr:itext('/dynamic_url/web_link:label')"/>
-      <input ref="/dynamic_url/web_link/intro">
-        <label ref="jr:itext('/dynamic_url/web_link/intro:label')"/>
+    <group appearance="field-list" ref="/data/web_link">
+      <label ref="jr:itext('/data/web_link:label')"></label>
+      <input ref="/data/web_link/intro">
+        <label ref="jr:itext('/data/web_link/intro:label')"></label>
       </input>
-      <input ref="/dynamic_url/web_link/web_query">
-        <label ref="jr:itext('/dynamic_url/web_link/web_query:label')"/>
+      <input ref="/data/web_link/web_query">
+        <label ref="jr:itext('/data/web_link/web_query:label')"></label>
       </input>
-      <input ref="/dynamic_url/web_link/link">
-        <label ref="jr:itext('/dynamic_url/web_link/link:label')"/>
+      <input ref="/data/web_link/link">
+        <label ref="jr:itext('/data/web_link/link:label')"></label>
       </input>
-      <input appearance="url" ref="/dynamic_url/web_link/text_url">
-        <label ref="jr:itext('/dynamic_url/web_link/text_url:label')"/>
-      </input>
-    </group>
-    <group appearance="field-list" ref="/dynamic_url/phone_link">
-      <label ref="jr:itext('/dynamic_url/phone_link:label')"/>
-      <input ref="/dynamic_url/phone_link/intro">
-        <label ref="jr:itext('/dynamic_url/phone_link/intro:label')"/>
-      </input>
-      <input ref="/dynamic_url/phone_link/phone_query">
-        <label ref="jr:itext('/dynamic_url/phone_link/phone_query:label')"/>
-      </input>
-      <input ref="/dynamic_url/phone_link/link">
-        <label ref="jr:itext('/dynamic_url/phone_link/link:label')"/>
+      <input ref="/data/web_link/text_url" appearance="url">
+        <label ref="jr:itext('/data/web_link/text_url:label')"></label>
       </input>
     </group>
-    <group appearance="field-list" ref="/dynamic_url/sms_link">
-      <label ref="jr:itext('/dynamic_url/sms_link:label')"/>
-      <input ref="/dynamic_url/sms_link/intro">
-        <label ref="jr:itext('/dynamic_url/sms_link/intro:label')"/>
+    <group appearance="field-list" ref="/data/phone_link">
+      <label ref="jr:itext('/data/phone_link:label')"></label>
+      <input ref="/data/phone_link/intro">
+        <label ref="jr:itext('/data/phone_link/intro:label')"></label>
       </input>
-      <input ref="/dynamic_url/sms_link/sms_query">
-        <label ref="jr:itext('/dynamic_url/sms_link/sms_query:label')"/>
+      <input ref="/data/phone_link/phone_query">
+        <label ref="jr:itext('/data/phone_link/phone_query:label')"></label>
       </input>
-      <input ref="/dynamic_url/sms_link/sms_text">
-        <label ref="jr:itext('/dynamic_url/sms_link/sms_text:label')"/>
-      </input>
-      <input ref="/dynamic_url/sms_link/link">
-        <label ref="jr:itext('/dynamic_url/sms_link/link:label')"/>
+      <input ref="/data/phone_link/link">
+        <label ref="jr:itext('/data/phone_link/link:label')"></label>
       </input>
     </group>
-    <group appearance="field-list" ref="/dynamic_url/app_link">
-      <label ref="jr:itext('/dynamic_url/app_link:label')"/>
-      <input appearance="select-contact" ref="/dynamic_url/app_link/app_query">
-        <label ref="jr:itext('/dynamic_url/app_link/app_query:label')"/>
+    <group appearance="field-list" ref="/data/sms_link">
+      <label ref="jr:itext('/data/sms_link:label')"></label>
+      <input ref="/data/sms_link/intro">
+        <label ref="jr:itext('/data/sms_link/intro:label')"></label>
       </input>
-      <input appearance="hidden" ref="/dynamic_url/app_link/name"/>
-      <input ref="/dynamic_url/app_link/link">
-        <label ref="jr:itext('/dynamic_url/app_link/link:label')"/>
+      <input ref="/data/sms_link/sms_query">
+        <label ref="jr:itext('/data/sms_link/sms_query:label')"></label>
+      </input>
+      <input ref="/data/sms_link/sms_text">
+        <label ref="jr:itext('/data/sms_link/sms_text:label')"></label>
+      </input>
+      <input ref="/data/sms_link/link">
+        <label ref="jr:itext('/data/sms_link/link:label')"></label>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/data/app_link">
+      <label ref="jr:itext('/data/app_link:label')"></label>
+      <input ref="/data/app_link/app_query" appearance="select-contact">
+        <label ref="jr:itext('/data/app_link/app_query:label')"></label>
+      </input>
+      <input ref="/data/app_link/name" appearance="hidden">
+        <label ref="jr:itext('/data/app_link/name:label')"></label>
+      </input>
+      <input ref="/data/app_link/link">
+        <label ref="jr:itext('/data/app_link/link:label')"></label>
       </input>
     </group>
   </h:body>

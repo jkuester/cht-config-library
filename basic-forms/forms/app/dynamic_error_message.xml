@@ -1,79 +1,103 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Dynamic Error Message</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="en">
-          <text id="/dynamic_error_message/page/my_num:hint">
-            <value>See [this forum thread](https://forum.communityhealthtoolkit.org/t/how-to-list-multiple-constraint-messages-on-a-single-field-in-xlsform/960) for more context.</value>
-          </text>
-          <text id="/dynamic_error_message/page/my_num:jr:constraintMsg">
-            <value><output value=" /dynamic_error_message/page/my_num_issue_msg "/></value>
-          </text>
-          <text id="/dynamic_error_message/page/my_num:label">
-            <value>Enter a number from 2 to 4</value>
-          </text>
-          <text id="/dynamic_error_message/page/my_num_issue/high:label">
+          <text id="my_num_constraint_msg-0">
             <value>The number is too high</value>
           </text>
-          <text id="/dynamic_error_message/page/my_num_issue/low:label">
+          <text id="my_num_constraint_msg-1">
             <value>The number is too low</value>
+          </text>
+          <text id="/data/page:label">
+            <value></value>
+          </text>
+          <text id="/data/page/my_num:jr:constraintMsg">
+            <value>
+              <output value=" /data/page/my_num_issue_msg "></output>
+            </value>
+          </text>
+          <text id="/data/page/my_num:label">
+            <value>Enter a number from 2 to 4</value>
+          </text>
+          <text id="/data/page/my_num:hint">
+            <value>See [this forum thread](https://forum.communityhealthtoolkit.org/t/how-to-list-multiple-constraint-messages-on-a-single-field-in-xlsform/960) for more context.</value>
+          </text>
+          <text id="/data/page/my_num_issue:label">
+            <value></value>
           </text>
         </translation>
         <translation lang="fr">
-          <text id="/dynamic_error_message/page/my_num:hint">
-            <value>Voir [ce fil de discussion du forum](https://forum.communityhealthtoolkit.org/t/how-to-list-multiple-constraint-messages-on-a-single-field-in-xlsform/960) pour plus de contexte.</value>
-          </text>
-          <text id="/dynamic_error_message/page/my_num:jr:constraintMsg">
-            <value><output value=" /dynamic_error_message/page/my_num_issue_msg "/></value>
-          </text>
-          <text id="/dynamic_error_message/page/my_num:label">
-            <value>Entrez un nombre de 2 à 4</value>
-          </text>
-          <text id="/dynamic_error_message/page/my_num_issue/high:label">
+          <text id="my_num_constraint_msg-0">
             <value>Le nombre est trop élevé</value>
           </text>
-          <text id="/dynamic_error_message/page/my_num_issue/low:label">
+          <text id="my_num_constraint_msg-1">
             <value>Le nombre est trop faible</value>
+          </text>
+          <text id="/data/page:label">
+            <value></value>
+          </text>
+          <text id="/data/page/my_num:jr:constraintMsg">
+            <value>
+              <output value=" /data/page/my_num_issue_msg "></output>
+            </value>
+          </text>
+          <text id="/data/page/my_num:label">
+            <value>Entrez un nombre de 2 à 4</value>
+          </text>
+          <text id="/data/page/my_num:hint">
+            <value>Voir [ce fil de discussion du forum](https://forum.communityhealthtoolkit.org/t/how-to-list-multiple-constraint-messages-on-a-single-field-in-xlsform/960) pour plus de contexte.</value>
+          </text>
+          <text id="/data/page/my_num_issue:label">
+            <value></value>
           </text>
         </translation>
       </itext>
       <instance>
-        <dynamic_error_message id="dynamic_error_message" prefix="J1!dynamic_error_message!" delimiter="#" version="20250415081630">
+        <data id="dynamic_error_message" version="20250415081630" prefix="J1!dynamic_error_message!" delimiter="#">
           <page>
-            <my_num/>
-            <my_num_issue/>
-            <my_num_issue_msg/>
+            <my_num></my_num>
+            <my_num_issue></my_num_issue>
+            <my_num_issue_msg></my_num_issue_msg>
           </page>
           <meta tag="hidden">
-            <instanceID/>
+            <instanceID></instanceID>
           </meta>
-        </dynamic_error_message>
+        </data>
       </instance>
-      <instance id="contact-summary"/>
-      <bind nodeset="/dynamic_error_message/page/my_num" type="int" jr:constraintMsg="jr:itext('/dynamic_error_message/page/my_num:jr:constraintMsg')" constraint=" /dynamic_error_message/page/my_num_issue  = ''"/>
-      <bind nodeset="/dynamic_error_message/page/my_num_issue" type="select1" calculate="if( /dynamic_error_message/page/my_num  &gt; 4, 'high', if( /dynamic_error_message/page/my_num  &lt; 2, 'low', ''))"/>
-      <bind nodeset="/dynamic_error_message/page/my_num_issue_msg" type="string" calculate="jr:choice-name( /dynamic_error_message/page/my_num_issue , ' /dynamic_error_message/page/my_num_issue ')"/>
-      <bind nodeset="/dynamic_error_message/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="contact-summary"></instance>
+      <instance id="user-contact-summary"></instance>
+      <instance id="my_num_constraint_msg">
+        <root>
+          <item>
+            <itextId>my_num_constraint_msg-0</itextId>
+            <name>high</name>
+          </item>
+          <item>
+            <itextId>my_num_constraint_msg-1</itextId>
+            <name>low</name>
+          </item>
+        </root>
+      </instance>
+      <bind nodeset="/data/page/my_num" type="int" constraint=" /data/page/my_num_issue  = ''" jr:constraintMsg="jr:itext('/data/page/my_num:jr:constraintMsg')"></bind>
+      <bind nodeset="/data/page/my_num_issue" type="string" calculate="if( /data/page/my_num  &gt; 4, 'high', if( /data/page/my_num  &lt; 2, 'low', ''))"></bind>
+      <bind nodeset="/data/page/my_num_issue_msg" type="string" calculate="jr:choice-name( /data/page/my_num_issue , ' /data/page/my_num_issue ')"></bind>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
     </model>
   </h:head>
   <h:body class="pages">
-    <group appearance="field-list" ref="/dynamic_error_message/page">
-      <input ref="/dynamic_error_message/page/my_num">
-        <label ref="jr:itext('/dynamic_error_message/page/my_num:label')"/>
-        <hint ref="jr:itext('/dynamic_error_message/page/my_num:hint')"/>
+    <group appearance="field-list" ref="/data/page">
+      <label ref="jr:itext('/data/page:label')"></label>
+      <input ref="/data/page/my_num">
+        <label ref="jr:itext('/data/page/my_num:label')"></label>
+        <hint ref="jr:itext('/data/page/my_num:hint')"></hint>
       </input>
-      <select1 appearance="hidden" ref="/dynamic_error_message/page/my_num_issue">
-        <item>
-          <label ref="jr:itext('/dynamic_error_message/page/my_num_issue/high:label')"/>
-          <value>high</value>
-        </item>
-        <item>
-          <label ref="jr:itext('/dynamic_error_message/page/my_num_issue/low:label')"/>
-          <value>low</value>
-        </item>
-      </select1>
+      <select1 ref="/data/page/my_num_issue" appearance="hidden">
+        <label ref="jr:itext('/data/page/my_num_issue:label')"></label>
+        
+      <item><label ref="jr:itext('my_num_constraint_msg-0')"></label><value>high</value></item><item><label ref="jr:itext('my_num_constraint_msg-1')"></label><value>low</value></item></select1>
     </group>
   </h:body>
 </h:html>

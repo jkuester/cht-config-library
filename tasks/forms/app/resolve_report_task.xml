@@ -1,88 +1,136 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Resolve Report Task</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/resolve_report_task/submit:hint">
-            <value>Submitting this form will resolve the associated task</value>
+          <text id="/data/inputs:label">
+            <value></value>
           </text>
-          <text id="/resolve_report_task/submit:label">
-            <value>This task was triggered with the following input data:
+          <text id="/data/inputs/source:label">
+            <value></value>
+          </text>
+          <text id="/data/inputs/source_id:label">
+            <value></value>
+          </text>
+          <text id="/data/inputs/contact:label">
+            <value></value>
+          </text>
+          <text id="/data/inputs/contact/_id:label">
+            <value></value>
+          </text>
+          <text id="/data/inputs/contact/name:label">
+            <value></value>
+          </text>
+          <text id="/data/inputs/task_id:label">
+            <value></value>
+          </text>
+          <text id="/data/inputs/from_modify_content:label">
+            <value></value>
+          </text>
+          <text id="/data/inputs/from_modify_content/event_id:label">
+            <value></value>
+          </text>
+          <text id="/data/inputs/from_modify_content/source_form:label">
+            <value></value>
+          </text>
+          <text id="/data/submit:label">
+            <value> This task was triggered with the following input data:
 
-- Task Id: &lt;code&gt;<output value=" /resolve_report_task/inputs/task_id "/>&lt;/code&gt;
-- Contact: &lt;a target=&quot;_self&quot; href=&quot;#&quot; rel=&quot;noopener&quot; class=&quot;dynamic-url&quot;&gt; <output value=" /resolve_report_task/inputs/contact/name "/> &lt;div class=&quot;url hidden&quot;&gt;/#/contacts/<output value=" /resolve_report_task/patient_uuid "/>&lt;/div&gt; &lt;/a&gt;
-- Source: &lt;code&gt;<output value=" /resolve_report_task/inputs/source "/>&lt;/code&gt;
-- Source Id: &lt;a target=&quot;_self&quot; href=&quot;#&quot; rel=&quot;noopener&quot; class=&quot;dynamic-url&quot;&gt; <output value=" /resolve_report_task/inputs/source_id "/> &lt;div class=&quot;url hidden&quot;&gt;/#/reports/<output value=" /resolve_report_task/inputs/source_id "/>&lt;/div&gt; &lt;/a&gt; 
-- Source Form: &lt;code&gt;<output value=" /resolve_report_task/inputs/from_modify_content/source_form "/>&lt;/code&gt;
-- Event Id: &lt;code&gt;<output value=" /resolve_report_task/inputs/from_modify_content/event_id "/>&lt;/code&gt;
+- Task Id: &lt;code&gt;<output value=" /data/inputs/task_id "></output>&lt;/code&gt;
+- Contact: &lt;a target="_self" href="#" rel="noopener" class="dynamic-url"&gt; <output value=" /data/inputs/contact/name "></output> &lt;div class="url hidden"&gt;/#/contacts/<output value=" /data/patient_uuid "></output>&lt;/div&gt; &lt;/a&gt;
+- Source: &lt;code&gt;<output value=" /data/inputs/source "></output>&lt;/code&gt;
+- Source Id: &lt;a target="_self" href="#" rel="noopener" class="dynamic-url"&gt; <output value=" /data/inputs/source_id "></output> &lt;div class="url hidden"&gt;/#/reports/<output value=" /data/inputs/source_id "></output>&lt;/div&gt; &lt;/a&gt; 
+- Source Form: &lt;code&gt;<output value=" /data/inputs/from_modify_content/source_form "></output>&lt;/code&gt;
+- Event Id: &lt;code&gt;<output value=" /data/inputs/from_modify_content/event_id "></output>&lt;/code&gt;
 
-Are you sure you want to resolve the task?</value>
+Are you sure you want to resolve the task? </value>
+          </text>
+          <text id="/data/submit:hint">
+            <value>Submitting this form will resolve the associated task</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <resolve_report_task id="resolve_report_task" prefix="J1!resolve_report_task!" delimiter="#" version="20250213195558">
+        <data id="resolve_report_task" version="20250213195558" prefix="J1!resolve_report_task!" delimiter="#">
           <inputs>
             <meta>
               <location>
-                <lat/>
-                <long/>
-                <error/>
-                <message/>
+                <lat></lat>
+                <long></long>
+                <error></error>
+                <message></message>
               </location>
             </meta>
-            <source/>
-            <source_id/>
+            <source></source>
+            <source_id></source_id>
             <contact>
-              <_id/>
-              <name/>
+              <_id></_id>
+              <name></name>
             </contact>
-            <task_id/>
+            <task_id></task_id>
             <from_modify_content>
-              <event_id/>
-              <source_form/>
+              <event_id></event_id>
+              <source_form></source_form>
             </from_modify_content>
           </inputs>
-          <patient_uuid/>
-          <submit/>
+          <patient_uuid></patient_uuid>
+          <submit></submit>
           <meta tag="hidden">
-            <instanceID/>
+            <instanceID></instanceID>
           </meta>
-        </resolve_report_task>
+        </data>
       </instance>
-      <instance id="contact-summary"/>
-      <bind nodeset="/resolve_report_task/inputs" relevant="false()"/>
-      <bind nodeset="/resolve_report_task/inputs/source" type="string"/>
-      <bind nodeset="/resolve_report_task/inputs/source_id" type="string"/>
-      <bind nodeset="/resolve_report_task/inputs/contact/_id" type="string"/>
-      <bind nodeset="/resolve_report_task/inputs/contact/name" type="string"/>
-      <bind nodeset="/resolve_report_task/inputs/task_id" type="string"/>
-      <bind nodeset="/resolve_report_task/inputs/from_modify_content/event_id" type="string"/>
-      <bind nodeset="/resolve_report_task/inputs/from_modify_content/source_form" type="string"/>
-      <bind nodeset="/resolve_report_task/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
-      <bind nodeset="/resolve_report_task/submit" readonly="true()" type="string"/>
-      <bind nodeset="/resolve_report_task/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="contact-summary"></instance>
+      <instance id="user-contact-summary"></instance>
+      <bind nodeset="/data/inputs" relevant="false()"></bind>
+      <bind nodeset="/data/inputs/source" type="string"></bind>
+      <bind nodeset="/data/inputs/source_id" type="string"></bind>
+      <bind nodeset="/data/inputs/contact/_id" type="string"></bind>
+      <bind nodeset="/data/inputs/contact/name" type="string"></bind>
+      <bind nodeset="/data/inputs/task_id" type="string"></bind>
+      <bind nodeset="/data/inputs/from_modify_content/event_id" type="string"></bind>
+      <bind nodeset="/data/inputs/from_modify_content/source_form" type="string"></bind>
+      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"></bind>
+      <bind nodeset="/data/submit" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
     </model>
   </h:head>
   <h:body class="pages">
-    <group ref="/resolve_report_task/inputs">
-      <input ref="/resolve_report_task/inputs/source"/>
-      <input ref="/resolve_report_task/inputs/source_id"/>
-      <group ref="/resolve_report_task/inputs/contact">
-        <input ref="/resolve_report_task/inputs/contact/_id"/>
-        <input ref="/resolve_report_task/inputs/contact/name"/>
+    <group ref="/data/inputs">
+      <label ref="jr:itext('/data/inputs:label')"></label>
+      <input ref="/data/inputs/source">
+        <label ref="jr:itext('/data/inputs/source:label')"></label>
+      </input>
+      <input ref="/data/inputs/source_id">
+        <label ref="jr:itext('/data/inputs/source_id:label')"></label>
+      </input>
+      <group ref="/data/inputs/contact">
+        <label ref="jr:itext('/data/inputs/contact:label')"></label>
+        <input ref="/data/inputs/contact/_id">
+          <label ref="jr:itext('/data/inputs/contact/_id:label')"></label>
+        </input>
+        <input ref="/data/inputs/contact/name">
+          <label ref="jr:itext('/data/inputs/contact/name:label')"></label>
+        </input>
       </group>
-      <input ref="/resolve_report_task/inputs/task_id"/>
-      <group ref="/resolve_report_task/inputs/from_modify_content">
-        <input ref="/resolve_report_task/inputs/from_modify_content/event_id"/>
-        <input ref="/resolve_report_task/inputs/from_modify_content/source_form"/>
+      <input ref="/data/inputs/task_id">
+        <label ref="jr:itext('/data/inputs/task_id:label')"></label>
+      </input>
+      <group ref="/data/inputs/from_modify_content">
+        <label ref="jr:itext('/data/inputs/from_modify_content:label')"></label>
+        <input ref="/data/inputs/from_modify_content/event_id">
+          <label ref="jr:itext('/data/inputs/from_modify_content/event_id:label')"></label>
+        </input>
+        <input ref="/data/inputs/from_modify_content/source_form">
+          <label ref="jr:itext('/data/inputs/from_modify_content/source_form:label')"></label>
+        </input>
       </group>
     </group>
-    <input ref="/resolve_report_task/submit">
-      <label ref="jr:itext('/resolve_report_task/submit:label')"/>
-      <hint ref="jr:itext('/resolve_report_task/submit:hint')"/>
+    <input ref="/data/submit">
+      <label ref="jr:itext('/data/submit:label')"></label>
+      <hint ref="jr:itext('/data/submit:hint')"></hint>
     </input>
   </h:body>
 </h:html>

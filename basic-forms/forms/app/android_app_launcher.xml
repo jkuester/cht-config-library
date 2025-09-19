@@ -1,44 +1,62 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Android App Launcher</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/android_app_launcher/camera_image/camera_app/camera_app_outputs/data:hint">
-            <value>Using the `display-base64-image` appearance allows for displaying the image from the camera in the form.</value>
-          </text>
-          <text id="/android_app_launcher/camera_image/camera_app/camera_app_outputs/data:label">
-            <value>Tap the button to use the camera app on your device to take a picture.</value>
-          </text>
-          <text id="/android_app_launcher/camera_image:label">
-            <value>Capturing an image from the camera</value>
-          </text>
-          <text id="/android_app_launcher/intro:hint">
-            <value>Note that to use this form, you must be running an instance of cht-android with the `READ_EXTERNAL_STORAGE` permission enabled and you must have the [com.atharok.barcodescanner](https://gitlab.com/Atharok/BarcodeScanner) app installed.</value>
-          </text>
-          <text id="/android_app_launcher/intro:label">
+          <text id="/data/intro:label">
             <value>This form demonstrates how to accept form input from other Android apps. See the [CHT Docs](https://docs.communityhealthtoolkit.org/apps/reference/forms/app/#android-app-launcher) for more information.</value>
           </text>
-          <text id="/android_app_launcher/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:hint">
-            <value>A great way to test this on an emulated device is to use the com.atharok.barcodescanner app to create a new QR code image and save that image to the device. Then, when the form launches the app again to scan a QR code, you can load the saved QR code image instead of needing to "scan" a QR code with the emulated camera.</value>
+          <text id="/data/intro:hint">
+            <value>Note that to use this form, you must be running an instance of cht-android with the `READ_EXTERNAL_STORAGE` permission enabled and you must have the [com.atharok.barcodescanner](https://gitlab.com/Atharok/BarcodeScanner) app installed.</value>
           </text>
-          <text id="/android_app_launcher/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:label">
+          <text id="/data/camera_image:label">
+            <value>Capturing an image from the camera</value>
+          </text>
+          <text id="/data/camera_image/camera_app:label">
+            <value></value>
+          </text>
+          <text id="/data/camera_image/camera_app/action:label">
+            <value></value>
+          </text>
+          <text id="/data/camera_image/camera_app/camera_app_outputs:label">
+            <value></value>
+          </text>
+          <text id="/data/camera_image/camera_app/camera_app_outputs/data:label">
+            <value>Tap the button to use the camera app on your device to take a picture.</value>
+          </text>
+          <text id="/data/camera_image/camera_app/camera_app_outputs/data:hint">
+            <value>Using the `display-base64-image` appearance allows for displaying the image from the camera in the form.</value>
+          </text>
+          <text id="/data/qr_code:label">
+            <value>Capturing data from a QR code</value>
+          </text>
+          <text id="/data/qr_code/qr_code_app:label">
+            <value></value>
+          </text>
+          <text id="/data/qr_code/qr_code_app/action:label">
+            <value></value>
+          </text>
+          <text id="/data/qr_code/qr_code_app/qr_code_app_outputs:label">
+            <value></value>
+          </text>
+          <text id="/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:label">
             <value>Tap the button to use the Barcode Scanner app on your device to scan a barcode value.</value>
           </text>
-          <text id="/android_app_launcher/qr_code:label">
-            <value>Capturing data from a QR code</value>
+          <text id="/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:hint">
+            <value>A great way to test this on an emulated device is to use the com.atharok.barcodescanner app to create a new QR code image and save that image to the device. Then, when the form launches the app again to scan a QR code, you can load the saved QR code image instead of needing to "scan" a QR code with the emulated camera.</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <android_app_launcher id="android_app_launcher" prefix="J1!android_app_launcher!" delimiter="#" version="20250213161449">
-          <intro/>
+        <data id="android_app_launcher" version="20250213161449" prefix="J1!android_app_launcher!" delimiter="#">
+          <intro></intro>
           <camera_image>
             <camera_app>
               <action>android.media.action.IMAGE_CAPTURE</action>
               <camera_app_outputs>
-                <data/>
+                <data></data>
               </camera_app_outputs>
             </camera_app>
           </camera_image>
@@ -46,49 +64,58 @@
             <qr_code_app>
               <action>com.google.zxing.client.android.SCAN</action>
               <qr_code_app_outputs>
-                <SCAN_RESULT/>
+                <SCAN_RESULT></SCAN_RESULT>
               </qr_code_app_outputs>
             </qr_code_app>
           </qr_code>
           <meta tag="hidden">
-            <instanceID/>
+            <instanceID></instanceID>
           </meta>
-        </android_app_launcher>
+        </data>
       </instance>
-      <instance id="contact-summary"/>
-      <bind nodeset="/android_app_launcher/intro" readonly="true()" type="string"/>
-      <bind nodeset="/android_app_launcher/camera_image/camera_app/action" type="string"/>
-      <bind nodeset="/android_app_launcher/camera_image/camera_app/camera_app_outputs/data" type="string"/>
-      <bind nodeset="/android_app_launcher/qr_code/qr_code_app/action" type="string"/>
-      <bind nodeset="/android_app_launcher/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT" type="string" calculate="coalesce(., &quot;&quot;)" readonly="true()"/>
-      <bind nodeset="/android_app_launcher/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="contact-summary"></instance>
+      <instance id="user-contact-summary"></instance>
+      <bind nodeset="/data/intro" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/camera_image/camera_app/action" type="string"></bind>
+      <bind nodeset="/data/camera_image/camera_app/camera_app_outputs/data" type="string"></bind>
+      <bind nodeset="/data/qr_code/qr_code_app/action" type="string"></bind>
+      <bind nodeset="/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT" type="string" calculate="coalesce(., &quot;&quot;)" readonly="true()"></bind>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
     </model>
   </h:head>
   <h:body class="pages">
-    <input ref="/android_app_launcher/intro">
-      <label ref="jr:itext('/android_app_launcher/intro:label')"/>
-      <hint ref="jr:itext('/android_app_launcher/intro:hint')"/>
+    <input ref="/data/intro">
+      <label ref="jr:itext('/data/intro:label')"></label>
+      <hint ref="jr:itext('/data/intro:hint')"></hint>
     </input>
-    <group appearance="field-list" ref="/android_app_launcher/camera_image">
-      <label ref="jr:itext('/android_app_launcher/camera_image:label')"/>
-      <group appearance="android-app-launcher" ref="/android_app_launcher/camera_image/camera_app">
-        <input appearance="hidden" ref="/android_app_launcher/camera_image/camera_app/action"/>
-        <group appearance="android-app-outputs" ref="/android_app_launcher/camera_image/camera_app/camera_app_outputs">
-          <input appearance="display-base64-image" ref="/android_app_launcher/camera_image/camera_app/camera_app_outputs/data">
-            <label ref="jr:itext('/android_app_launcher/camera_image/camera_app/camera_app_outputs/data:label')"/>
-            <hint ref="jr:itext('/android_app_launcher/camera_image/camera_app/camera_app_outputs/data:hint')"/>
+    <group appearance="field-list" ref="/data/camera_image">
+      <label ref="jr:itext('/data/camera_image:label')"></label>
+      <group appearance="android-app-launcher" ref="/data/camera_image/camera_app">
+        <label ref="jr:itext('/data/camera_image/camera_app:label')"></label>
+        <input ref="/data/camera_image/camera_app/action" appearance="hidden">
+          <label ref="jr:itext('/data/camera_image/camera_app/action:label')"></label>
+        </input>
+        <group appearance="android-app-outputs" ref="/data/camera_image/camera_app/camera_app_outputs">
+          <label ref="jr:itext('/data/camera_image/camera_app/camera_app_outputs:label')"></label>
+          <input ref="/data/camera_image/camera_app/camera_app_outputs/data" appearance="display-base64-image">
+            <label ref="jr:itext('/data/camera_image/camera_app/camera_app_outputs/data:label')"></label>
+            <hint ref="jr:itext('/data/camera_image/camera_app/camera_app_outputs/data:hint')"></hint>
           </input>
         </group>
       </group>
     </group>
-    <group appearance="field-list" ref="/android_app_launcher/qr_code">
-      <label ref="jr:itext('/android_app_launcher/qr_code:label')"/>
-      <group appearance="android-app-launcher" ref="/android_app_launcher/qr_code/qr_code_app">
-        <input appearance="hidden" ref="/android_app_launcher/qr_code/qr_code_app/action"/>
-        <group appearance="android-app-outputs" ref="/android_app_launcher/qr_code/qr_code_app/qr_code_app_outputs">
-          <input ref="/android_app_launcher/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT">
-            <label ref="jr:itext('/android_app_launcher/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:label')"/>
-            <hint ref="jr:itext('/android_app_launcher/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:hint')"/>
+    <group appearance="field-list" ref="/data/qr_code">
+      <label ref="jr:itext('/data/qr_code:label')"></label>
+      <group appearance="android-app-launcher" ref="/data/qr_code/qr_code_app">
+        <label ref="jr:itext('/data/qr_code/qr_code_app:label')"></label>
+        <input ref="/data/qr_code/qr_code_app/action" appearance="hidden">
+          <label ref="jr:itext('/data/qr_code/qr_code_app/action:label')"></label>
+        </input>
+        <group appearance="android-app-outputs" ref="/data/qr_code/qr_code_app/qr_code_app_outputs">
+          <label ref="jr:itext('/data/qr_code/qr_code_app/qr_code_app_outputs:label')"></label>
+          <input ref="/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT">
+            <label ref="jr:itext('/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:label')"></label>
+            <hint ref="jr:itext('/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:hint')"></hint>
           </input>
         </group>
       </group>

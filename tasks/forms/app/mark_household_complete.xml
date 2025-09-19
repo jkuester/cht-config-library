@@ -1,60 +1,79 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Done adding members to household</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/mark_household_complete/submit:hint">
-            <value>Submitting this form will resolve the associated task</value>
+          <text id="/data/inputs:label">
+            <value></value>
           </text>
-          <text id="/mark_household_complete/submit:label">
-            <value>Are you sure you are finished adding members to <output value=" /mark_household_complete/inputs/contact/name "/>?</value>
+          <text id="/data/inputs/contact:label">
+            <value></value>
+          </text>
+          <text id="/data/inputs/contact/_id:label">
+            <value></value>
+          </text>
+          <text id="/data/inputs/contact/name:label">
+            <value></value>
+          </text>
+          <text id="/data/submit:label">
+            <value> Are you sure you are finished adding members to <output value=" /data/inputs/contact/name "></output>? </value>
+          </text>
+          <text id="/data/submit:hint">
+            <value>Submitting this form will resolve the associated task</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <mark_household_complete id="mark_household_complete" prefix="J1!mark_household_complete!" delimiter="#" version="20250602154907">
+        <data id="mark_household_complete" version="20250602154907" prefix="J1!mark_household_complete!" delimiter="#">
           <inputs>
             <meta>
               <location>
-                <lat/>
-                <long/>
-                <error/>
-                <message/>
+                <lat></lat>
+                <long></long>
+                <error></error>
+                <message></message>
               </location>
             </meta>
             <contact>
-              <_id/>
-              <name/>
+              <_id></_id>
+              <name></name>
             </contact>
           </inputs>
-          <patient_uuid/>
-          <submit/>
+          <patient_uuid></patient_uuid>
+          <submit></submit>
           <meta tag="hidden">
-            <instanceID/>
+            <instanceID></instanceID>
           </meta>
-        </mark_household_complete>
+        </data>
       </instance>
-      <instance id="contact-summary"/>
-      <bind nodeset="/mark_household_complete/inputs" relevant="false()"/>
-      <bind nodeset="/mark_household_complete/inputs/contact/_id" type="string"/>
-      <bind nodeset="/mark_household_complete/inputs/contact/name" type="string"/>
-      <bind nodeset="/mark_household_complete/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
-      <bind nodeset="/mark_household_complete/submit" readonly="true()" type="string"/>
-      <bind nodeset="/mark_household_complete/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="contact-summary"></instance>
+      <instance id="user-contact-summary"></instance>
+      <bind nodeset="/data/inputs" relevant="false()"></bind>
+      <bind nodeset="/data/inputs/contact/_id" type="string"></bind>
+      <bind nodeset="/data/inputs/contact/name" type="string"></bind>
+      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"></bind>
+      <bind nodeset="/data/submit" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
     </model>
   </h:head>
   <h:body class="pages">
-    <group ref="/mark_household_complete/inputs">
-      <group ref="/mark_household_complete/inputs/contact">
-        <input ref="/mark_household_complete/inputs/contact/_id"/>
-        <input ref="/mark_household_complete/inputs/contact/name"/>
+    <group ref="/data/inputs">
+      <label ref="jr:itext('/data/inputs:label')"></label>
+      <group ref="/data/inputs/contact">
+        <label ref="jr:itext('/data/inputs/contact:label')"></label>
+        <input ref="/data/inputs/contact/_id">
+          <label ref="jr:itext('/data/inputs/contact/_id:label')"></label>
+        </input>
+        <input ref="/data/inputs/contact/name">
+          <label ref="jr:itext('/data/inputs/contact/name:label')"></label>
+        </input>
       </group>
     </group>
-    <input ref="/mark_household_complete/submit">
-      <label ref="jr:itext('/mark_household_complete/submit:label')"/>
-      <hint ref="jr:itext('/mark_household_complete/submit:hint')"/>
+    <input ref="/data/submit">
+      <label ref="jr:itext('/data/submit:label')"></label>
+      <hint ref="jr:itext('/data/submit:hint')"></hint>
     </input>
   </h:body>
 </h:html>

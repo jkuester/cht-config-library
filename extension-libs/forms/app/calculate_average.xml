@@ -1,52 +1,57 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Calculate Average</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/calculate_average/page/first:label">
+          <text id="/data/page:label">
+            <value></value>
+          </text>
+          <text id="/data/page/first:label">
             <value>First Number</value>
           </text>
-          <text id="/calculate_average/page/message:label">
-            <value>The average is: <output value=" /calculate_average/page/average "/></value>
-          </text>
-          <text id="/calculate_average/page/second:label">
+          <text id="/data/page/second:label">
             <value>Second Number</value>
+          </text>
+          <text id="/data/page/message:label">
+            <value> The average is: <output value=" /data/page/average "></output> </value>
           </text>
         </translation>
       </itext>
       <instance>
-        <calculate_average id="calculate_average" prefix="J1!calculate_average!" delimiter="#" version="20250327130205">
+        <data id="calculate_average" version="20250327130205" prefix="J1!calculate_average!" delimiter="#">
           <page>
-            <first/>
-            <second/>
-            <average/>
-            <message/>
+            <first></first>
+            <second></second>
+            <average></average>
+            <message></message>
           </page>
           <meta tag="hidden">
-            <instanceID/>
+            <instanceID></instanceID>
           </meta>
-        </calculate_average>
+        </data>
       </instance>
-      <instance id="contact-summary"/>
-      <bind nodeset="/calculate_average/page/first" type="decimal"/>
-      <bind nodeset="/calculate_average/page/second" type="decimal"/>
-      <bind nodeset="/calculate_average/page/average" type="string" calculate="cht:extension-lib('average.js',  /calculate_average/page/first ,  /calculate_average/page/second )"/>
-      <bind nodeset="/calculate_average/page/message" readonly="true()" type="string"/>
-      <bind nodeset="/calculate_average/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="contact-summary"></instance>
+      <instance id="user-contact-summary"></instance>
+      <bind nodeset="/data/page/first" type="decimal"></bind>
+      <bind nodeset="/data/page/second" type="decimal"></bind>
+      <bind nodeset="/data/page/average" type="string" calculate="cht:extension-lib('average.js',  /data/page/first ,  /data/page/second )"></bind>
+      <bind nodeset="/data/page/message" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
     </model>
   </h:head>
   <h:body class="pages">
-    <group appearance="field-list" ref="/calculate_average/page">
-      <input ref="/calculate_average/page/first">
-        <label ref="jr:itext('/calculate_average/page/first:label')"/>
+    <group appearance="field-list" ref="/data/page">
+      <label ref="jr:itext('/data/page:label')"></label>
+      <input ref="/data/page/first">
+        <label ref="jr:itext('/data/page/first:label')"></label>
       </input>
-      <input ref="/calculate_average/page/second">
-        <label ref="jr:itext('/calculate_average/page/second:label')"/>
+      <input ref="/data/page/second">
+        <label ref="jr:itext('/data/page/second:label')"></label>
       </input>
-      <input ref="/calculate_average/page/message">
-        <label ref="jr:itext('/calculate_average/page/message:label')"/>
+      <input ref="/data/page/message">
+        <label ref="jr:itext('/data/page/message:label')"></label>
       </input>
     </group>
   </h:body>

@@ -1,72 +1,84 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Contact Summary Test</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/with_contact_summary/my_page/favorite_note:label">
-            <value>Favorite CHW: <output value=" /with_contact_summary/my_page/favorite_chw_name "/> – Visits: <output value=" /with_contact_summary/my_page/favorite_chw_hh_visits "/> – Referrals: <output value=" /with_contact_summary/my_page/favorite_chw_referrals "/></value></text>
-          <text id="/with_contact_summary/my_page/my_repeat/repeated_note:label">
-            <value><output value=" /with_contact_summary/my_page/my_repeat/chw_name "/> – Visits: <output value=" /with_contact_summary/my_page/my_repeat/chw_household_visit "/> – Referrals: <output value=" /with_contact_summary/my_page/my_repeat/chw_referral "/></value></text>
-          <text id="/with_contact_summary/my_page/my_repeat:label">
+          <text id="/data/my_page:label">
+            <value></value>
+          </text>
+          <text id="/data/my_page/favorite_note:label">
+            <value> Favorite CHW: <output value=" /data/my_page/favorite_chw_name "></output> – Visits: <output value=" /data/my_page/favorite_chw_hh_visits "></output> – Referrals: <output value=" /data/my_page/favorite_chw_referrals "></output> </value>
+          </text>
+          <text id="/data/my_page/my_repeat:label">
             <value>All CHWs:</value>
+          </text>
+          <text id="/data/my_page/my_repeat/repeated_note:label">
+            <value><output value=" ../chw_name "></output> – Visits: <output value=" ../chw_household_visit "></output> – Referrals: <output value=" ../chw_referral "></output> </value>
           </text>
         </translation>
       </itext>
       <instance>
-        <with_contact_summary id="with_contact_summary" prefix="J1!with_contact_summary!" delimiter="#" version="20250213162757">
+        <data id="with_contact_summary" version="20250213162757" prefix="J1!with_contact_summary!" delimiter="#">
           <my_page>
-            <favorite_chw_name/>
-            <favorite_chw_hh_visits/>
-            <favorite_chw_referrals/>
-            <favorite_note/>
-            <chw_names/>
-            <chw_household_visits/>
-            <chw_referrals/>
-            <chw_count/>
-            <my_repeat_count/>
+            <favorite_chw_name></favorite_chw_name>
+            <favorite_chw_hh_visits></favorite_chw_hh_visits>
+            <favorite_chw_referrals></favorite_chw_referrals>
+            <favorite_note></favorite_note>
+            <chw_names></chw_names>
+            <chw_household_visits></chw_household_visits>
+            <chw_referrals></chw_referrals>
+            <chw_count></chw_count>
             <my_repeat jr:template="">
-              <chw_index/>
-              <chw_name/>
-              <chw_household_visit/>
-              <chw_referral/>
-              <repeated_note/>
+              <chw_index></chw_index>
+              <chw_name></chw_name>
+              <chw_household_visit></chw_household_visit>
+              <chw_referral></chw_referral>
+              <repeated_note></repeated_note>
+            </my_repeat>
+            <my_repeat>
+              <chw_index></chw_index>
+              <chw_name></chw_name>
+              <chw_household_visit></chw_household_visit>
+              <chw_referral></chw_referral>
+              <repeated_note></repeated_note>
             </my_repeat>
           </my_page>
           <meta tag="hidden">
-            <instanceID/>
+            <instanceID></instanceID>
           </meta>
-        </with_contact_summary>
+        </data>
       </instance>
-      <instance id="contact-summary"/>
-      <bind nodeset="/with_contact_summary/my_page/favorite_chw_name" type="string" calculate="instance('contact-summary')/context/favorite_chw/name"/>
-      <bind nodeset="/with_contact_summary/my_page/favorite_chw_hh_visits" type="string" calculate="instance('contact-summary')/context/favorite_chw/household_visits"/>
-      <bind nodeset="/with_contact_summary/my_page/favorite_chw_referrals" type="string" calculate="instance('contact-summary')/context/favorite_chw/referrals"/>
-      <bind nodeset="/with_contact_summary/my_page/favorite_note" readonly="true()" type="string"/>
-      <bind nodeset="/with_contact_summary/my_page/chw_names" type="string" calculate="instance('contact-summary')/context/all_chws/chw_names"/>
-      <bind nodeset="/with_contact_summary/my_page/chw_household_visits" type="string" calculate="instance('contact-summary')/context/all_chws/chw_household_visits"/>
-      <bind nodeset="/with_contact_summary/my_page/chw_referrals" type="string" calculate="instance('contact-summary')/context/all_chws/chw_referrals"/>
-      <bind nodeset="/with_contact_summary/my_page/chw_count" type="string" calculate="count-selected( /with_contact_summary/my_page/chw_names )"/>
-      <bind nodeset="/with_contact_summary/my_page/my_repeat_count" type="string" readonly="true()" calculate=" /with_contact_summary/my_page/chw_count "/>
-      <bind nodeset="/with_contact_summary/my_page/my_repeat/chw_index" type="string" calculate="position(..) - 1"/>
-      <bind nodeset="/with_contact_summary/my_page/my_repeat/chw_name" type="string" calculate="selected-at( /with_contact_summary/my_page/chw_names ,  /with_contact_summary/my_page/my_repeat/chw_index )"/>
-      <bind nodeset="/with_contact_summary/my_page/my_repeat/chw_household_visit" type="string" calculate="selected-at( /with_contact_summary/my_page/chw_household_visits ,  /with_contact_summary/my_page/my_repeat/chw_index )"/>
-      <bind nodeset="/with_contact_summary/my_page/my_repeat/chw_referral" type="string" calculate="selected-at( /with_contact_summary/my_page/chw_referrals ,  /with_contact_summary/my_page/my_repeat/chw_index )"/>
-      <bind nodeset="/with_contact_summary/my_page/my_repeat/repeated_note" readonly="true()" type="string"/>
-      <bind nodeset="/with_contact_summary/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="contact-summary"></instance>
+      <instance id="user-contact-summary"></instance>
+      <bind nodeset="/data/my_page/favorite_chw_name" type="string" calculate="instance('contact-summary')/context/favorite_chw/name"></bind>
+      <bind nodeset="/data/my_page/favorite_chw_hh_visits" type="string" calculate="instance('contact-summary')/context/favorite_chw/household_visits"></bind>
+      <bind nodeset="/data/my_page/favorite_chw_referrals" type="string" calculate="instance('contact-summary')/context/favorite_chw/referrals"></bind>
+      <bind nodeset="/data/my_page/favorite_note" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/my_page/chw_names" type="string" calculate="instance('contact-summary')/context/all_chws/chw_names"></bind>
+      <bind nodeset="/data/my_page/chw_household_visits" type="string" calculate="instance('contact-summary')/context/all_chws/chw_household_visits"></bind>
+      <bind nodeset="/data/my_page/chw_referrals" type="string" calculate="instance('contact-summary')/context/all_chws/chw_referrals"></bind>
+      <bind nodeset="/data/my_page/chw_count" type="string" calculate="count-selected( /data/my_page/chw_names )"></bind>
+      <bind nodeset="/data/my_page/my_repeat/chw_index" type="string" calculate="position(..) - 1"></bind>
+      <bind nodeset="/data/my_page/my_repeat/chw_name" type="string" calculate="selected-at( /data/my_page/chw_names ,  ../chw_index )"></bind>
+      <bind nodeset="/data/my_page/my_repeat/chw_household_visit" type="string" calculate="selected-at( /data/my_page/chw_household_visits ,  ../chw_index )"></bind>
+      <bind nodeset="/data/my_page/my_repeat/chw_referral" type="string" calculate="selected-at( /data/my_page/chw_referrals ,  ../chw_index )"></bind>
+      <bind nodeset="/data/my_page/my_repeat/repeated_note" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
     </model>
   </h:head>
   <h:body class="pages">
-    <group appearance="field-list" ref="/with_contact_summary/my_page">
-      <input ref="/with_contact_summary/my_page/favorite_note">
-        <label ref="jr:itext('/with_contact_summary/my_page/favorite_note:label')"/>
+    <group appearance="field-list" ref="/data/my_page">
+      <label ref="jr:itext('/data/my_page:label')"></label>
+      <input ref="/data/my_page/favorite_note">
+        <label ref="jr:itext('/data/my_page/favorite_note:label')"></label>
       </input>
-      <group ref="/with_contact_summary/my_page/my_repeat">
-        <label ref="jr:itext('/with_contact_summary/my_page/my_repeat:label')"/>
-        <repeat nodeset="/with_contact_summary/my_page/my_repeat" jr:count=" /with_contact_summary/my_page/my_repeat_count ">
-          <input ref="/with_contact_summary/my_page/my_repeat/repeated_note">
-            <label ref="jr:itext('/with_contact_summary/my_page/my_repeat/repeated_note:label')"/>
+      <group ref="/data/my_page/my_repeat">
+        <label ref="jr:itext('/data/my_page/my_repeat:label')"></label>
+        <repeat nodeset="/data/my_page/my_repeat" jr:count=" /data/my_page/chw_count ">
+          <input ref="/data/my_page/my_repeat/repeated_note">
+            <label ref="jr:itext('/data/my_page/my_repeat/repeated_note:label')"></label>
           </input>
         </repeat>
       </group>

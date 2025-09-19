@@ -1,74 +1,79 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Trigger Report Task</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/trigger_report_task/inputs/contact/_id:label">
-            <value>Which contact do you want to trigger a `report` task for?</value>
+          <text id="/data/inputs:label">
+            <value></value>
           </text>
-          <text id="/trigger_report_task/inputs/contact:label">
-            <value>Contact</value>
-          </text>
-          <text id="/trigger_report_task/inputs/source:label">
+          <text id="/data/inputs/source:label">
             <value>Source</value>
           </text>
-          <text id="/trigger_report_task/submit:hint">
-            <value>Each time this form is submitted, it will trigger a new task for the associated contact.</value>
+          <text id="/data/inputs/contact:label">
+            <value>Contact</value>
           </text>
-          <text id="/trigger_report_task/submit:label">
+          <text id="/data/inputs/contact/_id:label">
+            <value>Which contact do you want to trigger a `report` task for?</value>
+          </text>
+          <text id="/data/submit:label">
             <value>Are you sure you want to trigger a task?</value>
+          </text>
+          <text id="/data/submit:hint">
+            <value>Each time this form is submitted, it will trigger a new task for the associated contact.</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <trigger_report_task id="trigger_report_task" prefix="J1!trigger_report_task!" delimiter="#" version="20250214113611">
+        <data id="trigger_report_task" version="20250214113611" prefix="J1!trigger_report_task!" delimiter="#">
           <inputs>
             <meta>
               <location>
-                <lat/>
-                <long/>
-                <error/>
-                <message/>
+                <lat></lat>
+                <long></long>
+                <error></error>
+                <message></message>
               </location>
             </meta>
             <source>user</source>
             <contact>
-              <_id/>
+              <_id></_id>
             </contact>
           </inputs>
-          <patient_uuid/>
-          <submit/>
+          <patient_uuid></patient_uuid>
+          <submit></submit>
           <meta tag="hidden">
-            <instanceID/>
+            <instanceID></instanceID>
           </meta>
-        </trigger_report_task>
+        </data>
       </instance>
-      <instance id="contact-summary"/>
-      <bind nodeset="/trigger_report_task/inputs" relevant="./source = 'user'"/>
-      <bind nodeset="/trigger_report_task/inputs/source" type="string"/>
-      <bind nodeset="/trigger_report_task/inputs/contact/_id" type="string" required="true()"/>
-      <bind nodeset="/trigger_report_task/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
-      <bind nodeset="/trigger_report_task/submit" readonly="true()" type="string"/>
-      <bind nodeset="/trigger_report_task/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="contact-summary"></instance>
+      <instance id="user-contact-summary"></instance>
+      <bind nodeset="/data/inputs" relevant="./source = 'user'"></bind>
+      <bind nodeset="/data/inputs/source" type="string"></bind>
+      <bind nodeset="/data/inputs/contact/_id" type="string" required="true()"></bind>
+      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"></bind>
+      <bind nodeset="/data/submit" readonly="true()" type="string"></bind>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
     </model>
   </h:head>
   <h:body class="pages">
-    <group ref="/trigger_report_task/inputs">
-      <input appearance="hidden" ref="/trigger_report_task/inputs/source">
-        <label ref="jr:itext('/trigger_report_task/inputs/source:label')"/>
+    <group ref="/data/inputs">
+      <label ref="jr:itext('/data/inputs:label')"></label>
+      <input ref="/data/inputs/source" appearance="hidden">
+        <label ref="jr:itext('/data/inputs/source:label')"></label>
       </input>
-      <group ref="/trigger_report_task/inputs/contact">
-        <label ref="jr:itext('/trigger_report_task/inputs/contact:label')"/>
-        <input appearance="select-contact" ref="/trigger_report_task/inputs/contact/_id">
-          <label ref="jr:itext('/trigger_report_task/inputs/contact/_id:label')"/>
+      <group ref="/data/inputs/contact">
+        <label ref="jr:itext('/data/inputs/contact:label')"></label>
+        <input ref="/data/inputs/contact/_id" appearance="select-contact">
+          <label ref="jr:itext('/data/inputs/contact/_id:label')"></label>
         </input>
       </group>
     </group>
-    <input ref="/trigger_report_task/submit">
-      <label ref="jr:itext('/trigger_report_task/submit:label')"/>
-      <hint ref="jr:itext('/trigger_report_task/submit:hint')"/>
+    <input ref="/data/submit">
+      <label ref="jr:itext('/data/submit:label')"></label>
+      <hint ref="jr:itext('/data/submit:hint')"></hint>
     </input>
   </h:body>
 </h:html>
