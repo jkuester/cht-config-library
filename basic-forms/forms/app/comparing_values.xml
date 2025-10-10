@@ -18,70 +18,66 @@
             <value>Case insensitive comparisons can be accomplished via the `translate` function.</value>
           </text>
           <text id="/data/case_insensitive/value_b:label">
-            <value> Enter a value to compare against the string "<output value=" /data/case_insensitive/value_a "></output>" </value>
-          </text>
-          <text id="/data/case_insensitive/description_conclusion:label">
-            <value></value>
+            <value> Enter a value to compare against the string "<output value=" /data/case_insensitive/value_a "/>"</value>
           </text>
           <text id="/data/case_insensitive/description_conclusion/equal:label">
-            <value> "<output value=" /data/case_insensitive/value_a "></output>" **is equal** to "<output value=" /data/case_insensitive/value_b "></output>" _(ignoring case)_ </value>
+            <value> "<output value=" /data/case_insensitive/value_a "/>" **is equal** to "<output value=" /data/case_insensitive/value_b "/>" _(ignoring case)_</value>
           </text>
           <text id="/data/case_insensitive/description_conclusion/not_equal:label">
-            <value> "<output value=" /data/case_insensitive/value_a "></output>" **is not equal** to "<output value=" /data/case_insensitive/value_b "></output>" _(ignoring case)_ </value>
+            <value> "<output value=" /data/case_insensitive/value_a "/>" **is not equal** to "<output value=" /data/case_insensitive/value_b "/>" _(ignoring case)_</value>
           </text>
         </translation>
       </itext>
       <instance>
         <data id="comparing_values" version="20250213161536" prefix="J1!comparing_values!" delimiter="#">
-          <intro></intro>
+          <intro/>
           <case_insensitive>
-            <description></description>
-            <value_a></value_a>
-            <value_b></value_b>
-            <is_equal></is_equal>
+            <description/>
+            <value_a/>
+            <value_b/>
+            <is_equal/>
             <description_conclusion>
-              <equal></equal>
-              <not_equal></not_equal>
+              <equal/>
+              <not_equal/>
             </description_conclusion>
           </case_insensitive>
           <meta tag="hidden">
-            <instanceID></instanceID>
+            <instanceID/>
           </meta>
         </data>
       </instance>
-      <instance id="contact-summary"></instance>
-      <instance id="user-contact-summary"></instance>
-      <bind nodeset="/data/intro" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/case_insensitive/description" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/case_insensitive/value_a" type="string" calculate="&quot;Hello World&quot;"></bind>
-      <bind nodeset="/data/case_insensitive/value_b" type="string"></bind>
-      <bind nodeset="/data/case_insensitive/is_equal" type="string" calculate="translate( /data/case_insensitive/value_a , 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate( /data/case_insensitive/value_b , 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')"></bind>
-      <bind nodeset="/data/case_insensitive/description_conclusion" relevant=" /data/case_insensitive/value_b  != &quot;&quot;"></bind>
-      <bind nodeset="/data/case_insensitive/description_conclusion/equal" readonly="true()" type="string" relevant=" /data/case_insensitive/is_equal  = &quot;true&quot;"></bind>
-      <bind nodeset="/data/case_insensitive/description_conclusion/not_equal" readonly="true()" type="string" relevant=" /data/case_insensitive/is_equal  != &quot;true&quot;"></bind>
-      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
+      <instance id="contact-summary"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/intro" readonly="true()" type="string"/>
+      <bind nodeset="/data/case_insensitive/description" readonly="true()" type="string"/>
+      <bind nodeset="/data/case_insensitive/value_a" type="string" calculate="&quot;Hello World&quot;"/>
+      <bind nodeset="/data/case_insensitive/value_b" type="string"/>
+      <bind nodeset="/data/case_insensitive/is_equal" type="string" calculate="translate( /data/case_insensitive/value_a , 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = translate( /data/case_insensitive/value_b , 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz')"/>
+      <bind nodeset="/data/case_insensitive/description_conclusion" relevant=" /data/case_insensitive/value_b  != &quot;&quot;"/>
+      <bind nodeset="/data/case_insensitive/description_conclusion/equal" readonly="true()" type="string" relevant=" /data/case_insensitive/is_equal  = &quot;true&quot;"/>
+      <bind nodeset="/data/case_insensitive/description_conclusion/not_equal" readonly="true()" type="string" relevant=" /data/case_insensitive/is_equal  != &quot;true&quot;"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
     <input ref="/data/intro">
-      <label ref="jr:itext('/data/intro:label')"></label>
-      <hint ref="jr:itext('/data/intro:hint')"></hint>
+      <label ref="jr:itext('/data/intro:label')"/>
+      <hint ref="jr:itext('/data/intro:hint')"/>
     </input>
     <group appearance="field-list" ref="/data/case_insensitive">
-      <label ref="jr:itext('/data/case_insensitive:label')"></label>
+      <label ref="jr:itext('/data/case_insensitive:label')"/>
       <input ref="/data/case_insensitive/description">
-        <label ref="jr:itext('/data/case_insensitive/description:label')"></label>
+        <label ref="jr:itext('/data/case_insensitive/description:label')"/>
       </input>
       <input ref="/data/case_insensitive/value_b">
-        <label ref="jr:itext('/data/case_insensitive/value_b:label')"></label>
+        <label ref="jr:itext('/data/case_insensitive/value_b:label')"/>
       </input>
       <group ref="/data/case_insensitive/description_conclusion">
-        <label ref="jr:itext('/data/case_insensitive/description_conclusion:label')"></label>
         <input ref="/data/case_insensitive/description_conclusion/equal">
-          <label ref="jr:itext('/data/case_insensitive/description_conclusion/equal:label')"></label>
+          <label ref="jr:itext('/data/case_insensitive/description_conclusion/equal:label')"/>
         </input>
         <input ref="/data/case_insensitive/description_conclusion/not_equal">
-          <label ref="jr:itext('/data/case_insensitive/description_conclusion/not_equal:label')"></label>
+          <label ref="jr:itext('/data/case_insensitive/description_conclusion/not_equal:label')"/>
         </input>
       </group>
     </group>

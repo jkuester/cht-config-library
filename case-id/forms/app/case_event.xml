@@ -12,21 +12,21 @@
       </itext>
       <instance>
         <data id="case_event" version="20250213155202" prefix="J1!case_event!" delimiter="#">
-          <case_id></case_id>
+          <case_id/>
           <meta tag="hidden">
-            <instanceID></instanceID>
+            <instanceID/>
           </meta>
         </data>
       </instance>
-      <instance id="contact-summary"></instance>
-      <instance id="user-contact-summary"></instance>
-      <bind nodeset="/data/case_id" type="string"></bind>
-      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
+      <instance id="contact-summary"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/case_id" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
     <input ref="/data/case_id">
-      <label ref="jr:itext('/data/case_id:label')"></label>
+      <label ref="jr:itext('/data/case_id:label')"/>
     </input>
   </h:body>
 </h:html>

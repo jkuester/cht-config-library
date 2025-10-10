@@ -14,15 +14,6 @@
           <text id="/data/camera_image:label">
             <value>Capturing an image from the camera</value>
           </text>
-          <text id="/data/camera_image/camera_app:label">
-            <value></value>
-          </text>
-          <text id="/data/camera_image/camera_app/action:label">
-            <value></value>
-          </text>
-          <text id="/data/camera_image/camera_app/camera_app_outputs:label">
-            <value></value>
-          </text>
           <text id="/data/camera_image/camera_app/camera_app_outputs/data:label">
             <value>Tap the button to use the camera app on your device to take a picture.</value>
           </text>
@@ -31,15 +22,6 @@
           </text>
           <text id="/data/qr_code:label">
             <value>Capturing data from a QR code</value>
-          </text>
-          <text id="/data/qr_code/qr_code_app:label">
-            <value></value>
-          </text>
-          <text id="/data/qr_code/qr_code_app/action:label">
-            <value></value>
-          </text>
-          <text id="/data/qr_code/qr_code_app/qr_code_app_outputs:label">
-            <value></value>
           </text>
           <text id="/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:label">
             <value>Tap the button to use the Barcode Scanner app on your device to scan a barcode value.</value>
@@ -51,12 +33,12 @@
       </itext>
       <instance>
         <data id="android_app_launcher" version="20250213161449" prefix="J1!android_app_launcher!" delimiter="#">
-          <intro></intro>
+          <intro/>
           <camera_image>
             <camera_app>
               <action>android.media.action.IMAGE_CAPTURE</action>
               <camera_app_outputs>
-                <data></data>
+                <data/>
               </camera_app_outputs>
             </camera_app>
           </camera_image>
@@ -64,58 +46,50 @@
             <qr_code_app>
               <action>com.google.zxing.client.android.SCAN</action>
               <qr_code_app_outputs>
-                <SCAN_RESULT></SCAN_RESULT>
+                <SCAN_RESULT/>
               </qr_code_app_outputs>
             </qr_code_app>
           </qr_code>
           <meta tag="hidden">
-            <instanceID></instanceID>
+            <instanceID/>
           </meta>
         </data>
       </instance>
-      <instance id="contact-summary"></instance>
-      <instance id="user-contact-summary"></instance>
-      <bind nodeset="/data/intro" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/camera_image/camera_app/action" type="string"></bind>
-      <bind nodeset="/data/camera_image/camera_app/camera_app_outputs/data" type="string"></bind>
-      <bind nodeset="/data/qr_code/qr_code_app/action" type="string"></bind>
-      <bind nodeset="/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT" type="string" calculate="coalesce(., &quot;&quot;)" readonly="true()"></bind>
-      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
+      <instance id="contact-summary"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/intro" readonly="true()" type="string"/>
+      <bind nodeset="/data/camera_image/camera_app/action" type="string"/>
+      <bind nodeset="/data/camera_image/camera_app/camera_app_outputs/data" type="string"/>
+      <bind nodeset="/data/qr_code/qr_code_app/action" type="string"/>
+      <bind nodeset="/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT" type="string" calculate="coalesce(., &quot;&quot;)" readonly="true()"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
     <input ref="/data/intro">
-      <label ref="jr:itext('/data/intro:label')"></label>
-      <hint ref="jr:itext('/data/intro:hint')"></hint>
+      <label ref="jr:itext('/data/intro:label')"/>
+      <hint ref="jr:itext('/data/intro:hint')"/>
     </input>
     <group appearance="field-list" ref="/data/camera_image">
-      <label ref="jr:itext('/data/camera_image:label')"></label>
+      <label ref="jr:itext('/data/camera_image:label')"/>
       <group appearance="android-app-launcher" ref="/data/camera_image/camera_app">
-        <label ref="jr:itext('/data/camera_image/camera_app:label')"></label>
-        <input ref="/data/camera_image/camera_app/action" appearance="hidden">
-          <label ref="jr:itext('/data/camera_image/camera_app/action:label')"></label>
-        </input>
+        <input ref="/data/camera_image/camera_app/action" appearance="hidden"></input>
         <group appearance="android-app-outputs" ref="/data/camera_image/camera_app/camera_app_outputs">
-          <label ref="jr:itext('/data/camera_image/camera_app/camera_app_outputs:label')"></label>
           <input ref="/data/camera_image/camera_app/camera_app_outputs/data" appearance="display-base64-image">
-            <label ref="jr:itext('/data/camera_image/camera_app/camera_app_outputs/data:label')"></label>
-            <hint ref="jr:itext('/data/camera_image/camera_app/camera_app_outputs/data:hint')"></hint>
+            <label ref="jr:itext('/data/camera_image/camera_app/camera_app_outputs/data:label')"/>
+            <hint ref="jr:itext('/data/camera_image/camera_app/camera_app_outputs/data:hint')"/>
           </input>
         </group>
       </group>
     </group>
     <group appearance="field-list" ref="/data/qr_code">
-      <label ref="jr:itext('/data/qr_code:label')"></label>
+      <label ref="jr:itext('/data/qr_code:label')"/>
       <group appearance="android-app-launcher" ref="/data/qr_code/qr_code_app">
-        <label ref="jr:itext('/data/qr_code/qr_code_app:label')"></label>
-        <input ref="/data/qr_code/qr_code_app/action" appearance="hidden">
-          <label ref="jr:itext('/data/qr_code/qr_code_app/action:label')"></label>
-        </input>
+        <input ref="/data/qr_code/qr_code_app/action" appearance="hidden"></input>
         <group appearance="android-app-outputs" ref="/data/qr_code/qr_code_app/qr_code_app_outputs">
-          <label ref="jr:itext('/data/qr_code/qr_code_app/qr_code_app_outputs:label')"></label>
           <input ref="/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT">
-            <label ref="jr:itext('/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:label')"></label>
-            <hint ref="jr:itext('/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:hint')"></hint>
+            <label ref="jr:itext('/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:label')"/>
+            <hint ref="jr:itext('/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:hint')"/>
           </input>
         </group>
       </group>

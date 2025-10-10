@@ -5,9 +5,6 @@
     <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/data/page:label">
-            <value></value>
-          </text>
           <text id="/data/page/select_0:label">
             <value>First Select</value>
           </text>
@@ -19,29 +16,28 @@
       <instance>
         <data id="with_extended_select" version="20250402122914" prefix="J1!with_extended_select!" delimiter="#">
           <page>
-            <select_0></select_0>
-            <select_1></select_1>
+            <select_0/>
+            <select_1/>
           </page>
           <meta tag="hidden">
-            <instanceID></instanceID>
+            <instanceID/>
           </meta>
         </data>
       </instance>
-      <instance id="contact-summary"></instance>
-      <instance id="user-contact-summary"></instance>
-      <bind nodeset="/data/page/select_0" type="string" calculate="cht:extension-lib(&quot;extended-select-widget.js&quot;, &quot;/with_extended_select/page/select_0&quot;)"></bind>
-      <bind nodeset="/data/page/select_1" type="string" calculate="cht:extension-lib(&quot;extended-select-widget.js&quot;, &quot;/with_extended_select/page/select_1&quot;)"></bind>
-      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
+      <instance id="contact-summary"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/page/select_0" type="string" calculate="cht:extension-lib(&quot;extended-select-widget.js&quot;, &quot;/with_extended_select/page/select_0&quot;)"/>
+      <bind nodeset="/data/page/select_1" type="string" calculate="cht:extension-lib(&quot;extended-select-widget.js&quot;, &quot;/with_extended_select/page/select_1&quot;)"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
     <group appearance="field-list" ref="/data/page">
-      <label ref="jr:itext('/data/page:label')"></label>
       <input ref="/data/page/select_0">
-        <label ref="jr:itext('/data/page/select_0:label')"></label>
+        <label ref="jr:itext('/data/page/select_0:label')"/>
       </input>
       <input ref="/data/page/select_1">
-        <label ref="jr:itext('/data/page/select_1:label')"></label>
+        <label ref="jr:itext('/data/page/select_1:label')"/>
       </input>
     </group>
   </h:body>

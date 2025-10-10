@@ -5,9 +5,6 @@
     <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/data/inputs:label">
-            <value></value>
-          </text>
           <text id="/data/inputs/source:label">
             <value>Source</value>
           </text>
@@ -16,9 +13,6 @@
           </text>
           <text id="/data/inputs/contact/_id:label">
             <value>Which contact do you want to mute?</value>
-          </text>
-          <text id="/data/patient_uuid:label">
-            <value></value>
           </text>
           <text id="/data/submit:label">
             <value>Are you sure you want to unmute this contact?</value>
@@ -30,49 +24,48 @@
           <inputs>
             <meta>
               <location>
-                <lat></lat>
-                <long></long>
-                <error></error>
-                <message></message>
+                <lat/>
+                <long/>
+                <error/>
+                <message/>
               </location>
             </meta>
             <source>user</source>
             <contact>
-              <_id></_id>
+              <_id/>
             </contact>
           </inputs>
-          <patient_uuid></patient_uuid>
-          <submit></submit>
+          <patient_uuid/>
+          <submit/>
           <meta tag="hidden">
-            <instanceID></instanceID>
+            <instanceID/>
           </meta>
         </data>
       </instance>
-      <instance id="contact-summary"></instance>
-      <instance id="user-contact-summary"></instance>
-      <bind nodeset="/data/inputs" relevant="./source = 'user'"></bind>
-      <bind nodeset="/data/inputs/source" type="string"></bind>
-      <bind nodeset="/data/inputs/contact/_id" type="string" required="true()"></bind>
-      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"></bind>
-      <bind nodeset="/data/submit" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
+      <instance id="contact-summary"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/inputs" relevant="./source = 'user'"/>
+      <bind nodeset="/data/inputs/source" type="string"/>
+      <bind nodeset="/data/inputs/contact/_id" type="string" required="true()"/>
+      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
+      <bind nodeset="/data/submit" readonly="true()" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
     <group appearance="field-list" ref="/data/inputs">
-      <label ref="jr:itext('/data/inputs:label')"></label>
       <input ref="/data/inputs/source" appearance="hidden">
-        <label ref="jr:itext('/data/inputs/source:label')"></label>
+        <label ref="jr:itext('/data/inputs/source:label')"/>
       </input>
       <group ref="/data/inputs/contact">
-        <label ref="jr:itext('/data/inputs/contact:label')"></label>
+        <label ref="jr:itext('/data/inputs/contact:label')"/>
         <input ref="/data/inputs/contact/_id" appearance="select-contact">
-          <label ref="jr:itext('/data/inputs/contact/_id:label')"></label>
+          <label ref="jr:itext('/data/inputs/contact/_id:label')"/>
         </input>
       </group>
     </group>
     <input ref="/data/submit">
-      <label ref="jr:itext('/data/submit:label')"></label>
+      <label ref="jr:itext('/data/submit:label')"/>
     </input>
   </h:body>
 </h:html>

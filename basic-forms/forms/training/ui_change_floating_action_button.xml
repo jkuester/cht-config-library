@@ -5,38 +5,23 @@
     <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/data/intro:label">
-            <value></value>
-          </text>
           <text id="/data/intro/intro_txt_1:label">
             <value>There have been some important changes to your app.</value>
           </text>
           <text id="/data/intro/intro_txt_2:label">
             <value>Tap **Next** to see what your app used to look like, and what it looks like now.</value>
           </text>
-          <text id="/data/change_1:label">
-            <value></value>
-          </text>
           <text id="/data/change_1/change_1_txt_1:label">
             <value>The action bar at the bottom has changed. It used to look like this.</value>
             <value form="image">jr://images/old-actions.png</value>
-          </text>
-          <text id="/data/change_2:label">
-            <value></value>
           </text>
           <text id="/data/change_2/change_2_txt_1:label">
             <value>In your new app, the action bar is now a button that looks like this.</value>
             <value form="image">jr://images/fab.png</value>
           </text>
-          <text id="/data/change_3:label">
-            <value></value>
-          </text>
           <text id="/data/change_3/change_3_txt_1:label">
             <value>Tap on this button to add people and access your forms.</value>
             <value form="image">jr://images/actions-list.png</value>
-          </text>
-          <text id="/data/ending:label">
-            <value></value>
           </text>
           <text id="/data/ending/ending_txt_1:label">
             <value>If you understand these changes and are ready to start using your app, tap on **Submit**.</value>
@@ -49,72 +34,67 @@
       <instance>
         <data id="training:new_ui_change_floating_action_button" version="20250213162351" prefix="J1!training:new_ui_change_floating_action_button!" delimiter="#">
           <intro>
-            <intro_txt_1></intro_txt_1>
-            <intro_txt_2></intro_txt_2>
+            <intro_txt_1/>
+            <intro_txt_2/>
           </intro>
           <change_1>
-            <change_1_txt_1></change_1_txt_1>
+            <change_1_txt_1/>
           </change_1>
           <change_2>
-            <change_2_txt_1></change_2_txt_1>
+            <change_2_txt_1/>
           </change_2>
           <change_3>
-            <change_3_txt_1></change_3_txt_1>
+            <change_3_txt_1/>
           </change_3>
           <ending>
-            <ending_txt_1></ending_txt_1>
-            <ending_txt_2></ending_txt_2>
+            <ending_txt_1/>
+            <ending_txt_2/>
           </ending>
           <meta tag="hidden">
-            <instanceID></instanceID>
+            <instanceID/>
           </meta>
         </data>
       </instance>
-      <bind nodeset="/data/intro/intro_txt_1" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/intro/intro_txt_2" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/change_1/change_1_txt_1" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/change_2/change_2_txt_1" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/change_3/change_3_txt_1" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/ending/ending_txt_1" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/ending/ending_txt_2" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
+      <bind nodeset="/data/intro/intro_txt_1" readonly="true()" type="string"/>
+      <bind nodeset="/data/intro/intro_txt_2" readonly="true()" type="string"/>
+      <bind nodeset="/data/change_1/change_1_txt_1" readonly="true()" type="string"/>
+      <bind nodeset="/data/change_2/change_2_txt_1" readonly="true()" type="string"/>
+      <bind nodeset="/data/change_3/change_3_txt_1" readonly="true()" type="string"/>
+      <bind nodeset="/data/ending/ending_txt_1" readonly="true()" type="string"/>
+      <bind nodeset="/data/ending/ending_txt_2" readonly="true()" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
     <group appearance="field-list" ref="/data/intro">
-      <label ref="jr:itext('/data/intro:label')"></label>
       <input ref="/data/intro/intro_txt_1">
-        <label ref="jr:itext('/data/intro/intro_txt_1:label')"></label>
+        <label ref="jr:itext('/data/intro/intro_txt_1:label')"/>
       </input>
       <input ref="/data/intro/intro_txt_2">
-        <label ref="jr:itext('/data/intro/intro_txt_2:label')"></label>
+        <label ref="jr:itext('/data/intro/intro_txt_2:label')"/>
       </input>
     </group>
     <group appearance="field-list" ref="/data/change_1">
-      <label ref="jr:itext('/data/change_1:label')"></label>
       <input ref="/data/change_1/change_1_txt_1">
-        <label ref="jr:itext('/data/change_1/change_1_txt_1:label')"></label>
+        <label ref="jr:itext('/data/change_1/change_1_txt_1:label')"/>
       </input>
     </group>
     <group appearance="field-list" ref="/data/change_2">
-      <label ref="jr:itext('/data/change_2:label')"></label>
       <input ref="/data/change_2/change_2_txt_1">
-        <label ref="jr:itext('/data/change_2/change_2_txt_1:label')"></label>
+        <label ref="jr:itext('/data/change_2/change_2_txt_1:label')"/>
       </input>
     </group>
     <group appearance="field-list" ref="/data/change_3">
-      <label ref="jr:itext('/data/change_3:label')"></label>
       <input ref="/data/change_3/change_3_txt_1">
-        <label ref="jr:itext('/data/change_3/change_3_txt_1:label')"></label>
+        <label ref="jr:itext('/data/change_3/change_3_txt_1:label')"/>
       </input>
     </group>
     <group appearance="field-list" ref="/data/ending">
-      <label ref="jr:itext('/data/ending:label')"></label>
       <input ref="/data/ending/ending_txt_1">
-        <label ref="jr:itext('/data/ending/ending_txt_1:label')"></label>
+        <label ref="jr:itext('/data/ending/ending_txt_1:label')"/>
       </input>
       <input ref="/data/ending/ending_txt_2">
-        <label ref="jr:itext('/data/ending/ending_txt_2:label')"></label>
+        <label ref="jr:itext('/data/ending/ending_txt_2:label')"/>
       </input>
     </group>
   </h:body>

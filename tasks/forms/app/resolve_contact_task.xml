@@ -5,43 +5,16 @@
     <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/data/inputs:label">
-            <value></value>
-          </text>
-          <text id="/data/inputs/source:label">
-            <value></value>
-          </text>
-          <text id="/data/inputs/source_id:label">
-            <value></value>
-          </text>
-          <text id="/data/inputs/contact:label">
-            <value></value>
-          </text>
-          <text id="/data/inputs/contact/_id:label">
-            <value></value>
-          </text>
-          <text id="/data/inputs/contact/name:label">
-            <value></value>
-          </text>
-          <text id="/data/inputs/task_id:label">
-            <value></value>
-          </text>
-          <text id="/data/inputs/from_modify_content:label">
-            <value></value>
-          </text>
-          <text id="/data/inputs/from_modify_content/event_id:label">
-            <value></value>
-          </text>
           <text id="/data/submit:label">
             <value> This task was triggered with the following input data:
 
-- Task Id: &lt;code&gt;<output value=" /data/inputs/task_id "></output>&lt;/code&gt;
-- Contact: &lt;a target="_self" href="#" rel="noopener" class="dynamic-url"&gt; <output value=" /data/inputs/contact/name "></output> &lt;div class="url hidden"&gt;/#/contacts/<output value=" /data/patient_uuid "></output>&lt;/div&gt; &lt;/a&gt;
-- Source: &lt;code&gt;<output value=" /data/inputs/source "></output>&lt;/code&gt;
-- Source Id: &lt;a target="_self" href="#" rel="noopener" class="dynamic-url"&gt; <output value=" /data/inputs/source_id "></output> &lt;div class="url hidden"&gt;/#/contacts/<output value=" /data/inputs/source_id "></output>&lt;/div&gt; &lt;/a&gt; 
-- Event Id: &lt;code&gt;<output value=" /data/inputs/from_modify_content/event_id "></output>&lt;/code&gt;
+- Task Id: &lt;code&gt;<output value=" /data/inputs/task_id "/>&lt;/code&gt;
+- Contact: &lt;a target="_self" href="#" rel="noopener" class="dynamic-url"&gt; <output value=" /data/inputs/contact/name "/> &lt;div class="url hidden"&gt;/#/contacts/<output value=" /data/patient_uuid "/>&lt;/div&gt; &lt;/a&gt;
+- Source: &lt;code&gt;<output value=" /data/inputs/source "/>&lt;/code&gt;
+- Source Id: &lt;a target="_self" href="#" rel="noopener" class="dynamic-url"&gt; <output value=" /data/inputs/source_id "/> &lt;div class="url hidden"&gt;/#/contacts/<output value=" /data/inputs/source_id "/>&lt;/div&gt; &lt;/a&gt; 
+- Event Id: &lt;code&gt;<output value=" /data/inputs/from_modify_content/event_id "/>&lt;/code&gt;
 
-Are you sure you want to resolve the task? </value>
+Are you sure you want to resolve the task?</value>
           </text>
           <text id="/data/submit:hint">
             <value>Submitting this form will resolve the associated task</value>
@@ -53,75 +26,60 @@ Are you sure you want to resolve the task? </value>
           <inputs>
             <meta>
               <location>
-                <lat></lat>
-                <long></long>
-                <error></error>
-                <message></message>
+                <lat/>
+                <long/>
+                <error/>
+                <message/>
               </location>
             </meta>
-            <source></source>
-            <source_id></source_id>
+            <source/>
+            <source_id/>
             <contact>
-              <_id></_id>
-              <name></name>
+              <_id/>
+              <name/>
             </contact>
-            <task_id></task_id>
+            <task_id/>
             <from_modify_content>
-              <event_id></event_id>
+              <event_id/>
             </from_modify_content>
           </inputs>
-          <patient_uuid></patient_uuid>
-          <submit></submit>
+          <patient_uuid/>
+          <submit/>
           <meta tag="hidden">
-            <instanceID></instanceID>
+            <instanceID/>
           </meta>
         </data>
       </instance>
-      <instance id="contact-summary"></instance>
-      <instance id="user-contact-summary"></instance>
-      <bind nodeset="/data/inputs" relevant="false()"></bind>
-      <bind nodeset="/data/inputs/source" type="string"></bind>
-      <bind nodeset="/data/inputs/source_id" type="string"></bind>
-      <bind nodeset="/data/inputs/contact/_id" type="string"></bind>
-      <bind nodeset="/data/inputs/contact/name" type="string"></bind>
-      <bind nodeset="/data/inputs/task_id" type="string"></bind>
-      <bind nodeset="/data/inputs/from_modify_content/event_id" type="string"></bind>
-      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"></bind>
-      <bind nodeset="/data/submit" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
+      <instance id="contact-summary"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/inputs" relevant="false()"/>
+      <bind nodeset="/data/inputs/source" type="string"/>
+      <bind nodeset="/data/inputs/source_id" type="string"/>
+      <bind nodeset="/data/inputs/contact/_id" type="string"/>
+      <bind nodeset="/data/inputs/contact/name" type="string"/>
+      <bind nodeset="/data/inputs/task_id" type="string"/>
+      <bind nodeset="/data/inputs/from_modify_content/event_id" type="string"/>
+      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
+      <bind nodeset="/data/submit" readonly="true()" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
     <group ref="/data/inputs">
-      <label ref="jr:itext('/data/inputs:label')"></label>
-      <input ref="/data/inputs/source">
-        <label ref="jr:itext('/data/inputs/source:label')"></label>
-      </input>
-      <input ref="/data/inputs/source_id">
-        <label ref="jr:itext('/data/inputs/source_id:label')"></label>
-      </input>
+      <input ref="/data/inputs/source"></input>
+      <input ref="/data/inputs/source_id"></input>
       <group ref="/data/inputs/contact">
-        <label ref="jr:itext('/data/inputs/contact:label')"></label>
-        <input ref="/data/inputs/contact/_id">
-          <label ref="jr:itext('/data/inputs/contact/_id:label')"></label>
-        </input>
-        <input ref="/data/inputs/contact/name">
-          <label ref="jr:itext('/data/inputs/contact/name:label')"></label>
-        </input>
+        <input ref="/data/inputs/contact/_id"></input>
+        <input ref="/data/inputs/contact/name"></input>
       </group>
-      <input ref="/data/inputs/task_id">
-        <label ref="jr:itext('/data/inputs/task_id:label')"></label>
-      </input>
+      <input ref="/data/inputs/task_id"></input>
       <group ref="/data/inputs/from_modify_content">
-        <label ref="jr:itext('/data/inputs/from_modify_content:label')"></label>
-        <input ref="/data/inputs/from_modify_content/event_id">
-          <label ref="jr:itext('/data/inputs/from_modify_content/event_id:label')"></label>
-        </input>
+        <input ref="/data/inputs/from_modify_content/event_id"></input>
       </group>
     </group>
     <input ref="/data/submit">
-      <label ref="jr:itext('/data/submit:label')"></label>
-      <hint ref="jr:itext('/data/submit:hint')"></hint>
+      <label ref="jr:itext('/data/submit:label')"/>
+      <hint ref="jr:itext('/data/submit:hint')"/>
     </input>
   </h:body>
 </h:html>

@@ -11,22 +11,15 @@
           <text id="my_num_constraint_msg-1">
             <value>The number is too low</value>
           </text>
-          <text id="/data/page:label">
-            <value></value>
-          </text>
           <text id="/data/page/my_num:jr:constraintMsg">
             <value>
-              <output value=" /data/page/my_num_issue_msg "></output>
-            </value>
+              <output value=" /data/page/my_num_issue_msg "/></value>
           </text>
           <text id="/data/page/my_num:label">
             <value>Enter a number from 2 to 4</value>
           </text>
           <text id="/data/page/my_num:hint">
             <value>See [this forum thread](https://forum.communityhealthtoolkit.org/t/how-to-list-multiple-constraint-messages-on-a-single-field-in-xlsform/960) for more context.</value>
-          </text>
-          <text id="/data/page/my_num_issue:label">
-            <value></value>
           </text>
         </translation>
         <translation lang="fr">
@@ -36,13 +29,9 @@
           <text id="my_num_constraint_msg-1">
             <value>Le nombre est trop faible</value>
           </text>
-          <text id="/data/page:label">
-            <value></value>
-          </text>
           <text id="/data/page/my_num:jr:constraintMsg">
             <value>
-              <output value=" /data/page/my_num_issue_msg "></output>
-            </value>
+              <output value=" /data/page/my_num_issue_msg "/></value>
           </text>
           <text id="/data/page/my_num:label">
             <value>Entrez un nombre de 2 à 4</value>
@@ -50,25 +39,22 @@
           <text id="/data/page/my_num:hint">
             <value>Voir [ce fil de discussion du forum](https://forum.communityhealthtoolkit.org/t/how-to-list-multiple-constraint-messages-on-a-single-field-in-xlsform/960) pour plus de contexte.</value>
           </text>
-          <text id="/data/page/my_num_issue:label">
-            <value></value>
-          </text>
         </translation>
       </itext>
       <instance>
         <data id="dynamic_error_message" version="20250415081630" prefix="J1!dynamic_error_message!" delimiter="#">
           <page>
-            <my_num></my_num>
-            <my_num_issue></my_num_issue>
-            <my_num_issue_msg></my_num_issue_msg>
+            <my_num/>
+            <my_num_issue/>
+            <my_num_issue_msg/>
           </page>
           <meta tag="hidden">
-            <instanceID></instanceID>
+            <instanceID/>
           </meta>
         </data>
       </instance>
-      <instance id="contact-summary"></instance>
-      <instance id="user-contact-summary"></instance>
+      <instance id="contact-summary"/>
+      <instance id="user-contact-summary"/>
       <instance id="my_num_constraint_msg">
         <root>
           <item>
@@ -81,23 +67,24 @@
           </item>
         </root>
       </instance>
-      <bind nodeset="/data/page/my_num" type="int" constraint=" /data/page/my_num_issue  = ''" jr:constraintMsg="jr:itext('/data/page/my_num:jr:constraintMsg')"></bind>
-      <bind nodeset="/data/page/my_num_issue" type="string" calculate="if( /data/page/my_num  &gt; 4, 'high', if( /data/page/my_num  &lt; 2, 'low', ''))"></bind>
-      <bind nodeset="/data/page/my_num_issue_msg" type="string" calculate="jr:choice-name( /data/page/my_num_issue , ' /data/page/my_num_issue ')"></bind>
-      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
+      <bind nodeset="/data/page/my_num" type="int" constraint=" /data/page/my_num_issue  = ''" jr:constraintMsg="jr:itext('/data/page/my_num:jr:constraintMsg')"/>
+      <bind nodeset="/data/page/my_num_issue" type="string" calculate="if( /data/page/my_num  &gt; 4, 'high', if( /data/page/my_num  &lt; 2, 'low', ''))"/>
+      <bind nodeset="/data/page/my_num_issue_msg" type="string" calculate="jr:choice-name( /data/page/my_num_issue , ' /data/page/my_num_issue ')"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
     <group appearance="field-list" ref="/data/page">
-      <label ref="jr:itext('/data/page:label')"></label>
       <input ref="/data/page/my_num">
-        <label ref="jr:itext('/data/page/my_num:label')"></label>
-        <hint ref="jr:itext('/data/page/my_num:hint')"></hint>
+        <label ref="jr:itext('/data/page/my_num:label')"/>
+        <hint ref="jr:itext('/data/page/my_num:hint')"/>
       </input>
       <select1 ref="/data/page/my_num_issue" appearance="hidden">
-        <label ref="jr:itext('/data/page/my_num_issue:label')"></label>
-        
-      <item><label ref="jr:itext('my_num_constraint_msg-0')"></label><value>high</value></item><item><label ref="jr:itext('my_num_constraint_msg-1')"></label><value>low</value></item></select1>
+        <itemset nodeset="instance('my_num_constraint_msg')/root/item">
+          <value ref="name"/>
+          <label ref="jr:itext(itextId)"/>
+        </itemset>
+      </select1>
     </group>
   </h:body>
 </h:html>

@@ -5,9 +5,6 @@
     <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/data/page:label">
-            <value></value>
-          </text>
           <text id="/data/page/first:label">
             <value>First Number</value>
           </text>
@@ -15,43 +12,42 @@
             <value>Second Number</value>
           </text>
           <text id="/data/page/message:label">
-            <value> The average is: <output value=" /data/page/average "></output> </value>
+            <value> The average is: <output value=" /data/page/average "/></value>
           </text>
         </translation>
       </itext>
       <instance>
         <data id="calculate_average" version="20250327130205" prefix="J1!calculate_average!" delimiter="#">
           <page>
-            <first></first>
-            <second></second>
-            <average></average>
-            <message></message>
+            <first/>
+            <second/>
+            <average/>
+            <message/>
           </page>
           <meta tag="hidden">
-            <instanceID></instanceID>
+            <instanceID/>
           </meta>
         </data>
       </instance>
-      <instance id="contact-summary"></instance>
-      <instance id="user-contact-summary"></instance>
-      <bind nodeset="/data/page/first" type="decimal"></bind>
-      <bind nodeset="/data/page/second" type="decimal"></bind>
-      <bind nodeset="/data/page/average" type="string" calculate="cht:extension-lib('average.js',  /data/page/first ,  /data/page/second )"></bind>
-      <bind nodeset="/data/page/message" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
+      <instance id="contact-summary"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/page/first" type="decimal"/>
+      <bind nodeset="/data/page/second" type="decimal"/>
+      <bind nodeset="/data/page/average" type="string" calculate="cht:extension-lib('average.js',  /data/page/first ,  /data/page/second )"/>
+      <bind nodeset="/data/page/message" readonly="true()" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
     <group appearance="field-list" ref="/data/page">
-      <label ref="jr:itext('/data/page:label')"></label>
       <input ref="/data/page/first">
-        <label ref="jr:itext('/data/page/first:label')"></label>
+        <label ref="jr:itext('/data/page/first:label')"/>
       </input>
       <input ref="/data/page/second">
-        <label ref="jr:itext('/data/page/second:label')"></label>
+        <label ref="jr:itext('/data/page/second:label')"/>
       </input>
       <input ref="/data/page/message">
-        <label ref="jr:itext('/data/page/message:label')"></label>
+        <label ref="jr:itext('/data/page/message:label')"/>
       </input>
     </group>
   </h:body>

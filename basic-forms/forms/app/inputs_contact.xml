@@ -12,86 +12,68 @@ However, when opening the same form from the "Reports" tab, this group will not 
 
 Setting the top level &lt;code&gt;patient\_uuid&lt;/code&gt; (or &lt;code&gt;place\_uuid&lt;/code&gt;) field to the &lt;code&gt;inputs/contact/_id&lt;/code&gt; value will associate the report with the selected patient.</value>
           </text>
-          <text id="/data/inputs:label">
-            <value></value>
-          </text>
-          <text id="/data/inputs/source:label">
-            <value></value>
-          </text>
-          <text id="/data/inputs/contact:label">
-            <value></value>
-          </text>
           <text id="/data/inputs/contact/_id:label">
             <value>Select a contact</value>
           </text>
-          <text id="/data/inputs/contact/name:label">
-            <value></value>
-          </text>
           <text id="/data/hello:label">
-            <value> Hello: <output value=" /data/contact_name "></output> </value>
+            <value> Hello: <output value=" /data/contact_name "/></value>
           </text>
         </translation>
       </itext>
       <instance>
         <data id="inputs_contact" version="20250213161859" prefix="J1!inputs_contact!" delimiter="#">
-          <intro></intro>
+          <intro/>
           <inputs>
             <meta>
               <location>
-                <lat></lat>
-                <long></long>
-                <error></error>
-                <message></message>
+                <lat/>
+                <long/>
+                <error/>
+                <message/>
               </location>
             </meta>
             <source>user</source>
             <contact>
-              <_id></_id>
-              <name></name>
+              <_id/>
+              <name/>
             </contact>
           </inputs>
-          <patient_uuid></patient_uuid>
-          <contact_name></contact_name>
-          <hello></hello>
+          <patient_uuid/>
+          <contact_name/>
+          <hello/>
           <meta tag="hidden">
-            <instanceID></instanceID>
+            <instanceID/>
           </meta>
         </data>
       </instance>
-      <instance id="contact-summary"></instance>
-      <instance id="user-contact-summary"></instance>
-      <bind nodeset="/data/intro" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/inputs" relevant="./source = 'user'"></bind>
-      <bind nodeset="/data/inputs/source" type="string"></bind>
-      <bind nodeset="/data/inputs/contact/_id" type="string"></bind>
-      <bind nodeset="/data/inputs/contact/name" type="string"></bind>
-      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"></bind>
-      <bind nodeset="/data/contact_name" type="string" calculate="../inputs/contact/name"></bind>
-      <bind nodeset="/data/hello" readonly="true()" type="string"></bind>
-      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"></bind>
+      <instance id="contact-summary"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/intro" readonly="true()" type="string"/>
+      <bind nodeset="/data/inputs" relevant="./source = 'user'"/>
+      <bind nodeset="/data/inputs/source" type="string"/>
+      <bind nodeset="/data/inputs/contact/_id" type="string"/>
+      <bind nodeset="/data/inputs/contact/name" type="string"/>
+      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
+      <bind nodeset="/data/contact_name" type="string" calculate="../inputs/contact/name"/>
+      <bind nodeset="/data/hello" readonly="true()" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
     <input ref="/data/intro">
-      <label ref="jr:itext('/data/intro:label')"></label>
+      <label ref="jr:itext('/data/intro:label')"/>
     </input>
     <group ref="/data/inputs">
-      <label ref="jr:itext('/data/inputs:label')"></label>
-      <input ref="/data/inputs/source" appearance="hidden">
-        <label ref="jr:itext('/data/inputs/source:label')"></label>
-      </input>
+      <input ref="/data/inputs/source" appearance="hidden"></input>
       <group ref="/data/inputs/contact">
-        <label ref="jr:itext('/data/inputs/contact:label')"></label>
         <input ref="/data/inputs/contact/_id" appearance="select-contact">
-          <label ref="jr:itext('/data/inputs/contact/_id:label')"></label>
+          <label ref="jr:itext('/data/inputs/contact/_id:label')"/>
         </input>
-        <input ref="/data/inputs/contact/name" appearance="hidden">
-          <label ref="jr:itext('/data/inputs/contact/name:label')"></label>
-        </input>
+        <input ref="/data/inputs/contact/name" appearance="hidden"></input>
       </group>
     </group>
     <input ref="/data/hello">
-      <label ref="jr:itext('/data/hello:label')"></label>
+      <label ref="jr:itext('/data/hello:label')"/>
     </input>
   </h:body>
 </h:html>
