@@ -7,7 +7,7 @@
     "@medic/eslint-config": "^1.1.0",
     "chai": "^4.5.0",
     "chai-exclude": "^2.1.1",
-    "cht-conf": "git+https://github.com/medic/cht-conf.git#d0f7091b400ab7497d0f27bdfaea3efb463ae132",
+    "cht-conf": "git+https://github.com/medic/cht-conf.git#267e12c4ba33a13f0f0e4b2bfd1edb0c9c88a808",
     "cht-conf-test-harness": "git+https://github.com/medic/cht-conf-test-harness.git#cht-form_extension-libs",
     "eslint": "^8.57.0",
     "eslint-plugin-json": "^4.0.1",

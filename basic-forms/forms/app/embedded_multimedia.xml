@@ -124,6 +124,9 @@
           <text id="/data/notes_with_media/inline_image_note:hint">
             <value>Only images referenced from the `image` column will be included when uploading the form to the server. So, inline images need to also be referenced by a different field's `image` column (can be always non-relevant).</value>
           </text>
+          <text id="/data/notes_with_media/import_happy:label">
+            <value form="image">jr://images/happy.png</value>
+          </text>
           <text id="/data/summary_with_media:label">
             <value>Images can also be embeded in a summary page</value>
           </text>
@@ -416,7 +419,9 @@
         <label ref="jr:itext('/data/notes_with_media/inline_image_note:label')"/>
         <hint ref="jr:itext('/data/notes_with_media/inline_image_note:hint')"/>
       </input>
-      <input ref="/data/notes_with_media/import_happy"></input>
+      <input ref="/data/notes_with_media/import_happy">
+        <label ref="jr:itext('/data/notes_with_media/import_happy:label')"/>
+      </input>
     </group>
     <group appearance="field-list summary" ref="/data/summary_with_media">
       <label ref="jr:itext('/data/summary_with_media:label')"/>
