@@ -34,6 +34,7 @@
               <chw_referral/>
               <repeated_note/>
             </my_repeat>
+            <my_repeat_count/>
           </my_page>
           <meta tag="hidden">
             <instanceID/>
@@ -56,6 +57,7 @@
       <bind nodeset="/data/my_page/my_repeat/chw_referral" type="string" calculate="selected-at( /data/my_page/chw_referrals ,  ../chw_index )"/>
       <bind nodeset="/data/my_page/my_repeat/repeated_note" readonly="true()" type="string"/>
       <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
+      <bind nodeset="/data/my_page/my_repeat_count" type="string" readonly="true()" calculate=" /data/my_page/chw_count "/>
     </model>
   </h:head>
   <h:body class="pages">
@@ -65,7 +67,7 @@
       </input>
       <group ref="/data/my_page/my_repeat">
         <label ref="jr:itext('/data/my_page/my_repeat:label')"/>
-        <repeat nodeset="/data/my_page/my_repeat" jr:count=" /data/my_page/chw_count ">
+        <repeat nodeset="/data/my_page/my_repeat" jr:count="/data/my_page/my_repeat_count">
           <input ref="/data/my_page/my_repeat/repeated_note">
             <label ref="jr:itext('/data/my_page/my_repeat/repeated_note:label')"/>
           </input>

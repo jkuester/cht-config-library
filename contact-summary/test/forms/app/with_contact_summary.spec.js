@@ -28,6 +28,7 @@ describe('Test Contact Summary form', () => {
       chw_referrals: allChws.map(({ referrals }) => referrals).join(' '),
       favorite_note: '',
       chw_count: '3',
+      my_repeat_count: '3',
       my_repeat: allChws.map((chw, index) => ({
         chw_household_visit: `${chw.household_visits}`,
         chw_index: `${index}`,
@@ -63,6 +64,7 @@ describe('Test Contact Summary form', () => {
       chw_referrals: `${allChws[0].referrals}`,
       favorite_note: '',
       chw_count: '1',
+      my_repeat_count: '1',
       my_repeat: [{
         chw_household_visit: `${allChws[0].household_visits}`,
         chw_index: '0',
@@ -91,6 +93,7 @@ describe('Test Contact Summary form', () => {
       chw_referrals: '',
       favorite_note: '',
       chw_count: '0',
+      my_repeat_count: '0',
     } });
   });
 });
