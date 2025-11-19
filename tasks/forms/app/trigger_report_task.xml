@@ -23,7 +23,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="trigger_report_task" version="20250214113611" prefix="J1!trigger_report_task!" delimiter="#">
+        <data id="trigger_report_task" version="20251119135508" prefix="J1!trigger_report_task!" delimiter="#">
           <inputs>
             <meta>
               <location>

@@ -12,14 +12,16 @@
             <value>The number is too low</value>
           </text>
           <text id="/data/page/my_num:jr:constraintMsg">
-            <value>
-              <output value=" /data/page/my_num_issue_msg "/></value>
+            <value><output value=" /data/page/my_num_issue_msg "/></value>
           </text>
           <text id="/data/page/my_num:label">
             <value>Enter a number from 2 to 4</value>
           </text>
           <text id="/data/page/my_num:hint">
             <value>See [this forum thread](https://forum.communityhealthtoolkit.org/t/how-to-list-multiple-constraint-messages-on-a-single-field-in-xlsform/960) for more context.</value>
+          </text>
+          <text id="/data/page/my_num_issue:label">
+            <value>Placeholder for calculating message</value>
           </text>
         </translation>
         <translation lang="fr">
@@ -30,8 +32,7 @@
             <value>Le nombre est trop faible</value>
           </text>
           <text id="/data/page/my_num:jr:constraintMsg">
-            <value>
-              <output value=" /data/page/my_num_issue_msg "/></value>
+            <value><output value=" /data/page/my_num_issue_msg "/></value>
           </text>
           <text id="/data/page/my_num:label">
             <value>Entrez un nombre de 2 à 4</value>
@@ -39,10 +40,13 @@
           <text id="/data/page/my_num:hint">
             <value>Voir [ce fil de discussion du forum](https://forum.communityhealthtoolkit.org/t/how-to-list-multiple-constraint-messages-on-a-single-field-in-xlsform/960) pour plus de contexte.</value>
           </text>
+          <text id="/data/page/my_num_issue:label">
+            <value>-</value>
+          </text>
         </translation>
       </itext>
       <instance>
-        <data id="dynamic_error_message" version="20250415081630" prefix="J1!dynamic_error_message!" delimiter="#">
+        <data id="dynamic_error_message" version="20251119134709" prefix="J1!dynamic_error_message!" delimiter="#">
           <page>
             <my_num/>
             <my_num_issue/>
@@ -80,6 +84,7 @@
         <hint ref="jr:itext('/data/page/my_num:hint')"/>
       </input>
       <select1 ref="/data/page/my_num_issue" appearance="hidden">
+        <label ref="jr:itext('/data/page/my_num_issue:label')"/>
         <itemset nodeset="instance('my_num_constraint_msg')/root/item">
           <value ref="name"/>
           <label ref="jr:itext(itextId)"/>

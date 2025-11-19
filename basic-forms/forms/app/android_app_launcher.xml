@@ -32,7 +32,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="android_app_launcher" version="20250213161449" prefix="J1!android_app_launcher!" delimiter="#">
+        <data id="android_app_launcher" version="20251119131838" prefix="J1!android_app_launcher!" delimiter="#">
           <intro/>
           <camera_image>
             <camera_app>
@@ -73,7 +73,6 @@
     <group appearance="field-list" ref="/data/camera_image">
       <label ref="jr:itext('/data/camera_image:label')"/>
       <group appearance="android-app-launcher" ref="/data/camera_image/camera_app">
-        <input ref="/data/camera_image/camera_app/action" appearance="hidden"></input>
         <group appearance="android-app-outputs" ref="/data/camera_image/camera_app/camera_app_outputs">
           <input ref="/data/camera_image/camera_app/camera_app_outputs/data" appearance="display-base64-image">
             <label ref="jr:itext('/data/camera_image/camera_app/camera_app_outputs/data:label')"/>
@@ -85,7 +84,6 @@
     <group appearance="field-list" ref="/data/qr_code">
       <label ref="jr:itext('/data/qr_code:label')"/>
       <group appearance="android-app-launcher" ref="/data/qr_code/qr_code_app">
-        <input ref="/data/qr_code/qr_code_app/action" appearance="hidden"></input>
         <group appearance="android-app-outputs" ref="/data/qr_code/qr_code_app/qr_code_app_outputs">
           <input ref="/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT">
             <label ref="jr:itext('/data/qr_code/qr_code_app/qr_code_app_outputs/SCAN_RESULT:label')"/>

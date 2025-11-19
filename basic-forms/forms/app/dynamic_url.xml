@@ -65,7 +65,7 @@ _(On a mobile device, this should open the message app with the number and messa
         </translation>
       </itext>
       <instance>
-        <data id="dynamic_url" version="20250213144412" prefix="J1!dynamic_url!" delimiter="#">
+        <data id="dynamic_url" version="20251119133404" prefix="J1!dynamic_url!" delimiter="#">
           <web_link>
             <intro/>
             <web_query/>
@@ -160,7 +160,6 @@ _(On a mobile device, this should open the message app with the number and messa
       <input ref="/data/app_link/app_query" appearance="select-contact">
         <label ref="jr:itext('/data/app_link/app_query:label')"/>
       </input>
-      <input ref="/data/app_link/name" appearance="hidden"></input>
       <input ref="/data/app_link/link">
         <label ref="jr:itext('/data/app_link/link:label')"/>
       </input>

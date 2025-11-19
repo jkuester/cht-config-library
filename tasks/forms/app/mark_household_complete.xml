@@ -14,7 +14,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="mark_household_complete" version="20250602154907" prefix="J1!mark_household_complete!" delimiter="#">
+        <data id="mark_household_complete" version="20251119135242" prefix="J1!mark_household_complete!" delimiter="#">
           <inputs>
             <meta>
               <location>
@@ -48,10 +48,7 @@
   </h:head>
   <h:body class="pages">
     <group ref="/data/inputs">
-      <group ref="/data/inputs/contact">
-        <input ref="/data/inputs/contact/_id"></input>
-        <input ref="/data/inputs/contact/name"></input>
-      </group>
+      <group ref="/data/inputs/contact"/>
     </group>
     <input ref="/data/submit">
       <label ref="jr:itext('/data/submit:label')"/>

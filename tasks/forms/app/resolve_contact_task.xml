@@ -22,7 +22,7 @@ Are you sure you want to resolve the task?</value>
         </translation>
       </itext>
       <instance>
-        <data id="resolve_contact_task" version="20250213195406" prefix="J1!resolve_contact_task!" delimiter="#">
+        <data id="resolve_contact_task" version="20251119135339" prefix="J1!resolve_contact_task!" delimiter="#">
           <inputs>
             <meta>
               <location>
@@ -66,16 +66,8 @@ Are you sure you want to resolve the task?</value>
   </h:head>
   <h:body class="pages">
     <group ref="/data/inputs">
-      <input ref="/data/inputs/source"></input>
-      <input ref="/data/inputs/source_id"></input>
-      <group ref="/data/inputs/contact">
-        <input ref="/data/inputs/contact/_id"></input>
-        <input ref="/data/inputs/contact/name"></input>
-      </group>
-      <input ref="/data/inputs/task_id"></input>
-      <group ref="/data/inputs/from_modify_content">
-        <input ref="/data/inputs/from_modify_content/event_id"></input>
-      </group>
+      <group ref="/data/inputs/contact"/>
+      <group ref="/data/inputs/from_modify_content"/>
     </group>
     <input ref="/data/submit">
       <label ref="jr:itext('/data/submit:label')"/>
