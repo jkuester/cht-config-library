@@ -22,7 +22,7 @@ Are you sure you want to resolve the task?</value>
         </translation>
       </itext>
       <instance>
-        <data id="resolve_contact_task" version="20251119135339" prefix="J1!resolve_contact_task!" delimiter="#">
+        <data id="resolve_contact_task" version="20260114093018" prefix="J1!resolve_contact_task!" delimiter="#">
           <inputs>
             <meta>
               <location>
