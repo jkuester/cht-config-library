@@ -33,7 +33,6 @@ jobs:
             "token_type": "Bearer",
             "expiry_date": "9999999999999"
           }' > google-drive/.gdrive.session.json
-      - run: sudo python -m pip install git+https://github.com/medic/pyxform.git@medic-conf-1.17#egg=pyxform-medic
       - run: sudo apt install -y xsltproc
       - run: sudo chmod 4755 /opt/google/chrome/chrome-sandbox
       - run: npm ci
