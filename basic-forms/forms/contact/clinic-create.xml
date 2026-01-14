@@ -1,18 +1,17 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Create Household (with repeated children)</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/data/clinic/info:label">
-            <value>This group for creating the place _must_ have the name of the contact type that is being created (e.g. `clinic`).</value>
+          <text id="/data/intro:label">
+            <value>This form demonstrates the ability to add additional contacts in a contact form in a repeat.
+
+With this form you can create a Household along with it's primary contact. In addition you can create multiple other persons as household members (e.g. children).</value>
           </text>
-          <text id="/data/clinic/name:label">
-            <value>Household name</value>
-          </text>
-          <text id="/data/clinic:label">
-            <value>Household</value>
+          <text id="/data/contact:label">
+            <value>Head of the Household</value>
           </text>
           <text id="/data/contact/info:label">
             <value>(This group for creating the primary contact _must_ be named `contact`.)</value>
@@ -20,13 +19,20 @@
           <text id="/data/contact/name:label">
             <value>Person name</value>
           </text>
-          <text id="/data/contact:label">
-            <value>Head of the Household</value>
+          <text id="/data/clinic:label">
+            <value>Household</value>
           </text>
-          <text id="/data/intro:label">
-            <value>This form demonstrates the ability to add additional contacts in a contact form in a repeat.
-
-With this form you can create a Household along with it's primary contact. In addition you can create multiple other persons as household members (e.g. children).</value>
+          <text id="/data/clinic/info:label">
+            <value>This group for creating the place _must_ have the name of the contact type that is being created (e.g. `clinic`).</value>
+          </text>
+          <text id="/data/clinic/name:label">
+            <value>Household name</value>
+          </text>
+          <text id="/data/repeat:label">
+            <value>Add household members</value>
+          </text>
+          <text id="/data/repeat/child:label">
+            <value>Household member</value>
           </text>
           <text id="/data/repeat/child/info:label">
             <value>This repeat is for adding additional contacts to the place. It _must_ be named `child` and _must_ have the `field-list` appearance.
@@ -36,16 +42,10 @@ It must be nested in a group named `repeat`.</value>
           <text id="/data/repeat/child/name:label">
             <value>Member Name</value>
           </text>
-          <text id="/data/repeat/child:label">
-            <value>Household member</value>
-          </text>
-          <text id="/data/repeat:label">
-            <value>Add household members</value>
-          </text>
         </translation>
       </itext>
       <instance>
-        <data id="contact:clinic:create" prefix="J1!contact:clinic:create!" delimiter="#" version="20250909130132">
+        <data id="contact:clinic:create" version="20260114092257" prefix="J1!contact:clinic:create!" delimiter="#">
           <inputs>
             <meta>
               <location>
@@ -136,7 +136,7 @@ It must be nested in a group named `repeat`.</value>
       <bind nodeset="/data/repeat/child/meta/created_by" type="string" calculate=" /data/user_name "/>
       <bind nodeset="/data/repeat/child/meta/created_by_person_uuid" type="string" calculate=" /data/user_contact_id "/>
       <bind nodeset="/data/repeat/child/meta/created_by_place_uuid" type="string" calculate=" /data/user_facility_id "/>
-      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
@@ -155,7 +155,6 @@ It must be nested in a group named `repeat`.</value>
       <input ref="/data/contact/info">
         <label ref="jr:itext('/data/contact/info:label')"/>
       </input>
-      <input appearance="hidden" ref="/data/contact/parent"/>
       <input ref="/data/contact/name">
         <label ref="jr:itext('/data/contact/name:label')"/>
       </input>
@@ -166,7 +165,6 @@ It must be nested in a group named `repeat`.</value>
       <input ref="/data/clinic/info">
         <label ref="jr:itext('/data/clinic/info:label')"/>
       </input>
-      <input appearance="hidden" ref="/data/clinic/parent"/>
       <input ref="/data/clinic/name">
         <label ref="jr:itext('/data/clinic/name:label')"/>
       </input>
@@ -180,7 +178,6 @@ It must be nested in a group named `repeat`.</value>
           <input ref="/data/repeat/child/info">
             <label ref="jr:itext('/data/repeat/child/info:label')"/>
           </input>
-          <input appearance="hidden" ref="/data/repeat/child/parent"/>
           <input ref="/data/repeat/child/name">
             <label ref="jr:itext('/data/repeat/child/name:label')"/>
           </input>

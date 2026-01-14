@@ -93,7 +93,7 @@ describe('Test Contact Summary form', () => {
       chw_referrals: '',
       favorite_note: '',
       chw_count: '0',
-      my_repeat_count: '0'
+      my_repeat_count: '0',
     } });
   });
 });

@@ -1,27 +1,27 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Inputs Contact</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/inputs_contact/hello:label">
-            <value>Hello: <output value=" /inputs_contact/contact_name "/></value>
-          </text>
-          <text id="/inputs_contact/inputs/contact/_id:label">
-            <value>Select a contact</value>
-          </text>
-          <text id="/inputs_contact/intro:label">
+          <text id="/data/intro:label">
             <value>As noted in [the documentation](https://docs.communityhealthtoolkit.org/apps/guides/forms/form-inputs/#inputs-data-for-contact-in-app-forms), when opening an app form from a contact's profile page, data for that contact will be available in the &lt;code&gt;inputs/contact&lt;/code&gt; group.
 
 However, when opening the same form from the "Reports" tab, this group will not be populated by default. A common pattern to handle this is to display/hide the actual &lt;code&gt;inputs&lt;/code&gt; group based on the value of &lt;code&gt;inputs/source&lt;/code&gt;. The source will be "contact" if the form was opened from a profile page. If it is opened from the "Reports" tab, the source will be set to its default value.
 
 Setting the top level &lt;code&gt;patient\_uuid&lt;/code&gt; (or &lt;code&gt;place\_uuid&lt;/code&gt;) field to the &lt;code&gt;inputs/contact/_id&lt;/code&gt; value will associate the report with the selected patient.</value>
           </text>
+          <text id="/data/inputs/contact/_id:label">
+            <value>Select a contact</value>
+          </text>
+          <text id="/data/hello:label">
+            <value> Hello: <output value=" /data/contact_name "/></value>
+          </text>
         </translation>
       </itext>
       <instance>
-        <inputs_contact id="inputs_contact" prefix="J1!inputs_contact!" delimiter="#" version="20250213161859">
+        <data id="inputs_contact" version="20260114092102" prefix="J1!inputs_contact!" delimiter="#">
           <intro/>
           <inputs>
             <meta>
@@ -44,35 +44,34 @@ Setting the top level &lt;code&gt;patient\_uuid&lt;/code&gt; (or &lt;code&gt;pla
           <meta tag="hidden">
             <instanceID/>
           </meta>
-        </inputs_contact>
+        </data>
       </instance>
       <instance id="contact-summary"/>
-      <bind nodeset="/inputs_contact/intro" readonly="true()" type="string"/>
-      <bind nodeset="/inputs_contact/inputs" relevant="./source = 'user'"/>
-      <bind nodeset="/inputs_contact/inputs/source" type="string"/>
-      <bind nodeset="/inputs_contact/inputs/contact/_id" type="string"/>
-      <bind nodeset="/inputs_contact/inputs/contact/name" type="string"/>
-      <bind nodeset="/inputs_contact/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
-      <bind nodeset="/inputs_contact/contact_name" type="string" calculate="../inputs/contact/name"/>
-      <bind nodeset="/inputs_contact/hello" readonly="true()" type="string"/>
-      <bind nodeset="/inputs_contact/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/intro" readonly="true()" type="string"/>
+      <bind nodeset="/data/inputs" relevant="./source = 'user'"/>
+      <bind nodeset="/data/inputs/source" type="string"/>
+      <bind nodeset="/data/inputs/contact/_id" type="string"/>
+      <bind nodeset="/data/inputs/contact/name" type="string"/>
+      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
+      <bind nodeset="/data/contact_name" type="string" calculate="../inputs/contact/name"/>
+      <bind nodeset="/data/hello" readonly="true()" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
-    <input ref="/inputs_contact/intro">
-      <label ref="jr:itext('/inputs_contact/intro:label')"/>
+    <input ref="/data/intro">
+      <label ref="jr:itext('/data/intro:label')"/>
     </input>
-    <group ref="/inputs_contact/inputs">
-      <input appearance="hidden" ref="/inputs_contact/inputs/source"/>
-      <group ref="/inputs_contact/inputs/contact">
-        <input appearance="select-contact" ref="/inputs_contact/inputs/contact/_id">
-          <label ref="jr:itext('/inputs_contact/inputs/contact/_id:label')"/>
+    <group ref="/data/inputs">
+      <group ref="/data/inputs/contact">
+        <input ref="/data/inputs/contact/_id" appearance="select-contact">
+          <label ref="jr:itext('/data/inputs/contact/_id:label')"/>
         </input>
-        <input appearance="hidden" ref="/inputs_contact/inputs/contact/name"/>
       </group>
     </group>
-    <input ref="/inputs_contact/hello">
-      <label ref="jr:itext('/inputs_contact/hello:label')"/>
+    <input ref="/data/hello">
+      <label ref="jr:itext('/data/hello:label')"/>
     </input>
   </h:body>
 </h:html>

@@ -1,37 +1,37 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>More options menu</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/ui_change_more_options/change_1/change_1_txt_1:label">
+          <text id="/data/intro/intro_txt_1:label">
+            <value>There have been some changes to your app, tap **Next** to review them now.</value>
+          </text>
+          <text id="/data/intro/intro_txt_2:label">
+            <value>If you do not have time to review now, close this window and you will be reminded again later.</value>
+          </text>
+          <text id="/data/change_1/change_1_txt_1:label">
             <value>**Edit** and **Delete** have been moved.</value>
           </text>
-          <text id="/ui_change_more_options/change_1/change_1_txt_2:label">
+          <text id="/data/change_1/change_1_txt_2:label">
             <value>In the old app, you accessed these at the bottom.</value>
             <value form="image">jr://images/old_actions.png</value>
           </text>
-          <text id="/ui_change_more_options/change_2/change_2_txt_1:label">
+          <text id="/data/change_2/change_2_txt_1:label">
             <value>In the new app, you will tap on the three dots "**⋮**"</value>
             <value form="image">jr://images/new_actions.png</value>
           </text>
-          <text id="/ui_change_more_options/ending/ending_txt_1:label">
+          <text id="/data/ending/ending_txt_1:label">
             <value>If you do not understand these changes, please contact your supervisor.</value>
           </text>
-          <text id="/ui_change_more_options/ending/ending_txt_2:label">
+          <text id="/data/ending/ending_txt_2:label">
             <value>When you're ready, tap on **Submit** to start using your app.</value>
-          </text>
-          <text id="/ui_change_more_options/intro/intro_txt_1:label">
-            <value>There have been some changes to your app, tap **Next** to review them now.</value>
-          </text>
-          <text id="/ui_change_more_options/intro/intro_txt_2:label">
-            <value>If you do not have time to review now, close this window and you will be reminded again later.</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <ui_change_more_options id="training:ui_change_more_options" prefix="J1!training:ui_change_more_options!" delimiter="#" version="20250213162515">
+        <data id="training:ui_change_more_options" version="20260114092518" prefix="J1!training:ui_change_more_options!" delimiter="#">
           <intro>
             <intro_txt_1/>
             <intro_txt_2/>
@@ -50,46 +50,46 @@
           <meta tag="hidden">
             <instanceID/>
           </meta>
-        </ui_change_more_options>
+        </data>
       </instance>
-      <bind nodeset="/ui_change_more_options/intro/intro_txt_1" readonly="true()" type="string"/>
-      <bind nodeset="/ui_change_more_options/intro/intro_txt_2" readonly="true()" type="string"/>
-      <bind nodeset="/ui_change_more_options/change_1/change_1_txt_1" readonly="true()" type="string"/>
-      <bind nodeset="/ui_change_more_options/change_1/change_1_txt_2" readonly="true()" type="string"/>
-      <bind nodeset="/ui_change_more_options/change_2/change_2_txt_1" readonly="true()" type="string"/>
-      <bind nodeset="/ui_change_more_options/ending/ending_txt_1" readonly="true()" type="string"/>
-      <bind nodeset="/ui_change_more_options/ending/ending_txt_2" readonly="true()" type="string"/>
-      <bind nodeset="/ui_change_more_options/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <bind nodeset="/data/intro/intro_txt_1" readonly="true()" type="string"/>
+      <bind nodeset="/data/intro/intro_txt_2" readonly="true()" type="string"/>
+      <bind nodeset="/data/change_1/change_1_txt_1" readonly="true()" type="string"/>
+      <bind nodeset="/data/change_1/change_1_txt_2" readonly="true()" type="string"/>
+      <bind nodeset="/data/change_2/change_2_txt_1" readonly="true()" type="string"/>
+      <bind nodeset="/data/ending/ending_txt_1" readonly="true()" type="string"/>
+      <bind nodeset="/data/ending/ending_txt_2" readonly="true()" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
-    <group appearance="field-list" ref="/ui_change_more_options/intro">
-      <input ref="/ui_change_more_options/intro/intro_txt_1">
-        <label ref="jr:itext('/ui_change_more_options/intro/intro_txt_1:label')"/>
+    <group appearance="field-list" ref="/data/intro">
+      <input ref="/data/intro/intro_txt_1">
+        <label ref="jr:itext('/data/intro/intro_txt_1:label')"/>
       </input>
-      <input ref="/ui_change_more_options/intro/intro_txt_2">
-        <label ref="jr:itext('/ui_change_more_options/intro/intro_txt_2:label')"/>
-      </input>
-    </group>
-    <group appearance="field-list" ref="/ui_change_more_options/change_1">
-      <input ref="/ui_change_more_options/change_1/change_1_txt_1">
-        <label ref="jr:itext('/ui_change_more_options/change_1/change_1_txt_1:label')"/>
-      </input>
-      <input ref="/ui_change_more_options/change_1/change_1_txt_2">
-        <label ref="jr:itext('/ui_change_more_options/change_1/change_1_txt_2:label')"/>
+      <input ref="/data/intro/intro_txt_2">
+        <label ref="jr:itext('/data/intro/intro_txt_2:label')"/>
       </input>
     </group>
-    <group appearance="field-list" ref="/ui_change_more_options/change_2">
-      <input ref="/ui_change_more_options/change_2/change_2_txt_1">
-        <label ref="jr:itext('/ui_change_more_options/change_2/change_2_txt_1:label')"/>
+    <group appearance="field-list" ref="/data/change_1">
+      <input ref="/data/change_1/change_1_txt_1">
+        <label ref="jr:itext('/data/change_1/change_1_txt_1:label')"/>
+      </input>
+      <input ref="/data/change_1/change_1_txt_2">
+        <label ref="jr:itext('/data/change_1/change_1_txt_2:label')"/>
       </input>
     </group>
-    <group appearance="field-list" ref="/ui_change_more_options/ending">
-      <input ref="/ui_change_more_options/ending/ending_txt_1">
-        <label ref="jr:itext('/ui_change_more_options/ending/ending_txt_1:label')"/>
+    <group appearance="field-list" ref="/data/change_2">
+      <input ref="/data/change_2/change_2_txt_1">
+        <label ref="jr:itext('/data/change_2/change_2_txt_1:label')"/>
       </input>
-      <input ref="/ui_change_more_options/ending/ending_txt_2">
-        <label ref="jr:itext('/ui_change_more_options/ending/ending_txt_2:label')"/>
+    </group>
+    <group appearance="field-list" ref="/data/ending">
+      <input ref="/data/ending/ending_txt_1">
+        <label ref="jr:itext('/data/ending/ending_txt_1:label')"/>
+      </input>
+      <input ref="/data/ending/ending_txt_2">
+        <label ref="jr:itext('/data/ending/ending_txt_2:label')"/>
       </input>
     </group>
   </h:body>

@@ -2,7 +2,7 @@
   "scripts": {
     "test": "npm run compile-forms && npm run compile-app-settings && npm run unittest",
     "compile-app-settings": "npx cht compile-app-settings",
-    "compile-forms": "npx cht convert-app-forms convert-training-forms",
+    "compile-forms": "npx cht convert-app-forms convert-training-forms convert-contact-forms",
     "unittest": "mocha 'test/**/*.spec.js' --timeout 20000"
   }
 }

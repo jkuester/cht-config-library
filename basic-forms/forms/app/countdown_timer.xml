@@ -1,29 +1,29 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Countdown Timer</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="en">
-          <text id="/countdown_timer/page/deprecated_timer:hint">
-            <value>The same timer, but using the deprecated config. This timer cannot be required.</value>
-          </text>
-          <text id="/countdown_timer/page/deprecated_timer:label">
-            <value>Deprecated Timer</value>
-          </text>
-          <text id="/countdown_timer/page/intro:label">
+          <text id="/data/page/intro:label">
             <value>This form demonstrates several usages of the custom CHT [Countdown Timer Widget](https://docs.communityhealthtoolkit.org/building/forms/app/#countdown-timer).</value>
           </text>
-          <text id="/countdown_timer/page/required_timer:hint">
+          <text id="/data/page/required_timer:label">
+            <value>Required Timer</value>
+          </text>
+          <text id="/data/page/required_timer:hint">
             <value>You must wait for this timer to complete before submitting the form</value>
           </text>
-          <text id="/countdown_timer/page/required_timer:label">
-            <value>Required Timer</value>
+          <text id="/data/page/deprecated_timer:label">
+            <value>Deprecated Timer</value>
+          </text>
+          <text id="/data/page/deprecated_timer:hint">
+            <value>The same timer, but using the deprecated config. This timer cannot be required.</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <countdown_timer id="countdown_timer" prefix="J1!countdown_timer!" delimiter="#" version="20250422111649">
+        <data id="countdown_timer" version="20260114091947" prefix="J1!countdown_timer!" delimiter="#">
           <page>
             <intro/>
             <required_timer cht:duration="15"/>
@@ -32,27 +32,28 @@
           <meta tag="hidden">
             <instanceID/>
           </meta>
-        </countdown_timer>
+        </data>
       </instance>
       <instance id="contact-summary"/>
-      <bind nodeset="/countdown_timer/page/intro" readonly="true()" type="string"/>
-      <bind nodeset="/countdown_timer/page/required_timer" type="string" required="true()"/>
-      <bind nodeset="/countdown_timer/page/deprecated_timer" readonly="true()" type="string"/>
-      <bind nodeset="/countdown_timer/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/page/intro" readonly="true()" type="string"/>
+      <bind nodeset="/data/page/required_timer" type="string" required="true()"/>
+      <bind nodeset="/data/page/deprecated_timer" readonly="true()" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
-    <group appearance="field-list" ref="/countdown_timer/page">
-      <input ref="/countdown_timer/page/intro">
-        <label ref="jr:itext('/countdown_timer/page/intro:label')"/>
+    <group appearance="field-list" ref="/data/page">
+      <input ref="/data/page/intro">
+        <label ref="jr:itext('/data/page/intro:label')"/>
       </input>
-      <trigger appearance="countdown-timer" ref="/countdown_timer/page/required_timer">
-        <label ref="jr:itext('/countdown_timer/page/required_timer:label')"/>
-        <hint ref="jr:itext('/countdown_timer/page/required_timer:hint')"/>
+      <trigger ref="/data/page/required_timer" appearance="countdown-timer">
+        <label ref="jr:itext('/data/page/required_timer:label')"/>
+        <hint ref="jr:itext('/data/page/required_timer:hint')"/>
       </trigger>
-      <input appearance="countdown-timer" ref="/countdown_timer/page/deprecated_timer">
-        <label ref="jr:itext('/countdown_timer/page/deprecated_timer:label')"/>
-        <hint ref="jr:itext('/countdown_timer/page/deprecated_timer:hint')"/>
+      <input ref="/data/page/deprecated_timer" appearance="countdown-timer">
+        <label ref="jr:itext('/data/page/deprecated_timer:label')"/>
+        <hint ref="jr:itext('/data/page/deprecated_timer:hint')"/>
       </input>
     </group>
   </h:body>

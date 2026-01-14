@@ -1,26 +1,26 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Mute Contact</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/mute_contact/inputs/contact/_id:label">
-            <value>Which contact do you want to mute?</value>
-          </text>
-          <text id="/mute_contact/inputs/contact:label">
-            <value>Contact</value>
-          </text>
-          <text id="/mute_contact/inputs/source:label">
+          <text id="/data/inputs/source:label">
             <value>Source</value>
           </text>
-          <text id="/mute_contact/submit:label">
+          <text id="/data/inputs/contact:label">
+            <value>Contact</value>
+          </text>
+          <text id="/data/inputs/contact/_id:label">
+            <value>Which contact do you want to mute?</value>
+          </text>
+          <text id="/data/submit:label">
             <value>Are you sure you want to mute this contact?</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <mute_contact id="mute_contact" prefix="J1!mute_contact!" delimiter="#" version="20250214130942">
+        <data id="mute_contact" version="20260114092916" prefix="J1!mute_contact!" delimiter="#">
           <inputs>
             <meta>
               <location>
@@ -40,31 +40,32 @@
           <meta tag="hidden">
             <instanceID/>
           </meta>
-        </mute_contact>
+        </data>
       </instance>
       <instance id="contact-summary"/>
-      <bind nodeset="/mute_contact/inputs" relevant="./source = 'user'"/>
-      <bind nodeset="/mute_contact/inputs/source" type="string"/>
-      <bind nodeset="/mute_contact/inputs/contact/_id" type="string" required="true()"/>
-      <bind nodeset="/mute_contact/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
-      <bind nodeset="/mute_contact/submit" readonly="true()" type="string"/>
-      <bind nodeset="/mute_contact/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/inputs" relevant="./source = 'user'"/>
+      <bind nodeset="/data/inputs/source" type="string"/>
+      <bind nodeset="/data/inputs/contact/_id" type="string" required="true()"/>
+      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
+      <bind nodeset="/data/submit" readonly="true()" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
-    <group appearance="field-list" ref="/mute_contact/inputs">
-      <input appearance="hidden" ref="/mute_contact/inputs/source">
-        <label ref="jr:itext('/mute_contact/inputs/source:label')"/>
+    <group appearance="field-list" ref="/data/inputs">
+      <input ref="/data/inputs/source" appearance="hidden">
+        <label ref="jr:itext('/data/inputs/source:label')"/>
       </input>
-      <group ref="/mute_contact/inputs/contact">
-        <label ref="jr:itext('/mute_contact/inputs/contact:label')"/>
-        <input appearance="select-contact" ref="/mute_contact/inputs/contact/_id">
-          <label ref="jr:itext('/mute_contact/inputs/contact/_id:label')"/>
+      <group ref="/data/inputs/contact">
+        <label ref="jr:itext('/data/inputs/contact:label')"/>
+        <input ref="/data/inputs/contact/_id" appearance="select-contact">
+          <label ref="jr:itext('/data/inputs/contact/_id:label')"/>
         </input>
       </group>
     </group>
-    <input ref="/mute_contact/submit">
-      <label ref="jr:itext('/mute_contact/submit:label')"/>
+    <input ref="/data/submit">
+      <label ref="jr:itext('/data/submit:label')"/>
     </input>
   </h:body>
 </h:html>

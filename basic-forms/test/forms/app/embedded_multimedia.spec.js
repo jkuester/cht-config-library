@@ -9,7 +9,7 @@ describe('Embedded Multimedia form', () => {
   it('submits form successfully', async () => {
     const {
       errors,
-      report: { fields },
+      report,
       additionalDocs
     } = await harness.fillForm(
       form,
@@ -24,7 +24,13 @@ describe('Embedded Multimedia form', () => {
     const base64ImageFile = (await readFile(Path.resolve(__dirname, 'base64_image.txt')))
       .toString()
       .trim();
-    expect(fields).excludingEvery('meta').to.deep.equal({
+    expect(report._attachments).to.deep.equal({
+      'user-file/embedded_multimedia/notes_with_media/base64_note': {
+        data: base64ImageFile,
+        content_type: 'image/png',
+      },
+    });
+    expect(report.fields).excludingEvery('meta').to.deep.equal({
       questions_with_media: {
         image_question: 'image',
         audio_question: 'audio',
@@ -45,7 +51,7 @@ describe('Embedded Multimedia form', () => {
       },
       notes_with_media: {
         image_note: '',
-        base64_note: base64ImageFile,
+        base64_note: '',
         fa_note: '',
         svg_note: '',
         inline_image_note: '',

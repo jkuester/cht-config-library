@@ -1,28 +1,28 @@
 <?xml version="1.0"?>
-<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
     <h:title>Resolve Contact Task</h:title>
-    <model>
+    <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
-          <text id="/resolve_contact_task/submit:hint">
-            <value>Submitting this form will resolve the associated task</value>
-          </text>
-          <text id="/resolve_contact_task/submit:label">
-            <value>This task was triggered with the following input data:
+          <text id="/data/submit:label">
+            <value> This task was triggered with the following input data:
 
-- Task Id: &lt;code&gt;<output value=" /resolve_contact_task/inputs/task_id "/>&lt;/code&gt;
-- Contact: &lt;a target=&quot;_self&quot; href=&quot;#&quot; rel=&quot;noopener&quot; class=&quot;dynamic-url&quot;&gt; <output value=" /resolve_contact_task/inputs/contact/name "/> &lt;div class=&quot;url hidden&quot;&gt;/#/contacts/<output value=" /resolve_contact_task/patient_uuid "/>&lt;/div&gt; &lt;/a&gt;
-- Source: &lt;code&gt;<output value=" /resolve_contact_task/inputs/source "/>&lt;/code&gt;
-- Source Id: &lt;a target=&quot;_self&quot; href=&quot;#&quot; rel=&quot;noopener&quot; class=&quot;dynamic-url&quot;&gt; <output value=" /resolve_contact_task/inputs/source_id "/> &lt;div class=&quot;url hidden&quot;&gt;/#/contacts/<output value=" /resolve_contact_task/inputs/source_id "/>&lt;/div&gt; &lt;/a&gt; 
-- Event Id: &lt;code&gt;<output value=" /resolve_contact_task/inputs/from_modify_content/event_id "/>&lt;/code&gt;
+- Task Id: &lt;code&gt;<output value=" /data/inputs/task_id "/>&lt;/code&gt;
+- Contact: &lt;a target="_self" href="#" rel="noopener" class="dynamic-url"&gt; <output value=" /data/inputs/contact/name "/> &lt;div class="url hidden"&gt;/#/contacts/<output value=" /data/patient_uuid "/>&lt;/div&gt; &lt;/a&gt;
+- Source: &lt;code&gt;<output value=" /data/inputs/source "/>&lt;/code&gt;
+- Source Id: &lt;a target="_self" href="#" rel="noopener" class="dynamic-url"&gt; <output value=" /data/inputs/source_id "/> &lt;div class="url hidden"&gt;/#/contacts/<output value=" /data/inputs/source_id "/>&lt;/div&gt; &lt;/a&gt; 
+- Event Id: &lt;code&gt;<output value=" /data/inputs/from_modify_content/event_id "/>&lt;/code&gt;
 
 Are you sure you want to resolve the task?</value>
+          </text>
+          <text id="/data/submit:hint">
+            <value>Submitting this form will resolve the associated task</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <resolve_contact_task id="resolve_contact_task" prefix="J1!resolve_contact_task!" delimiter="#" version="20250213195406">
+        <data id="resolve_contact_task" version="20260114093018" prefix="J1!resolve_contact_task!" delimiter="#">
           <inputs>
             <meta>
               <location>
@@ -48,37 +48,30 @@ Are you sure you want to resolve the task?</value>
           <meta tag="hidden">
             <instanceID/>
           </meta>
-        </resolve_contact_task>
+        </data>
       </instance>
       <instance id="contact-summary"/>
-      <bind nodeset="/resolve_contact_task/inputs" relevant="false()"/>
-      <bind nodeset="/resolve_contact_task/inputs/source" type="string"/>
-      <bind nodeset="/resolve_contact_task/inputs/source_id" type="string"/>
-      <bind nodeset="/resolve_contact_task/inputs/contact/_id" type="string"/>
-      <bind nodeset="/resolve_contact_task/inputs/contact/name" type="string"/>
-      <bind nodeset="/resolve_contact_task/inputs/task_id" type="string"/>
-      <bind nodeset="/resolve_contact_task/inputs/from_modify_content/event_id" type="string"/>
-      <bind nodeset="/resolve_contact_task/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
-      <bind nodeset="/resolve_contact_task/submit" readonly="true()" type="string"/>
-      <bind nodeset="/resolve_contact_task/meta/instanceID" type="string" readonly="true()" calculate="concat('uuid:', uuid())"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/inputs" relevant="false()"/>
+      <bind nodeset="/data/inputs/source" type="string"/>
+      <bind nodeset="/data/inputs/source_id" type="string"/>
+      <bind nodeset="/data/inputs/contact/_id" type="string"/>
+      <bind nodeset="/data/inputs/contact/name" type="string"/>
+      <bind nodeset="/data/inputs/task_id" type="string"/>
+      <bind nodeset="/data/inputs/from_modify_content/event_id" type="string"/>
+      <bind nodeset="/data/patient_uuid" type="string" calculate="../inputs/contact/_id"/>
+      <bind nodeset="/data/submit" readonly="true()" type="string"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
-    <group ref="/resolve_contact_task/inputs">
-      <input ref="/resolve_contact_task/inputs/source"/>
-      <input ref="/resolve_contact_task/inputs/source_id"/>
-      <group ref="/resolve_contact_task/inputs/contact">
-        <input ref="/resolve_contact_task/inputs/contact/_id"/>
-        <input ref="/resolve_contact_task/inputs/contact/name"/>
-      </group>
-      <input ref="/resolve_contact_task/inputs/task_id"/>
-      <group ref="/resolve_contact_task/inputs/from_modify_content">
-        <input ref="/resolve_contact_task/inputs/from_modify_content/event_id"/>
-      </group>
+    <group ref="/data/inputs">
+      <group ref="/data/inputs/contact"/>
+      <group ref="/data/inputs/from_modify_content"/>
     </group>
-    <input ref="/resolve_contact_task/submit">
-      <label ref="jr:itext('/resolve_contact_task/submit:label')"/>
-      <hint ref="jr:itext('/resolve_contact_task/submit:hint')"/>
+    <input ref="/data/submit">
+      <label ref="jr:itext('/data/submit:label')"/>
+      <hint ref="jr:itext('/data/submit:hint')"/>
     </input>
   </h:body>
 </h:html>
