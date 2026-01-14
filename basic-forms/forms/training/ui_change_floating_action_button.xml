@@ -32,7 +32,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="training:new_ui_change_floating_action_button" version="20251119134144" prefix="J1!training:new_ui_change_floating_action_button!" delimiter="#">
+        <data id="training:ui_change_floating_action_button" version="20260114090126" prefix="J1!training:ui_change_floating_action_button!" delimiter="#">
           <intro>
             <intro_txt_1/>
             <intro_txt_2/>
