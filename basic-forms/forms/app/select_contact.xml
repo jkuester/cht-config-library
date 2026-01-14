@@ -38,7 +38,7 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
         </translation>
       </itext>
       <instance>
-        <data id="select_contact" version="20251119133851" prefix="J1!select_contact!" delimiter="#">
+        <data id="select_contact" version="20260114092121" prefix="J1!select_contact!" delimiter="#">
           <intro/>
           <inputs>
             <meta>
