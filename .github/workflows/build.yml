@@ -33,7 +33,9 @@ jobs:
             "token_type": "Bearer",
             "expiry_date": "9999999999999"
           }' > google-drive/.gdrive.session.json
-      - run: sudo apt install -y xsltproc
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y xsltproc
       - run: sudo chmod 4755 /opt/google/chrome/chrome-sandbox
       - run: npm ci
       - run: npm run lint
