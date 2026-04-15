@@ -13,7 +13,7 @@ the ODK team has provided a [XLSForm Template](https://forum.getodk.org/t/odk-xl
 
 ### Repeated Child Contacts
 
-The `clinic-create` form demonstrates how to create a contact with repeated child contacts.
+The `clinic-create` and `clinic-edit` forms demonstrate how to create repeated child contacts (in addition to the primary child contact) when creating/editing a place contact. (Note that it is not possible to _edit_ existing child contacts when editing a place, but you can _create_ additional new ones.)
 
 ## Training Cards
 
