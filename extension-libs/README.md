@@ -6,6 +6,10 @@
 
 This is a basic extension library intended for use in a form (e.g. the `calculate_average` app form).  It simply returns the average of two given numbers.
 
+## `starts-with.js`
+
+This is a basic extension library that can be used in a form or in other contexts (such as the form/duplicate_check `expression`s). The `person-create` contact form is configured to only be available to users whose contact name starts with `test`.  Additionally, the duplicate check performed when completing that form uses the extension library to look for any siblings that also have a name that starts with `test`.
+
 ## `child-count.js`
 
 This extension library lazy-loads the number of child contacts (aka direct descendants) of the current contact into the related contact summary field displayed on the contact's profile page.  

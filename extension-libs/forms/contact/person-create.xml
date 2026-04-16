@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+  <h:head>
+    <h:title>Create TEST Person</h:title>
+    <model odk:xforms-version="1.0.0">
+      <itext>
+        <translation lang="English (en)">
+          <text id="/data/intro:label">
+            <value>This form demonstrates a contact form that is conditionally available based on the result of an extension-lib function. Only users associated with a contact whose name starts with "test" will be able to access this form.
+
+Additionally, this form has a custom duplicate check expression. What a new contact's name starts with "test" and another sibling person already exists whose name starts with "test" the new contact will be flagged as a duplicate.</value>
+          </text>
+          <text id="/data/person:label">
+            <value>Test Person</value>
+          </text>
+          <text id="/data/person/name:label">
+            <value>Person Name</value>
+          </text>
+          <text id="/data/person/name:hint">
+            <value>Enter a name that starts with "test" (in any case) to trigger the duplicate checking.</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <data id="contact:person:create" version="20260415172206" prefix="J1!contact:person:create!" delimiter="#">
+          <inputs>
+            <meta>
+              <location>
+                <lat/>
+                <long/>
+                <error/>
+                <message/>
+              </location>
+            </meta>
+            <user>
+              <contact_id/>
+              <facility_id/>
+              <name/>
+            </user>
+          </inputs>
+          <person>
+            <parent>PARENT</parent>
+            <type/>
+            <name/>
+            <meta tag="hidden">
+              <created_by/>
+              <created_by_person_uuid/>
+              <created_by_place_uuid/>
+            </meta>
+          </person>
+          <user_name/>
+          <user_contact_id/>
+          <user_facility_id/>
+          <intro/>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </data>
+      </instance>
+      <bind nodeset="/data/inputs" relevant="false()"/>
+      <bind nodeset="/data/inputs/user/contact_id" type="string"/>
+      <bind nodeset="/data/inputs/user/facility_id" type="string"/>
+      <bind nodeset="/data/inputs/user/name" type="string"/>
+      <bind nodeset="/data/user_name" type="string" calculate="../inputs/user/name"/>
+      <bind nodeset="/data/user_contact_id" type="string" calculate="../inputs/user/contact_id"/>
+      <bind nodeset="/data/user_facility_id" type="string" calculate="../inputs/user/facility_id"/>
+      <bind nodeset="/data/intro" readonly="true()" type="string"/>
+      <bind nodeset="/data/person/parent" type="string"/>
+      <bind nodeset="/data/person/type" type="string" calculate="&quot;person&quot;"/>
+      <bind nodeset="/data/person/name" type="string" required="true()"/>
+      <bind nodeset="/data/person/meta/created_by" type="string" calculate=" /data/user_name "/>
+      <bind nodeset="/data/person/meta/created_by_person_uuid" type="string" calculate=" /data/user_contact_id "/>
+      <bind nodeset="/data/person/meta/created_by_place_uuid" type="string" calculate=" /data/user_facility_id "/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <group ref="/data/inputs">
+      <group ref="/data/inputs/user">
+        <input ref="/data/inputs/user/contact_id"/>
+        <input ref="/data/inputs/user/facility_id"/>
+        <input ref="/data/inputs/user/name"/>
+      </group>
+    </group>
+    <input ref="/data/intro">
+      <label ref="jr:itext('/data/intro:label')"/>
+    </input>
+    <group appearance="field-list" ref="/data/person">
+      <label ref="jr:itext('/data/person:label')"/>
+      <input ref="/data/person/name">
+        <label ref="jr:itext('/data/person/name:label')"/>
+        <hint ref="jr:itext('/data/person/name:hint')"/>
+      </input>
+      <group appearance="hidden" ref="/data/person/meta"/>
+    </group>
+  </h:body>
+</h:html>
