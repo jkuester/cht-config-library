@@ -1,0 +1,8 @@
+{
+    "context": {
+        "expression": "extensionLib('starts-with.js', 'test', user.name)"
+    },
+    "duplicate_check": {
+        "expression": "extensionLib('starts-with.js', 'test', current.name) && extensionLib('starts-with.js', 'test', existing.name)"
+    }
+}
