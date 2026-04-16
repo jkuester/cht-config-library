@@ -34,7 +34,7 @@ describe('Android App Launcher form', () => {
       camera_image: {
         camera_app: {
           action: 'android.media.action.IMAGE_CAPTURE',
-          camera_app_outputs: { data: base64ImageFile }
+          camera_app_outputs: { data: '' } // Base64 image data converted to attachment for binary types
         }
       },
       qr_code: {
