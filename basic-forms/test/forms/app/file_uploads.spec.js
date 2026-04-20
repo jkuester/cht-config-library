@@ -1,9 +1,9 @@
 const { expect } = require('chai');
 const { harness } = require('../../../../util/test-harness');
 
-const form = 'repeated_file_input';
+const form = 'file_uploads';
 
-describe('Repeated File Input form', () => {
+describe('File Uploads form', () => {
   it('submits form successfully', async () => {
     const {
       errors,
@@ -19,7 +19,9 @@ describe('Repeated File Input form', () => {
     expect(fields).excludingEvery('meta').to.deep.equal({
       page: {
         intro: '',
-        image: ''
+        image: '',
+        audio: '',
+        video: ''
       }
     });
   });

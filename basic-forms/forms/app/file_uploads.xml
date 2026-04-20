@@ -1,15 +1,21 @@
 <?xml version="1.0"?>
 <h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
-    <h:title>Repeated File Input</h:title>
+    <h:title>File Uploads</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="English (en)">
           <text id="/data/page/intro:label">
-            <value>This form demonstrates including file inputs within a `repeat`.</value>
+            <value>This form demonstrates various file inputs including within a `repeat`.</value>
           </text>
           <text id="/data/page/image:label">
             <value>Upload single image</value>
+          </text>
+          <text id="/data/page/audio:label">
+            <value>Upload audio</value>
+          </text>
+          <text id="/data/page/video:label">
+            <value>Upload video</value>
           </text>
           <text id="/data/page/repeat/repeated_image:label">
             <value>Upload repeated image</value>
@@ -17,10 +23,12 @@
         </translation>
       </itext>
       <instance>
-        <data id="repeated_file_input" version="20260415143601" prefix="J1!repeated_file_input!" delimiter="#">
+        <data id="file_uploads" version="20260420135201" prefix="J1!file_uploads!" delimiter="#">
           <page>
             <intro/>
             <image/>
+            <audio/>
+            <video/>
             <repeat jr:template="">
               <repeated_image/>
             </repeat>
@@ -34,6 +42,8 @@
       <instance id="user-contact-summary"/>
       <bind nodeset="/data/page/intro" readonly="true()" type="string"/>
       <bind nodeset="/data/page/image" type="binary"/>
+      <bind nodeset="/data/page/audio" type="binary"/>
+      <bind nodeset="/data/page/video" type="binary"/>
       <bind nodeset="/data/page/repeat/repeated_image" type="binary"/>
       <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
@@ -45,6 +55,12 @@
       </input>
       <upload ref="/data/page/image" mediatype="image/*">
         <label ref="jr:itext('/data/page/image:label')"/>
+      </upload>
+      <upload ref="/data/page/audio" mediatype="audio/*">
+        <label ref="jr:itext('/data/page/audio:label')"/>
+      </upload>
+      <upload ref="/data/page/video" mediatype="video/*">
+        <label ref="jr:itext('/data/page/video:label')"/>
       </upload>
       <group ref="/data/page/repeat">
         <label/>
