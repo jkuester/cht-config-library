@@ -6,7 +6,18 @@ const ALL_CHWS = [
 
 module.exports = {
   fields: [],
-  cards: [],
+  cards: [
+    {
+      label: 'Always Shown',
+      appliesIf: true,
+      fields: [
+        {
+          label: 'Description',
+          value: 'This contact summary card is shown for all contacts.',
+        },
+      ],
+    },
+  ],
   context: {
     // Data nested in objects can be parsed in forms
     favorite_chw: ALL_CHWS[0],
