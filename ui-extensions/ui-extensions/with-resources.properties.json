@@ -1,0 +1,6 @@
+{
+  "type": "sidebar_tab",
+  "title": "ui-extension.with-resources.title",
+  "resource_icon": "icon-health-center",
+  "accent_color": "#9BBE6F"
+}

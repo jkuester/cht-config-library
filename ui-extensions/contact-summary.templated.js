@@ -1,5 +1,7 @@
 module.exports = {
   fields: [],
   cards: [],
-  context: {}
+  context: {
+    contact_id: contact._id
+  },
 };
