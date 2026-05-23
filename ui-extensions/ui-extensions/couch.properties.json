@@ -1,0 +1,7 @@
+{
+  "type": "sidebar_tab",
+  "title": "CouchDB",
+  "accent_color": "#e42528",
+  "resource_icon": "icon-couch",
+  "roles": ["admin"]
+}
