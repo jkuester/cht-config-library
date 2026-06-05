@@ -1,5 +1,5 @@
 {
-  "type": "sidebar_tab",
+  "extension_type": "sidebar_tab",
   "title": "CouchDB",
   "accent_color": "#e42528",
   "resource_icon": "icon-couch",
