@@ -4,7 +4,7 @@
     <h:title>Android App Launcher</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/intro:label">
             <value>This form demonstrates how to accept form input from other Android apps. See the [CHT Docs](https://docs.communityhealthtoolkit.org/apps/reference/forms/app/#android-app-launcher) for more information.</value>
           </text>
@@ -38,7 +38,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="android_app_launcher" version="20260416171218" prefix="J1!android_app_launcher!" delimiter="#">
+        <data id="android_app_launcher" version="20260618172138" prefix="J1!android_app_launcher!" delimiter="#">
           <intro/>
           <camera_image>
             <camera_app>

@@ -1,7 +1,5 @@
 const { expect } = require('chai');
 const { harness } = require('../../../../util/test-harness');
-const { readFile} = require('fs').promises;
-const Path = require('path');
 
 const form = 'android_app_launcher';
 
@@ -10,9 +8,8 @@ describe('Android App Launcher form', () => {
     // Cannot fully test android app functionality here (since we are not running in an Android environment).
     // Instead, we inject values for the data that would be populated by the Android intents (allowing for testing any
     // down-stream form logic).
-    const base64ImageFile = (await readFile(Path.resolve(__dirname, 'base64_image.txt')))
-      .toString()
-      .trim();
+    const base64ImageFile =
+      'iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mP8z8BQz0AEYBxVSF+FABJADveWkH6oAAAAAElFTkSuQmCC';
     const {
       errors,
       report: { fields },
