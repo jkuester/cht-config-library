@@ -4,7 +4,7 @@
     <h:title>Create TEST Person</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/intro:label">
             <value>This form demonstrates a contact form that is conditionally available based on the result of an extension-lib function. Only users associated with a contact whose name starts with "test" will be able to access this form.
 
@@ -22,7 +22,7 @@ Additionally, this form has a custom duplicate check expression. What a new cont
         </translation>
       </itext>
       <instance>
-        <data id="contact:person:create" version="20260722162907" prefix="J1!contact:person:create!" delimiter="#">
+        <data id="contact:person:create" version="20260722164248" prefix="J1!contact:person:create!" delimiter="#">
           <inputs>
             <meta>
               <location>

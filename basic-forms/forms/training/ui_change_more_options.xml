@@ -4,7 +4,7 @@
     <h:title>More options menu</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/intro/intro_txt_1:label">
             <value>There have been some changes to your app, tap **Next** to review them now.</value>
           </text>
@@ -31,7 +31,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="training:ui_change_more_options" version="20260114092518" prefix="J1!training:ui_change_more_options!" delimiter="#">
+        <data id="training:ui_change_more_options" version="20260722214108" prefix="J1!training:ui_change_more_options!" delimiter="#">
           <intro>
             <intro_txt_1/>
             <intro_txt_2/>

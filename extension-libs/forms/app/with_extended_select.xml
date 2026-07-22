@@ -4,7 +4,7 @@
     <h:title>With Extended Select</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/page/select_0:label">
             <value>First Select</value>
           </text>
@@ -14,7 +14,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="with_extended_select" version="20260722212759" prefix="J1!with_extended_select!" delimiter="#">
+        <data id="with_extended_select" version="20260722164231" prefix="J1!with_extended_select!" delimiter="#">
           <page>
             <select_0/>
             <select_1/>

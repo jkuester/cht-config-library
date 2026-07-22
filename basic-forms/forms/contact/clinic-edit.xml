@@ -4,7 +4,7 @@
     <h:title>Edit Household (with repeated children)</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/intro:label">
             <value>This form demonstrates the ability to add additional contacts in a contact form in a repeat.
 
@@ -47,7 +47,7 @@ It must be nested in a group named `repeat`.</value>
         </translation>
       </itext>
       <instance>
-        <data id="contact:clinic:edit" version="20260722162054" prefix="J1!contact:clinic:edit!" delimiter="#">
+        <data id="contact:clinic:edit" version="20260722163959" prefix="J1!contact:clinic:edit!" delimiter="#">
           <inputs>
             <meta>
               <location>

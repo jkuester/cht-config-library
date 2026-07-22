@@ -4,14 +4,14 @@
     <h:title>Add Case Event</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/case_id:label">
             <value>Enter your Case Id</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <data id="case_event" version="20260722162416" prefix="J1!case_event!" delimiter="#">
+        <data id="case_event" version="20260722164137" prefix="J1!case_event!" delimiter="#">
           <case_id/>
           <meta tag="hidden">
             <instanceID/>

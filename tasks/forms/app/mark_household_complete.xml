@@ -4,7 +4,7 @@
     <h:title>Done adding members to household</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/submit:label">
             <value> Are you sure you are finished adding members to <output value=" /data/inputs/contact/name "/>?</value>
           </text>
@@ -14,7 +14,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="mark_household_complete" version="20260722213232" prefix="J1!mark_household_complete!" delimiter="#">
+        <data id="mark_household_complete" version="20260722164329" prefix="J1!mark_household_complete!" delimiter="#">
           <inputs>
             <meta>
               <location>

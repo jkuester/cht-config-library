@@ -4,7 +4,7 @@
     <h:title>Trigger Report Task</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/inputs/source:label">
             <value>Source</value>
           </text>
@@ -23,7 +23,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="trigger_report_task" version="20260722213232" prefix="J1!trigger_report_task!" delimiter="#">
+        <data id="trigger_report_task" version="20260722164459" prefix="J1!trigger_report_task!" delimiter="#">
           <inputs>
             <meta>
               <location>
