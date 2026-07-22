@@ -4,7 +4,7 @@
     <h:title>Calculate Average</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/page/first:label">
             <value>First Number</value>
           </text>
@@ -17,7 +17,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="calculate_average" version="20260114092819" prefix="J1!calculate_average!" delimiter="#">
+        <data id="calculate_average" version="20260722164225" prefix="J1!calculate_average!" delimiter="#">
           <page>
             <first/>
             <second/>

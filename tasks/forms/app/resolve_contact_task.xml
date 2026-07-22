@@ -4,7 +4,7 @@
     <h:title>Resolve Contact Task</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/submit:label">
             <value> This task was triggered with the following input data:
 
@@ -22,7 +22,7 @@ Are you sure you want to resolve the task?</value>
         </translation>
       </itext>
       <instance>
-        <data id="resolve_contact_task" version="20260114093018" prefix="J1!resolve_contact_task!" delimiter="#">
+        <data id="resolve_contact_task" version="20260722164346" prefix="J1!resolve_contact_task!" delimiter="#">
           <inputs>
             <meta>
               <location>

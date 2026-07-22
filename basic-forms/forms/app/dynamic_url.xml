@@ -4,7 +4,7 @@
     <h:title>Dynamic URL</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/web_link:label">
             <value>Dynamic web link</value>
           </text>
@@ -65,7 +65,7 @@ _(On a mobile device, this should open the message app with the number and messa
         </translation>
       </itext>
       <instance>
-        <data id="dynamic_url" version="20260114092018" prefix="J1!dynamic_url!" delimiter="#">
+        <data id="dynamic_url" version="20260618172410" prefix="J1!dynamic_url!" delimiter="#">
           <web_link>
             <intro/>
             <web_query/>

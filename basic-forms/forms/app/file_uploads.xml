@@ -4,7 +4,7 @@
     <h:title>File Uploads</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/page/intro:label">
             <value>This form demonstrates various file inputs including within a `repeat`.</value>
           </text>
@@ -23,7 +23,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="file_uploads" version="20260420135201" prefix="J1!file_uploads!" delimiter="#">
+        <data id="file_uploads" version="20260618172644" prefix="J1!file_uploads!" delimiter="#">
           <page>
             <intro/>
             <image/>

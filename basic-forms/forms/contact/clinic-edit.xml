@@ -1,20 +1,22 @@
 <?xml version="1.0"?>
 <h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
-    <h:title>Create Household (with repeated children)</h:title>
+    <h:title>Edit Household (with repeated children)</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/intro:label">
             <value>This form demonstrates the ability to add additional contacts in a contact form in a repeat.
 
 With this form you can create a Household along with it's primary contact. In addition you can create multiple other persons as household members (e.g. children).</value>
           </text>
           <text id="/data/contact:label">
-            <value>Head of the Household</value>
+            <value>New Head of the Household</value>
           </text>
           <text id="/data/contact/info:label">
-            <value>(This group for creating the primary contact _must_ be named `contact`.)</value>
+            <value>(This group for creating the primary contact _must_ be named `contact`.)
+
+Note that this adds an additional person contact to the household and makes it the new primary contact.</value>
           </text>
           <text id="/data/contact/name:label">
             <value>Person name</value>
@@ -45,7 +47,7 @@ It must be nested in a group named `repeat`.</value>
         </translation>
       </itext>
       <instance>
-        <data id="contact:clinic:edit" version="20260114092257" prefix="J1!contact:clinic:edit!" delimiter="#">
+        <data id="contact:clinic:edit" version="20260722163959" prefix="J1!contact:clinic:edit!" delimiter="#">
           <inputs>
             <meta>
               <location>
@@ -141,11 +143,7 @@ It must be nested in a group named `repeat`.</value>
   </h:head>
   <h:body class="pages">
     <group ref="/data/inputs">
-      <group ref="/data/inputs/user">
-        <input ref="/data/inputs/user/contact_id"/>
-        <input ref="/data/inputs/user/facility_id"/>
-        <input ref="/data/inputs/user/name"/>
-      </group>
+      <group ref="/data/inputs/user"/>
     </group>
     <input ref="/data/intro">
       <label ref="jr:itext('/data/intro:label')"/>

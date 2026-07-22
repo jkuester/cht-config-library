@@ -1,7 +1,5 @@
 const { expect } = require('chai');
 const { harness } = require('../../../../util/test-harness');
-const { readFile} = require('fs').promises;
-const Path = require('path');
 
 const form = 'embedded_multimedia';
 
@@ -21,12 +19,10 @@ describe('Embedded Multimedia form', () => {
 
     expect(errors).to.be.empty;
     expect(additionalDocs).to.be.empty;
-    const base64ImageFile = (await readFile(Path.resolve(__dirname, 'base64_image.txt')))
-      .toString()
-      .trim();
     expect(report._attachments).to.deep.equal({
       'user-file/embedded_multimedia/notes_with_media/base64_note': {
-        data: base64ImageFile,
+        data:
+          'iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mP8z8BQz0AEYBxVSF+FABJADveWkH6oAAAAAElFTkSuQmCC',
         content_type: 'image/png',
       },
     });

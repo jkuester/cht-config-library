@@ -4,7 +4,7 @@
     <h:title>Floating action button</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/intro/intro_txt_1:label">
             <value>There have been some important changes to your app.</value>
           </text>
@@ -32,7 +32,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="training:ui_change_floating_action_button" version="20260114092310" prefix="J1!training:ui_change_floating_action_button!" delimiter="#">
+        <data id="training:ui_change_floating_action_button" version="20260722214108" prefix="J1!training:ui_change_floating_action_button!" delimiter="#">
           <intro>
             <intro_txt_1/>
             <intro_txt_2/>

@@ -4,7 +4,7 @@
     <h:title>Register Case</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/inputs/source:label">
             <value>Source</value>
           </text>
@@ -23,7 +23,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="register_case" version="20260114092701" prefix="J1!register_case!" delimiter="#">
+        <data id="register_case" version="20260722164145" prefix="J1!register_case!" delimiter="#">
           <inputs>
             <meta>
               <location>

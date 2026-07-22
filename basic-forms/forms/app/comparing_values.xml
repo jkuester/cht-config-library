@@ -4,7 +4,7 @@
     <h:title>Comparing Values</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/intro:label">
             <value>This form demonstrates various methods for comparing values.</value>
           </text>
@@ -29,7 +29,7 @@
         </translation>
       </itext>
       <instance>
-        <data id="comparing_values" version="20260114091928" prefix="J1!comparing_values!" delimiter="#">
+        <data id="comparing_values" version="20260618172109" prefix="J1!comparing_values!" delimiter="#">
           <intro/>
           <case_insensitive>
             <description/>

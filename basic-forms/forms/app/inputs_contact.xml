@@ -4,7 +4,7 @@
     <h:title>Inputs Contact</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
-        <translation lang="English (en)">
+        <translation lang="en">
           <text id="/data/intro:label">
             <value>As noted in [the documentation](https://docs.communityhealthtoolkit.org/apps/guides/forms/form-inputs/#inputs-data-for-contact-in-app-forms), when opening an app form from a contact's profile page, data for that contact will be available in the &lt;code&gt;inputs/contact&lt;/code&gt; group.
 
@@ -21,7 +21,7 @@ Setting the top level &lt;code&gt;patient\_uuid&lt;/code&gt; (or &lt;code&gt;pla
         </translation>
       </itext>
       <instance>
-        <data id="inputs_contact" version="20260114092102" prefix="J1!inputs_contact!" delimiter="#">
+        <data id="inputs_contact" version="20260618172732" prefix="J1!inputs_contact!" delimiter="#">
           <intro/>
           <inputs>
             <meta>

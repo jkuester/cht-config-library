@@ -41,12 +41,12 @@
             <value>Voir [ce fil de discussion du forum](https://forum.communityhealthtoolkit.org/t/how-to-list-multiple-constraint-messages-on-a-single-field-in-xlsform/960) pour plus de contexte.</value>
           </text>
           <text id="/data/page/my_num_issue:label">
-            <value>-</value>
+            <value>Placeholder for calculating message</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <data id="dynamic_error_message" version="20260114092004" prefix="J1!dynamic_error_message!" delimiter="#">
+        <data id="dynamic_error_message" version="20260618172328" prefix="J1!dynamic_error_message!" delimiter="#">
           <page>
             <my_num/>
             <my_num_issue/>
