@@ -45,7 +45,7 @@ It must be nested in a group named `repeat`.</value>
         </translation>
       </itext>
       <instance>
-        <data id="contact:clinic:create" version="20260114092257" prefix="J1!contact:clinic:create!" delimiter="#">
+        <data id="contact:clinic:create" version="20260722161922" prefix="J1!contact:clinic:create!" delimiter="#">
           <inputs>
             <meta>
               <location>
@@ -141,11 +141,7 @@ It must be nested in a group named `repeat`.</value>
   </h:head>
   <h:body class="pages">
     <group ref="/data/inputs">
-      <group ref="/data/inputs/user">
-        <input ref="/data/inputs/user/contact_id"/>
-        <input ref="/data/inputs/user/facility_id"/>
-        <input ref="/data/inputs/user/name"/>
-      </group>
+      <group ref="/data/inputs/user"/>
     </group>
     <input ref="/data/intro">
       <label ref="jr:itext('/data/intro:label')"/>
