@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # Formats staged .xlsx form files with `chtx form format` and re-stages them, so
 # that every committed form has consistent conditional formatting applied.
@@ -7,36 +7,16 @@
 #
 # To bypass this hook for a single commit: git commit --no-verify
 
-set -eu
+set -euo pipefail
 
-staged_xlsx=$(git diff --cached --name-only --diff-filter=ACMR -- ':(icase)*.xlsx')
-[ -n "$staged_xlsx" ] || exit 0
+files=()
+while IFS= read -r file; do
+  # Skip forms that also have unstaged changes. Formatting rewrites the working
+  # tree file, so re-staging it would pull in changes that were never staged.
+  git diff --quiet -- "$file" && files+=("$file")
+done < <(git diff --cached --name-only --diff-filter=ACMR -- ':(icase)*.xlsx')
 
-# Split on newlines only, and disable globbing, so odd paths survive intact.
-old_ifs=$IFS
-IFS='
-'
-set -f
-set -- $staged_xlsx
-set +f
-IFS=$old_ifs
+[ ${#files[@]} -gt 0 ] || exit 0
 
-chtx=node_modules/.bin/chtx
-
-# Drop forms that also have unstaged changes. Formatting rewrites the working
-# tree file, so re-staging it would pull in changes that were never staged.
-# Take each path off the front and put the keepers back on the end.
-remaining=$#
-while [ "$remaining" -gt 0 ]; do
-  file=$1
-  shift
-  if git diff --quiet -- "$file"; then
-    set -- "$@" "$file"
-  fi
-  remaining=$((remaining - 1))
-done
-
-[ $# -gt 0 ] || exit 0
-
-"$chtx" form format "$@"
-git add -- "$@"
+node_modules/.bin/chtx form format "${files[@]}"
+git add -- "${files[@]}"
