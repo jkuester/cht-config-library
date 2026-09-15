@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks || true",
     "lint": "eslint --color --cache .",
     "test": "node util/runAllTests.js"
   },
@@ -9,6 +10,7 @@
     "chai-exclude": "^2.1.1",
     "cht-conf": "^6.0.0",
     "cht-conf-test-harness": "git+https://github.com/medic/cht-conf-test-harness.git#cht-form_extension-libs",
+    "chtoolbox": "^1.11.0",
     "eslint": "^8.57.0",
     "eslint-plugin-json": "^4.0.1",
     "eslint-plugin-node": "^11.1.0",
