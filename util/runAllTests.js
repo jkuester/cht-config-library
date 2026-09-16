@@ -5,7 +5,7 @@ const Path = require('path');
 
 // Projects with tests that should only be run on CI (or when CI envar = true)
 const CI_DEPENDANT = process.env.CI ? [] : ['google-drive'];
-const IGNORED_DIRS = ['node_modules', 'util', '.github', '.git', '.idea', ...CI_DEPENDANT];
+const IGNORED_DIRS = ['node_modules', 'util', '.github', '.git', '.githooks', '.idea', ...CI_DEPENDANT];
 const ROOT_DIR = Path.join(__dirname, '../');
 
 const getDirectories = async (source) => (await readdir(source, { withFileTypes: true }))
