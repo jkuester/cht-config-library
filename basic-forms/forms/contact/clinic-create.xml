@@ -1,51 +1,852 @@
 <?xml version="1.0"?>
 <h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
   <h:head>
-    <h:title>Create Household (with repeated children)</h:title>
+    <h:title>New PLACE_NAME</h:title>
     <model odk:xforms-version="1.0.0">
       <itext>
         <translation lang="en">
-          <text id="/data/intro:label">
-            <value>This form demonstrates the ability to add additional contacts in a contact form in a repeat.
-
-With this form you can create a Household along with it's primary contact. In addition you can create multiple other persons as household members (e.g. children).</value>
+          <text id="male_female-0">
+            <value>Female</value>
           </text>
-          <text id="/data/contact:label">
-            <value>Head of the Household</value>
+          <text id="male_female-1">
+            <value>Male</value>
           </text>
-          <text id="/data/contact/info:label">
-            <value>(This group for creating the primary contact _must_ be named `contact`.)</value>
+          <text id="contact-0">
+            <value>Create a new person</value>
           </text>
-          <text id="/data/contact/name:label">
-            <value>Person name</value>
+          <text id="contact-1">
+            <value>Select an existing person</value>
           </text>
-          <text id="/data/clinic:label">
-            <value>Household</value>
+          <text id="contact-2">
+            <value>Skip this step</value>
           </text>
-          <text id="/data/clinic/info:label">
-            <value>This group for creating the place _must_ have the name of the contact type that is being created (e.g. `clinic`).</value>
+          <text id="select_dob_method-0">
+            <value>Date of birth unknown</value>
           </text>
-          <text id="/data/clinic/name:label">
-            <value>Household name</value>
+          <text id="roles-0">
+            <value>CHW</value>
           </text>
-          <text id="/data/repeat:label">
-            <value>Add household members</value>
+          <text id="roles-1">
+            <value>CHW Supervisor</value>
           </text>
-          <text id="/data/repeat/child:label">
-            <value>Household member</value>
+          <text id="roles-2">
+            <value>Nurse</value>
           </text>
-          <text id="/data/repeat/child/info:label">
-            <value>This repeat is for adding additional contacts to the place. It _must_ be named `child` and _must_ have the `field-list` appearance.
-
-It must be nested in a group named `repeat`.</value>
+          <text id="roles-3">
+            <value>Facility Manager</value>
           </text>
-          <text id="/data/repeat/child/name:label">
-            <value>Member Name</value>
+          <text id="roles-4">
+            <value>Patient</value>
+          </text>
+          <text id="roles-5">
+            <value>Other</value>
+          </text>
+          <text id="yes_no_generated_name-0">
+            <value>Yes</value>
+          </text>
+          <text id="yes_no_generated_name-1">
+            <value>No, I want to name it manually</value>
+          </text>
+          <text id="generated_name-0">
+            <value><output value=" /data/first_page/contact_name "/>'s Health Facility</value>
+          </text>
+          <text id="generated_name-1">
+            <value><output value=" /data/first_page/contact_name "/>'s Area</value>
+          </text>
+          <text id="generated_name-2">
+            <value><output value=" /data/first_page/contact_name "/>'s Household</value>
+          </text>
+          <text id="/data/inputs/workaround_797/info:label">
+            <value>This repeat is included as a workaround for https://github.com/medic/cht-conf/issues/797</value>
+          </text>
+          <text id="/data/first_page/create_new_person:label">
+            <value>Set the Primary Contact</value>
+          </text>
+          <text id="/data/first_page/existing_contact/select_person:label">
+            <value>Select the Primary Contact</value>
+          </text>
+          <text id="/data/first_page/new_contact:label">
+            <value>New Person</value>
+          </text>
+          <text id="/data/first_page/new_contact/name:label">
+            <value>Full Name</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:jr:constraintMsg">
+            <value>Short name can not be more than 10 characters long.</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:label">
+            <value>Short name</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:hint">
+            <value>Please enter a short name that is preferred by the person.</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_method:label">
+            <value>Age</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:jr:constraintMsg">
+            <value>Date must be before today</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:label">
+            <value>Date of birth</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:jr:constraintMsg">
+            <value>Age must be between 0 and 130</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:label">
+            <value>Years</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:jr:constraintMsg">
+            <value>Months must between 0 and 11</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:label">
+            <value>Months</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:jr:constraintMsg">
+            <value>Please enter a valid local number, or use the standard international format, which includes a plus sign (+) and country code. For example: +254712345678</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:label">
+            <value>Phone Number</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:jr:constraintMsg">
+            <value>Please enter a valid local number, or use the standard international format, which includes a plus sign (+) and country code. For example: +254712345678</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:label">
+            <value>Alternate Phone Number</value>
+          </text>
+          <text id="/data/first_page/new_contact/sex:label">
+            <value>Sex</value>
+          </text>
+          <text id="/data/first_page/new_contact/role:label">
+            <value>Role</value>
+          </text>
+          <text id="/data/first_page/new_contact/role_other:label">
+            <value>Specify other</value>
+          </text>
+          <text id="/data/first_page/new_contact/external_id:label">
+            <value>External ID</value>
+          </text>
+          <text id="/data/first_page/new_contact/notes:label">
+            <value>Notes</value>
+          </text>
+          <text id="/data/first_page/generated_name:label">
+            <value>hidden</value>
+          </text>
+          <text id="/data/second_page/is_name_generated:label">
+            <value> Would you like to name the place after the primary contact: "<output value=" /data/first_page/generated_name_translation "/>"?</value>
+          </text>
+          <text id="/data/second_page/name:label">
+            <value>Name</value>
+          </text>
+          <text id="/data/second_page/external_id:label">
+            <value>External ID</value>
+          </text>
+          <text id="/data/second_page/notes:label">
+            <value>Notes</value>
+          </text>
+        </translation>
+        <translation lang="hi">
+          <text id="male_female-0">
+            <value>स्त्री</value>
+          </text>
+          <text id="male_female-1">
+            <value>पुरूष</value>
+          </text>
+          <text id="contact-0">
+            <value>एक नया व्यक्ति बनाएं</value>
+          </text>
+          <text id="contact-1">
+            <value>मौजूदा व्यक्ति चुनें</value>
+          </text>
+          <text id="contact-2">
+            <value>इस स्टेप को छोड़ दें</value>
+          </text>
+          <text id="roles-0">
+            <value>सामुदायिक स्वास्थ्य कर्मी</value>
+          </text>
+          <text id="roles-1">
+            <value>सामुदायिक स्वास्थ्य कर्मी के मैनेजर</value>
+          </text>
+          <text id="roles-2">
+            <value>नर्स</value>
+          </text>
+          <text id="roles-3">
+            <value>स्वास्थ्य केंद्र के मैनजर</value>
+          </text>
+          <text id="roles-4">
+            <value>मरीज़</value>
+          </text>
+          <text id="roles-5">
+            <value>अन्य</value>
+          </text>
+          <text id="yes_no_generated_name-0">
+            <value>हाँ</value>
+          </text>
+          <text id="yes_no_generated_name-1">
+            <value>नहीं, मैं इसे मैन्युअल रूप से नाम देना चाहता हूं</value>
+          </text>
+          <text id="generated_name-0">
+            <value><output value=" /data/first_page/contact_name "/> का ज़िला</value>
+          </text>
+          <text id="generated_name-1">
+            <value><output value=" /data/first_page/contact_name "/> का स्वास्थ्य केंद्र</value>
+          </text>
+          <text id="generated_name-2">
+            <value><output value=" /data/first_page/contact_name "/> का क्षेत्र</value>
+          </text>
+          <text id="select_dob_method-0">
+            <value>-</value>
+          </text>
+          <text id="/data/inputs/workaround_797/info:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/create_new_person:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/existing_contact/select_person:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:hint">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_method:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/sex:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/role:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/role_other:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/external_id:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/notes:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/generated_name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/is_name_generated:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/external_id:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/notes:label">
+            <value>-</value>
+          </text>
+        </translation>
+        <translation lang="id">
+          <text id="male_female-0">
+            <value>Wanita</value>
+          </text>
+          <text id="male_female-1">
+            <value>Pria</value>
+          </text>
+          <text id="contact-0">
+            <value>Buat orang baru</value>
+          </text>
+          <text id="contact-1">
+            <value>Pilih orang yang ada</value>
+          </text>
+          <text id="contact-2">
+            <value>Lewati langkah ini</value>
+          </text>
+          <text id="roles-0">
+            <value>Kader</value>
+          </text>
+          <text id="roles-1">
+            <value>Kader Pengawas</value>
+          </text>
+          <text id="roles-2">
+            <value>Perawat</value>
+          </text>
+          <text id="roles-3">
+            <value>Manajer Fasilitas</value>
+          </text>
+          <text id="roles-4">
+            <value>Pasien</value>
+          </text>
+          <text id="roles-5">
+            <value>Lain</value>
+          </text>
+          <text id="yes_no_generated_name-0">
+            <value>Iya</value>
+          </text>
+          <text id="yes_no_generated_name-1">
+            <value>Tidak, saya ingin nama itu secara manual</value>
+          </text>
+          <text id="generated_name-0">
+            <value> Kabupaten <output value=" /data/first_page/contact_name "/></value>
+          </text>
+          <text id="generated_name-1">
+            <value> Fasilitas Kesehatan <output value=" /data/first_page/contact_name "/></value>
+          </text>
+          <text id="generated_name-2">
+            <value> Daerah <output value=" /data/first_page/contact_name "/></value>
+          </text>
+          <text id="select_dob_method-0">
+            <value>-</value>
+          </text>
+          <text id="/data/inputs/workaround_797/info:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/create_new_person:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/existing_contact/select_person:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:hint">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_method:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/sex:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/role:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/role_other:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/external_id:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/notes:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/generated_name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/is_name_generated:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/external_id:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/notes:label">
+            <value>-</value>
+          </text>
+        </translation>
+        <translation lang="sw">
+          <text id="male_female-0">
+            <value>Kike</value>
+          </text>
+          <text id="male_female-1">
+            <value>Kiume</value>
+          </text>
+          <text id="contact-0">
+            <value>Ongeza mtumizi mpya</value>
+          </text>
+          <text id="contact-1">
+            <value>Chagua mtumizi aliyesajlishwa apo awali</value>
+          </text>
+          <text id="contact-2">
+            <value>Ruka hatua ii</value>
+          </text>
+          <text id="roles-0">
+            <value>Mhudumu wa afya</value>
+          </text>
+          <text id="roles-1">
+            <value>Mkuu wa wahudumu wa afya</value>
+          </text>
+          <text id="roles-2">
+            <value>Muuguzi</value>
+          </text>
+          <text id="roles-3">
+            <value>Meneja wa Kituo cha afya</value>
+          </text>
+          <text id="roles-4">
+            <value>Mgonjwa</value>
+          </text>
+          <text id="roles-5">
+            <value>Nyingine</value>
+          </text>
+          <text id="yes_no_generated_name-0">
+            <value>Ndio</value>
+          </text>
+          <text id="yes_no_generated_name-1">
+            <value>Hapana, ningependa kuijaza mwenyewe</value>
+          </text>
+          <text id="generated_name-0">
+            <value> WIlaya ya  <output value=" /data/first_page/contact_name "/></value>
+          </text>
+          <text id="generated_name-1">
+            <value> Kituo cha afya cha  <output value=" /data/first_page/contact_name "/></value>
+          </text>
+          <text id="generated_name-2">
+            <value> Eneo ya  <output value=" /data/first_page/contact_name "/></value>
+          </text>
+          <text id="select_dob_method-0">
+            <value>-</value>
+          </text>
+          <text id="/data/inputs/workaround_797/info:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/create_new_person:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/existing_contact/select_person:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:hint">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_method:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/sex:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/role:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/role_other:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/external_id:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/notes:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/generated_name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/is_name_generated:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/external_id:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/notes:label">
+            <value>-</value>
+          </text>
+        </translation>
+        <translation lang="ne">
+          <text id="male_female-0">
+            <value>महिला</value>
+          </text>
+          <text id="male_female-1">
+            <value>पुरुष</value>
+          </text>
+          <text id="contact-0">
+            <value>एक नया व्यक्ति बनाउनुस</value>
+          </text>
+          <text id="contact-1">
+            <value>व्यक्ति छान्नुहोस्</value>
+          </text>
+          <text id="contact-2">
+            <value>एख</value>
+          </text>
+          <text id="roles-0">
+            <value>महिला स्वास्थ्य स्वयम् सेविका</value>
+          </text>
+          <text id="roles-1">
+            <value>महिला स्वास्थ्य स्वयम् सेविकाको सुपरभाइजर</value>
+          </text>
+          <text id="roles-2">
+            <value>नर्स</value>
+          </text>
+          <text id="roles-3">
+            <value>स्वास्थ्य सस्था प्रमुख</value>
+          </text>
+          <text id="roles-4">
+            <value>बिरामी</value>
+          </text>
+          <text id="roles-5">
+            <value>अन्य</value>
+          </text>
+          <text id="yes_no_generated_name-0">
+            <value>हो</value>
+          </text>
+          <text id="yes_no_generated_name-1">
+            <value>होइन, म आफैँ नाम दिन चाहन्छु</value>
+          </text>
+          <text id="generated_name-0">
+            <value><output value=" /data/first_page/contact_name "/>को जिल्ला</value>
+          </text>
+          <text id="generated_name-1">
+            <value><output value=" /data/first_page/contact_name "/>को स्वास्थ्य केन्द्र</value>
+          </text>
+          <text id="generated_name-2">
+            <value><output value=" /data/first_page/contact_name "/>को क्षेत्र</value>
+          </text>
+          <text id="select_dob_method-0">
+            <value>-</value>
+          </text>
+          <text id="/data/inputs/workaround_797/info:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/create_new_person:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/existing_contact/select_person:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:hint">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_method:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/sex:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/role:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/role_other:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/external_id:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/notes:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/generated_name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/is_name_generated:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/external_id:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/notes:label">
+            <value>-</value>
+          </text>
+        </translation>
+        <translation lang="fr">
+          <text id="male_female-0">
+            <value>Femme</value>
+          </text>
+          <text id="male_female-1">
+            <value>Homme</value>
+          </text>
+          <text id="contact-0">
+            <value>Créer une nouvelle personne</value>
+          </text>
+          <text id="contact-1">
+            <value>Selectiionner une personne existant</value>
+          </text>
+          <text id="contact-2">
+            <value>Sauter cette section</value>
+          </text>
+          <text id="roles-0">
+            <value>ASC</value>
+          </text>
+          <text id="roles-1">
+            <value>Superviseur ASC</value>
+          </text>
+          <text id="roles-2">
+            <value>Infirmier</value>
+          </text>
+          <text id="roles-3">
+            <value>Staff médical</value>
+          </text>
+          <text id="roles-4">
+            <value>Patient</value>
+          </text>
+          <text id="roles-5">
+            <value>Autre</value>
+          </text>
+          <text id="yes_no_generated_name-0">
+            <value>Oui</value>
+          </text>
+          <text id="yes_no_generated_name-1">
+            <value>Non, je veux nommer ça manuellement</value>
+          </text>
+          <text id="generated_name-0">
+            <value> District de <output value=" /data/first_page/contact_name "/></value>
+          </text>
+          <text id="generated_name-1">
+            <value> Centre de santé de <output value=" /data/first_page/contact_name "/></value>
+          </text>
+          <text id="generated_name-2">
+            <value> Zone de <output value=" /data/first_page/contact_name "/></value>
+          </text>
+          <text id="select_dob_method-0">
+            <value>-</value>
+          </text>
+          <text id="/data/inputs/workaround_797/info:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/create_new_person:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/existing_contact/select_person:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/short_name:hint">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_method:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/dob_calendar:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_years:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/age/age_months:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:jr:constraintMsg">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/phone_alternate:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/sex:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/role:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/role_other:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/external_id:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/new_contact/notes:label">
+            <value>-</value>
+          </text>
+          <text id="/data/first_page/generated_name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/is_name_generated:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/name:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/external_id:label">
+            <value>-</value>
+          </text>
+          <text id="/data/second_page/notes:label">
+            <value>-</value>
           </text>
         </translation>
       </itext>
       <instance>
-        <data id="contact:clinic:create" version="20260722163949" prefix="J1!contact:clinic:create!" delimiter="#">
+        <data id="contact:clinic:create" version="20260915193259" prefix="J1!contact:clinic:create!" delimiter="#">
           <inputs>
             <meta>
               <location>
@@ -60,126 +861,355 @@ It must be nested in a group named `repeat`.</value>
               <facility_id/>
               <name/>
             </user>
+            <workaround_797_count/>
+            <workaround_797 jr:template="">
+              <info/>
+            </workaround_797>
           </inputs>
           <clinic>
-            <info/>
             <parent>PARENT</parent>
             <type/>
             <name/>
+            <external_id/>
+            <notes/>
             <contact/>
+            <geolocation/>
             <meta tag="hidden">
               <created_by/>
               <created_by_person_uuid/>
               <created_by_place_uuid/>
             </meta>
           </clinic>
-          <user_name/>
-          <user_contact_id/>
-          <user_facility_id/>
-          <intro/>
-          <contact>
-            <info/>
-            <parent>PARENT</parent>
-            <type/>
+          <first_page>
+            <create_new_person/>
+            <existing_contact>
+              <select_person/>
+              <name/>
+            </existing_contact>
+            <new_contact>
+              <name/>
+              <short_name/>
+              <age>
+                <dob_method/>
+                <dob_calendar/>
+                <age_years/>
+                <age_months/>
+                <dob_approx/>
+              </age>
+              <phone cht:unique_tel="true"/>
+              <phone_alternate cht:unique_tel="true"/>
+              <sex/>
+              <role/>
+              <role_other/>
+              <external_id/>
+              <notes/>
+            </new_contact>
+            <contact_name/>
+            <generated_name>clinic</generated_name>
+            <generated_name_translation/>
+          </first_page>
+          <second_page>
+            <is_name_generated/>
             <name/>
+            <external_id/>
+            <notes/>
+          </second_page>
+          <contact>
+            <parent>PARENT</parent>
+            <type>person</type>
+            <name/>
+            <short_name/>
+            <date_of_birth/>
+            <date_of_birth_method/>
+            <phone/>
+            <phone_alternate/>
+            <sex/>
+            <role/>
+            <role_other/>
+            <external_id/>
+            <notes/>
+            <user_for_contact>
+              <create/>
+            </user_for_contact>
             <meta tag="hidden">
               <created_by/>
               <created_by_person_uuid/>
               <created_by_place_uuid/>
             </meta>
           </contact>
-          <repeat>
-            <child jr:template="">
-              <info/>
-              <parent>PARENT</parent>
-              <type/>
-              <name/>
-              <meta tag="hidden">
-                <created_by/>
-                <created_by_person_uuid/>
-                <created_by_place_uuid/>
-              </meta>
-            </child>
-          </repeat>
           <meta tag="hidden">
             <instanceID/>
           </meta>
         </data>
       </instance>
+      <instance id="male_female">
+        <root>
+          <item>
+            <itextId>male_female-0</itextId>
+            <name>female</name>
+          </item>
+          <item>
+            <itextId>male_female-1</itextId>
+            <name>male</name>
+          </item>
+        </root>
+      </instance>
+      <instance id="contact">
+        <root>
+          <item>
+            <itextId>contact-0</itextId>
+            <name>new_person</name>
+          </item>
+          <item>
+            <itextId>contact-1</itextId>
+            <name>old_person</name>
+          </item>
+          <item>
+            <itextId>contact-2</itextId>
+            <name>none</name>
+          </item>
+        </root>
+      </instance>
+      <instance id="select_dob_method">
+        <root>
+          <item>
+            <itextId>select_dob_method-0</itextId>
+            <name>approx</name>
+          </item>
+        </root>
+      </instance>
+      <instance id="roles">
+        <root>
+          <item>
+            <itextId>roles-0</itextId>
+            <name>chw</name>
+          </item>
+          <item>
+            <itextId>roles-1</itextId>
+            <name>chw_supervisor</name>
+          </item>
+          <item>
+            <itextId>roles-2</itextId>
+            <name>nurse</name>
+          </item>
+          <item>
+            <itextId>roles-3</itextId>
+            <name>manager</name>
+          </item>
+          <item>
+            <itextId>roles-4</itextId>
+            <name>patient</name>
+          </item>
+          <item>
+            <itextId>roles-5</itextId>
+            <name>other</name>
+          </item>
+        </root>
+      </instance>
+      <instance id="yes_no_generated_name">
+        <root>
+          <item>
+            <itextId>yes_no_generated_name-0</itextId>
+            <name>true</name>
+          </item>
+          <item>
+            <itextId>yes_no_generated_name-1</itextId>
+            <name>false</name>
+          </item>
+        </root>
+      </instance>
+      <instance id="generated_name">
+        <root>
+          <item>
+            <itextId>generated_name-0</itextId>
+            <name>district_hospital</name>
+          </item>
+          <item>
+            <itextId>generated_name-1</itextId>
+            <name>health_center</name>
+          </item>
+          <item>
+            <itextId>generated_name-2</itextId>
+            <name>clinic</name>
+          </item>
+        </root>
+      </instance>
       <bind nodeset="/data/inputs" relevant="false()"/>
       <bind nodeset="/data/inputs/user/contact_id" type="string"/>
       <bind nodeset="/data/inputs/user/facility_id" type="string"/>
       <bind nodeset="/data/inputs/user/name" type="string"/>
-      <bind nodeset="/data/user_name" type="string" calculate="../inputs/user/name"/>
-      <bind nodeset="/data/user_contact_id" type="string" calculate="../inputs/user/contact_id"/>
-      <bind nodeset="/data/user_facility_id" type="string" calculate="../inputs/user/facility_id"/>
-      <bind nodeset="/data/intro" readonly="true()" type="string"/>
-      <bind nodeset="/data/contact/info" readonly="true()" type="string"/>
+      <bind nodeset="/data/inputs/workaround_797_count" type="string" readonly="true()" calculate="0"/>
+      <bind nodeset="/data/inputs/workaround_797/info" readonly="true()" type="string"/>
+      <bind nodeset="/data/first_page/create_new_person" type="string" required="true()"/>
+      <bind nodeset="/data/first_page/existing_contact" relevant="selected( /data/first_page/create_new_person ,'old_person')"/>
+      <bind nodeset="/data/first_page/existing_contact/select_person" type="string" required="true()"/>
+      <bind nodeset="/data/first_page/existing_contact/name" type="string"/>
+      <bind nodeset="/data/first_page/new_contact" relevant="selected( /data/first_page/create_new_person ,'new_person')"/>
+      <bind nodeset="/data/first_page/new_contact/name" type="string" required="true()"/>
+      <bind nodeset="/data/first_page/new_contact/short_name" type="string" constraint="string-length(.) &lt;= 10" jr:constraintMsg="jr:itext('/data/first_page/new_contact/short_name:jr:constraintMsg')"/>
+      <bind nodeset="/data/first_page/new_contact/age/dob_method" type="string"/>
+      <bind nodeset="/data/first_page/new_contact/age/dob_calendar" type="date" required="true()" relevant="not(selected( /data/first_page/new_contact/age/dob_method , &quot;approx&quot;))" constraint=". &lt;= now()" jr:constraintMsg="jr:itext('/data/first_page/new_contact/age/dob_calendar:jr:constraintMsg')"/>
+      <bind nodeset="/data/first_page/new_contact/age/age_years" type="int" required="true()" relevant="selected( /data/first_page/new_contact/age/dob_method , &quot;approx&quot;)" constraint=". &gt;= 0 and . &lt;= 130" jr:constraintMsg="jr:itext('/data/first_page/new_contact/age/age_years:jr:constraintMsg')"/>
+      <bind nodeset="/data/first_page/new_contact/age/age_months" type="int" relevant="selected( /data/first_page/new_contact/age/dob_method , &quot;approx&quot;)" constraint=". &gt;= 0 and . &lt;= 11" jr:constraintMsg="jr:itext('/data/first_page/new_contact/age/age_months:jr:constraintMsg')"/>
+      <bind nodeset="/data/first_page/new_contact/age/dob_approx" type="string" calculate="add-date(today(), 0- /data/first_page/new_contact/age/age_years , 0- /data/first_page/new_contact/age/age_months )"/>
+      <bind nodeset="/data/first_page/new_contact/phone" type="string" constraint="true()" jr:constraintMsg="jr:itext('/data/first_page/new_contact/phone:jr:constraintMsg')"/>
+      <bind nodeset="/data/first_page/new_contact/phone_alternate" type="string" constraint="true()" jr:constraintMsg="jr:itext('/data/first_page/new_contact/phone_alternate:jr:constraintMsg')"/>
+      <bind nodeset="/data/first_page/new_contact/sex" type="string" required="true()"/>
+      <bind nodeset="/data/first_page/new_contact/role" type="string"/>
+      <bind nodeset="/data/first_page/new_contact/role_other" type="string" relevant="selected(../role,'other')"/>
+      <bind nodeset="/data/first_page/new_contact/external_id" type="string"/>
+      <bind nodeset="/data/first_page/new_contact/notes" type="string"/>
+      <bind nodeset="/data/first_page/contact_name" type="string" calculate="coalesce(../new_contact/name, ../existing_contact/name)"/>
+      <bind nodeset="/data/first_page/generated_name" type="string"/>
+      <bind nodeset="/data/first_page/generated_name_translation" type="string" calculate="jr:choice-name( /data/first_page/generated_name ,' /data/first_page/generated_name ')"/>
+      <bind nodeset="/data/second_page/is_name_generated" type="string" required="true()" relevant="not(selected( /data/first_page/create_new_person ,'none'))"/>
+      <bind nodeset="/data/second_page/name" type="string" required="true()" relevant="selected( /data/second_page/is_name_generated ,'false') or selected( /data/first_page/create_new_person ,'none')"/>
+      <bind nodeset="/data/second_page/external_id" type="string"/>
+      <bind nodeset="/data/second_page/notes" type="string"/>
       <bind nodeset="/data/contact/parent" type="string"/>
-      <bind nodeset="/data/contact/type" type="string" calculate="&quot;person&quot;"/>
-      <bind nodeset="/data/contact/name" type="string" required="true()"/>
-      <bind nodeset="/data/contact/meta/created_by" type="string" calculate=" /data/user_name "/>
-      <bind nodeset="/data/contact/meta/created_by_person_uuid" type="string" calculate=" /data/user_contact_id "/>
-      <bind nodeset="/data/contact/meta/created_by_place_uuid" type="string" calculate=" /data/user_facility_id "/>
-      <bind nodeset="/data/clinic/info" readonly="true()" type="string"/>
+      <bind nodeset="/data/contact/type" type="string"/>
+      <bind nodeset="/data/contact/name" type="string" calculate="../../first_page/new_contact/name"/>
+      <bind nodeset="/data/contact/short_name" type="string" calculate="../../first_page/new_contact/short_name"/>
+      <bind nodeset="/data/contact/date_of_birth" type="string" calculate="format-date-time(coalesce( /data/first_page/new_contact/age/dob_calendar ,  /data/first_page/new_contact/age/dob_approx ),&quot;%Y-%m-%d&quot;)"/>
+      <bind nodeset="/data/contact/date_of_birth_method" type="string" calculate=" /data/first_page/new_contact/age/dob_method "/>
+      <bind nodeset="/data/contact/phone" type="string" calculate="../../first_page/new_contact/phone"/>
+      <bind nodeset="/data/contact/phone_alternate" type="string" calculate="../../first_page/new_contact/phone_alternate"/>
+      <bind nodeset="/data/contact/sex" type="string" calculate="../../first_page/new_contact/sex"/>
+      <bind nodeset="/data/contact/role" type="string" calculate="../../first_page/new_contact/role"/>
+      <bind nodeset="/data/contact/role_other" type="string" calculate="../../first_page/new_contact/role_other"/>
+      <bind nodeset="/data/contact/external_id" type="string" calculate="../../first_page/new_contact/external_id"/>
+      <bind nodeset="/data/contact/notes" type="string" calculate="../../first_page/new_contact/notes"/>
+      <bind nodeset="/data/contact/user_for_contact/create" type="string" calculate="../../phone != '' and (../../role = 'chw' or ../../role = 'chw_supervisor')"/>
+      <bind nodeset="/data/contact/meta/created_by" type="string" calculate="../../../inputs/user/name"/>
+      <bind nodeset="/data/contact/meta/created_by_person_uuid" type="string" calculate="../../../inputs/user/contact_id"/>
+      <bind nodeset="/data/contact/meta/created_by_place_uuid" type="string" calculate="../../../inputs/user/facility_id"/>
       <bind nodeset="/data/clinic/parent" type="string"/>
-      <bind nodeset="/data/clinic/type" type="string" calculate="&quot;clinic&quot;"/>
-      <bind nodeset="/data/clinic/name" type="string" required="true()"/>
-      <bind nodeset="/data/clinic/contact" type="string" calculate="&quot;NEW&quot;"/>
-      <bind nodeset="/data/clinic/meta/created_by" type="string" calculate=" /data/user_name "/>
-      <bind nodeset="/data/clinic/meta/created_by_person_uuid" type="string" calculate=" /data/user_contact_id "/>
-      <bind nodeset="/data/clinic/meta/created_by_place_uuid" type="string" calculate=" /data/user_facility_id "/>
-      <bind nodeset="/data/repeat/child/info" readonly="true()" type="string"/>
-      <bind nodeset="/data/repeat/child/parent" type="string"/>
-      <bind nodeset="/data/repeat/child/type" type="string" calculate="&quot;person&quot;"/>
-      <bind nodeset="/data/repeat/child/name" type="string" required="true()"/>
-      <bind nodeset="/data/repeat/child/meta/created_by" type="string" calculate=" /data/user_name "/>
-      <bind nodeset="/data/repeat/child/meta/created_by_person_uuid" type="string" calculate=" /data/user_contact_id "/>
-      <bind nodeset="/data/repeat/child/meta/created_by_place_uuid" type="string" calculate=" /data/user_facility_id "/>
+      <bind nodeset="/data/clinic/type" type="string"/>
+      <bind nodeset="/data/clinic/name" type="string" calculate="coalesce(../../second_page/name,  /data/first_page/generated_name_translation )"/>
+      <bind nodeset="/data/clinic/external_id" type="string" calculate="../../second_page/external_id"/>
+      <bind nodeset="/data/clinic/notes" type="string" calculate="../../second_page/notes"/>
+      <bind nodeset="/data/clinic/contact" type="string" calculate="if(selected( /data/first_page/create_new_person ,'none'), &quot;&quot;, coalesce( /data/first_page/existing_contact/select_person ,&quot;NEW&quot;))"/>
+      <bind nodeset="/data/clinic/geolocation" type="string" calculate="concat(../../inputs/meta/location/lat, concat(' ', ../../inputs/meta/location/long))"/>
+      <bind nodeset="/data/clinic/meta/created_by" type="string" calculate="../../../inputs/user/name"/>
+      <bind nodeset="/data/clinic/meta/created_by_person_uuid" type="string" calculate="../../../inputs/user/contact_id"/>
+      <bind nodeset="/data/clinic/meta/created_by_place_uuid" type="string" calculate="../../../inputs/user/facility_id"/>
       <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
   <h:body class="pages">
     <group ref="/data/inputs">
       <group ref="/data/inputs/user"/>
-    </group>
-    <input ref="/data/intro">
-      <label ref="jr:itext('/data/intro:label')"/>
-    </input>
-    <group appearance="field-list" ref="/data/contact">
-      <label ref="jr:itext('/data/contact:label')"/>
-      <input ref="/data/contact/info">
-        <label ref="jr:itext('/data/contact/info:label')"/>
-      </input>
-      <input ref="/data/contact/name">
-        <label ref="jr:itext('/data/contact/name:label')"/>
-      </input>
-      <group appearance="hidden" ref="/data/contact/meta"/>
-    </group>
-    <group appearance="field-list" ref="/data/clinic">
-      <label ref="jr:itext('/data/clinic:label')"/>
-      <input ref="/data/clinic/info">
-        <label ref="jr:itext('/data/clinic/info:label')"/>
-      </input>
-      <input ref="/data/clinic/name">
-        <label ref="jr:itext('/data/clinic/name:label')"/>
-      </input>
-      <group appearance="hidden" ref="/data/clinic/meta"/>
-    </group>
-    <group ref="/data/repeat">
-      <label ref="jr:itext('/data/repeat:label')"/>
-      <group ref="/data/repeat/child">
-        <label ref="jr:itext('/data/repeat/child:label')"/>
-        <repeat nodeset="/data/repeat/child" appearance="field-list">
-          <input ref="/data/repeat/child/info">
-            <label ref="jr:itext('/data/repeat/child/info:label')"/>
+      <group ref="/data/inputs/workaround_797">
+        <label/>
+        <repeat nodeset="/data/inputs/workaround_797" jr:count=" /data/inputs/workaround_797_count ">
+          <input ref="/data/inputs/workaround_797/info">
+            <label ref="jr:itext('/data/inputs/workaround_797/info:label')"/>
           </input>
-          <input ref="/data/repeat/child/name">
-            <label ref="jr:itext('/data/repeat/child/name:label')"/>
-          </input>
-          <group appearance="hidden" ref="/data/repeat/child/meta"/>
         </repeat>
       </group>
+    </group>
+    <group appearance="field-list" ref="/data/first_page">
+      <select1 ref="/data/first_page/create_new_person" appearance="columns-pack">
+        <label ref="jr:itext('/data/first_page/create_new_person:label')"/>
+        <itemset nodeset="instance('contact')/root/item">
+          <value ref="name"/>
+          <label ref="jr:itext(itextId)"/>
+        </itemset>
+      </select1>
+      <group ref="/data/first_page/existing_contact">
+        <input ref="/data/first_page/existing_contact/select_person" appearance="select-contact type-person">
+          <label ref="jr:itext('/data/first_page/existing_contact/select_person:label')"/>
+        </input>
+      </group>
+      <group ref="/data/first_page/new_contact">
+        <label ref="jr:itext('/data/first_page/new_contact:label')"/>
+        <input ref="/data/first_page/new_contact/name">
+          <label ref="jr:itext('/data/first_page/new_contact/name:label')"/>
+        </input>
+        <input ref="/data/first_page/new_contact/short_name">
+          <label ref="jr:itext('/data/first_page/new_contact/short_name:label')"/>
+          <hint ref="jr:itext('/data/first_page/new_contact/short_name:hint')"/>
+        </input>
+        <group ref="/data/first_page/new_contact/age">
+          <select ref="/data/first_page/new_contact/age/dob_method">
+            <label ref="jr:itext('/data/first_page/new_contact/age/dob_method:label')"/>
+            <itemset nodeset="instance('select_dob_method')/root/item">
+              <value ref="name"/>
+              <label ref="jr:itext(itextId)"/>
+            </itemset>
+          </select>
+          <input ref="/data/first_page/new_contact/age/dob_calendar">
+            <label ref="jr:itext('/data/first_page/new_contact/age/dob_calendar:label')"/>
+          </input>
+          <input ref="/data/first_page/new_contact/age/age_years">
+            <label ref="jr:itext('/data/first_page/new_contact/age/age_years:label')"/>
+          </input>
+          <input ref="/data/first_page/new_contact/age/age_months">
+            <label ref="jr:itext('/data/first_page/new_contact/age/age_months:label')"/>
+          </input>
+        </group>
+        <input ref="/data/first_page/new_contact/phone" appearance="numbers tel">
+          <label ref="jr:itext('/data/first_page/new_contact/phone:label')"/>
+        </input>
+        <input ref="/data/first_page/new_contact/phone_alternate" appearance="numbers tel">
+          <label ref="jr:itext('/data/first_page/new_contact/phone_alternate:label')"/>
+        </input>
+        <select1 ref="/data/first_page/new_contact/sex" appearance="columns">
+          <label ref="jr:itext('/data/first_page/new_contact/sex:label')"/>
+          <itemset nodeset="instance('male_female')/root/item">
+            <value ref="name"/>
+            <label ref="jr:itext(itextId)"/>
+          </itemset>
+        </select1>
+        <select1 ref="/data/first_page/new_contact/role">
+          <label ref="jr:itext('/data/first_page/new_contact/role:label')"/>
+          <itemset nodeset="instance('roles')/root/item">
+            <value ref="name"/>
+            <label ref="jr:itext(itextId)"/>
+          </itemset>
+        </select1>
+        <input ref="/data/first_page/new_contact/role_other">
+          <label ref="jr:itext('/data/first_page/new_contact/role_other:label')"/>
+        </input>
+        <input ref="/data/first_page/new_contact/external_id">
+          <label ref="jr:itext('/data/first_page/new_contact/external_id:label')"/>
+        </input>
+        <input ref="/data/first_page/new_contact/notes" appearance="multiline">
+          <label ref="jr:itext('/data/first_page/new_contact/notes:label')"/>
+        </input>
+      </group>
+      <select1 ref="/data/first_page/generated_name" appearance="hidden">
+        <label ref="jr:itext('/data/first_page/generated_name:label')"/>
+        <itemset nodeset="instance('generated_name')/root/item">
+          <value ref="name"/>
+          <label ref="jr:itext(itextId)"/>
+        </itemset>
+      </select1>
+    </group>
+    <group appearance="field-list" ref="/data/second_page">
+      <select1 ref="/data/second_page/is_name_generated" appearance="columns-pack">
+        <label ref="jr:itext('/data/second_page/is_name_generated:label')"/>
+        <itemset nodeset="instance('yes_no_generated_name')/root/item">
+          <value ref="name"/>
+          <label ref="jr:itext(itextId)"/>
+        </itemset>
+      </select1>
+      <input ref="/data/second_page/name">
+        <label ref="jr:itext('/data/second_page/name:label')"/>
+      </input>
+      <input ref="/data/second_page/external_id">
+        <label ref="jr:itext('/data/second_page/external_id:label')"/>
+      </input>
+      <input ref="/data/second_page/notes" appearance="multiline">
+        <label ref="jr:itext('/data/second_page/notes:label')"/>
+      </input>
+    </group>
+    <group appearance="hidden" ref="/data/contact">
+      <group ref="/data/contact/user_for_contact"/>
+      <group ref="/data/contact/meta"/>
+    </group>
+    <group appearance="hidden" ref="/data/clinic">
+      <group ref="/data/clinic/meta"/>
     </group>
   </h:body>
 </h:html>
