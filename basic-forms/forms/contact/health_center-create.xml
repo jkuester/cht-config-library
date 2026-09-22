@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+  <h:head>
+    <h:title>New Health Center</h:title>
+    <model odk:xforms-version="1.0.0">
+      <itext>
+        <translation lang="en">
+          <text id="/data/health_center:label">
+            <value>Health Center</value>
+          </text>
+          <text id="/data/health_center/name:label">
+            <value>Name</value>
+          </text>
+          <text id="/data/contact:label">
+            <value>Primary Contact</value>
+          </text>
+          <text id="/data/contact/name:label">
+            <value>Name</value>
+          </text>
+          <text id="/data/repeat:label">
+            <value>Health Center Staff</value>
+          </text>
+          <text id="/data/repeat/note:label">
+            <value>Children of the Health Center</value>
+          </text>
+          <text id="/data/repeat/child:label">
+            <value>Staff Member</value>
+          </text>
+          <text id="/data/repeat/child/name:label">
+            <value>Name</value>
+          </text>
+          <text id="/data/parent:label">
+            <value>District Hospital</value>
+          </text>
+          <text id="/data/parent/name:label">
+            <value>Name</value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <data id="contact:health_center:create" version="2026-09-22  13-47" prefix="J1!contact:health_center:create!" delimiter="#">
+          <health_center>
+            <parent/>
+            <contact/>
+            <type>health_center</type>
+            <name/>
+          </health_center>
+          <contact>
+            <parent>PARENT</parent>
+            <type>person</type>
+            <name/>
+          </contact>
+          <repeat>
+            <note/>
+            <child jr:template="">
+              <parent>PARENT</parent>
+              <type>person</type>
+              <name/>
+            </child>
+          </repeat>
+          <parent>
+            <type>district_hospital</type>
+            <name/>
+          </parent>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </data>
+      </instance>
+      <bind nodeset="/data/health_center/parent" type="string" calculate="&quot;NEW&quot;"/>
+      <bind nodeset="/data/health_center/contact" type="string" calculate="&quot;NEW&quot;"/>
+      <bind nodeset="/data/health_center/type" type="string"/>
+      <bind nodeset="/data/health_center/name" type="string" required="true()"/>
+      <bind nodeset="/data/contact/parent" type="string"/>
+      <bind nodeset="/data/contact/type" type="string"/>
+      <bind nodeset="/data/contact/name" type="string" required="true()"/>
+      <bind nodeset="/data/repeat/note" readonly="true()" type="string"/>
+      <bind nodeset="/data/repeat/child/parent" type="string"/>
+      <bind nodeset="/data/repeat/child/type" type="string"/>
+      <bind nodeset="/data/repeat/child/name" type="string" required="true()"/>
+      <bind nodeset="/data/parent/type" type="string"/>
+      <bind nodeset="/data/parent/name" type="string" required="true()"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <group ref="/data/health_center">
+      <label ref="jr:itext('/data/health_center:label')"/>
+      <input ref="/data/health_center/name">
+        <label ref="jr:itext('/data/health_center/name:label')"/>
+      </input>
+    </group>
+    <group ref="/data/contact">
+      <label ref="jr:itext('/data/contact:label')"/>
+      <input ref="/data/contact/name">
+        <label ref="jr:itext('/data/contact/name:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/data/repeat">
+      <label ref="jr:itext('/data/repeat:label')"/>
+      <input ref="/data/repeat/note">
+        <label ref="jr:itext('/data/repeat/note:label')"/>
+      </input>
+      <group ref="/data/repeat/child">
+        <label ref="jr:itext('/data/repeat/child:label')"/>
+        <repeat nodeset="/data/repeat/child">
+          <input ref="/data/repeat/child/name">
+            <label ref="jr:itext('/data/repeat/child/name:label')"/>
+          </input>
+        </repeat>
+      </group>
+    </group>
+    <group ref="/data/parent">
+      <label ref="jr:itext('/data/parent:label')"/>
+      <input ref="/data/parent/name">
+        <label ref="jr:itext('/data/parent/name:label')"/>
+      </input>
+    </group>
+  </h:body>
+</h:html>
