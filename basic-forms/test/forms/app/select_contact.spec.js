@@ -47,6 +47,14 @@ describe('Select Contact form', () => {
         selected_contact_name: CONTACT.name,
         description: '',
       },
+      descendant_contact_page: {
+        descendant_contact: {
+          _id: '',
+          name: ''
+        },
+        note: '',
+        selected_descendant_contact_name: ''
+      },
     });
   });
 });

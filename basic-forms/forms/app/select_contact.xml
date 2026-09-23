@@ -38,10 +38,22 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
           <text id="/data/contact_page/description:label">
             <value> You selected: <output value=" /data/contact_page/selected_contact_name "/></value>
           </text>
+          <text id="/data/descendant_contact_page:label">
+            <value>Load data from descendant of current contact</value>
+          </text>
+          <text id="/data/descendant_contact_page/note:label">
+            <value>This only works if you have opened the form from the "People" tab with a place contact selected. Also, you must specify the contact type in the appearance (e.g. `type-person`).</value>
+          </text>
+          <text id="/data/descendant_contact_page/descendant_contact/_id:label">
+            <value>Select a descendant of current contact</value>
+          </text>
+          <text id="/data/descendant_contact_page/description:label">
+            <value> You selected: <output value=" /data/descendant_contact_page/selected_descendant_contact_name "/></value>
+          </text>
         </translation>
       </itext>
       <instance>
-        <data id="select_contact" version="20260722163919" prefix="J1!select_contact!" delimiter="#">
+        <data id="select_contact" version="20260922143813" prefix="J1!select_contact!" delimiter="#">
           <intro/>
           <inputs>
             <meta>
@@ -74,6 +86,15 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
             <selected_contact_name/>
             <description/>
           </contact_page>
+          <descendant_contact_page>
+            <note/>
+            <descendant_contact>
+              <_id/>
+              <name/>
+            </descendant_contact>
+            <selected_descendant_contact_name/>
+            <description/>
+          </descendant_contact_page>
           <meta tag="hidden">
             <instanceID/>
           </meta>
@@ -94,6 +115,11 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
       <bind nodeset="/data/contact_page/contact/name" type="string"/>
       <bind nodeset="/data/contact_page/selected_contact_name" type="string" calculate="../contact/name"/>
       <bind nodeset="/data/contact_page/description" readonly="true()" type="string" relevant=" /data/contact_page/selected_contact_name  != &quot;&quot;"/>
+      <bind nodeset="/data/descendant_contact_page/note" readonly="true()" type="string"/>
+      <bind nodeset="/data/descendant_contact_page/descendant_contact/_id" type="string"/>
+      <bind nodeset="/data/descendant_contact_page/descendant_contact/name" type="string"/>
+      <bind nodeset="/data/descendant_contact_page/selected_descendant_contact_name" type="string" calculate="../descendant_contact/name"/>
+      <bind nodeset="/data/descendant_contact_page/description" readonly="true()" type="string" relevant=" /data/descendant_contact_page/selected_descendant_contact_name  != &quot;&quot;"/>
       <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
     </model>
   </h:head>
@@ -127,6 +153,20 @@ _(Note that because of [this issue](https://github.com/medic/cht-core/issues/822
       </group>
       <input ref="/data/contact_page/description">
         <label ref="jr:itext('/data/contact_page/description:label')"/>
+      </input>
+    </group>
+    <group appearance="field-list" ref="/data/descendant_contact_page">
+      <label ref="jr:itext('/data/descendant_contact_page:label')"/>
+      <input ref="/data/descendant_contact_page/note">
+        <label ref="jr:itext('/data/descendant_contact_page/note:label')"/>
+      </input>
+      <group ref="/data/descendant_contact_page/descendant_contact">
+        <input ref="/data/descendant_contact_page/descendant_contact/_id" appearance="select-contact type-person descendant-of-current-contact">
+          <label ref="jr:itext('/data/descendant_contact_page/descendant_contact/_id:label')"/>
+        </input>
+      </group>
+      <input ref="/data/descendant_contact_page/description">
+        <label ref="jr:itext('/data/descendant_contact_page/description:label')"/>
       </input>
     </group>
   </h:body>

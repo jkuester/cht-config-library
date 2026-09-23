@@ -11,9 +11,19 @@ the ODK team has provided a [XLSForm Template](https://forum.getodk.org/t/odk-xl
 
 ## Contact forms
 
-### Repeated Child Contacts
+### Adding additional contacts
 
-The `clinic-create` and `clinic-edit` forms demonstrate how to create repeated child contacts (in addition to the primary child contact) when creating/editing a place contact. (Note that it is not possible to _edit_ existing child contacts when editing a place, but you can _create_ additional new ones.)
+The `health_center-create` form demonstrates how to create additional contacts in a contact form. The `parent` group creates the parent contact for the health center (the district hospital). The `contact` group creates the primary contact for the health center. The `repeat/child` group allows for creating multiple additional contacts as children of the health center. See [the documentation](https://docs.communityhealthtoolkit.org/building/forms/contact/#creating-person-and-place-contacts-in-the-same-form) for more details.
+
+### Profile image
+
+The `health_center-create` form also includes the `profile_image` field for each of the contacts it writes. So, [profile images](https://docs.communityhealthtoolkit.org/building/forms/contact/#profile-image) can be specified even for nested contacts. 
+
+### Hidden top-level groups in a contact form
+
+Historically, structuring the UX of a contact form was challenging because of various assumptions and limitations. Contact data must be recorded in specific top-level groups, but these groups could not be hidden without it creating an empty page in the form.  As of CHT `5.2.0`, this [is no longer the case](https://github.com/medic/cht-core/issues/8226). Now, contact forms can have a fully customizable structure and all the contact data can flow into hidden top-level groups that hold the actual contact data.
+
+The `clinic-create` form reproduces the exact UX behavior of the [default form](https://github.com/medic/cht-core/tree/master/config/default/forms/contact), but with custom top-level groups that collect data from the user and store it in hidden groups for actually writing the contact.  
 
 ## Training Cards
 

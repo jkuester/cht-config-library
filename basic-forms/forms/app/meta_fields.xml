@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<h:html xmlns="http://www.w3.org/2002/xforms" xmlns:h="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jr="http://openrosa.org/javarosa" xmlns:orx="http://openrosa.org/xforms" xmlns:odk="http://www.opendatakit.org/xforms" xmlns:cht="https://communityhealthtoolkit.org">
+  <h:head>
+    <h:title>Meta Fields</h:title>
+    <model odk:xforms-version="1.0.0">
+      <itext>
+        <translation lang="English (en)">
+          <text id="/data/intro:label">
+            <value> The CHT supports several [meta fields](https://docs.communityhealthtoolkit.org/building/forms/app/#supported-xlsform-meta-fields) that are automatically populated when present in the form structure.
+
+Current Values:
+start: <output value=" /data/start "/>
+end: <output value=" /data/end "/>
+today: <output value=" /data/today "/></value>
+          </text>
+        </translation>
+      </itext>
+      <instance>
+        <data id="meta_fields" version="20260922171242" prefix="J1!meta_fields!" delimiter="#">
+          <intro/>
+          <start/>
+          <end/>
+          <today/>
+          <meta tag="hidden">
+            <instanceID/>
+          </meta>
+        </data>
+      </instance>
+      <instance id="contact-summary"/>
+      <instance id="user-contact-summary"/>
+      <bind nodeset="/data/intro" readonly="true()" type="string"/>
+      <bind nodeset="/data/start" jr:preload="timestamp" type="dateTime" jr:preloadParams="start"/>
+      <bind nodeset="/data/end" jr:preload="timestamp" type="dateTime" jr:preloadParams="end"/>
+      <bind nodeset="/data/today" jr:preload="date" type="date" jr:preloadParams="today"/>
+      <bind nodeset="/data/meta/instanceID" type="string" readonly="true()" jr:preload="uid"/>
+    </model>
+  </h:head>
+  <h:body class="pages">
+    <input ref="/data/intro">
+      <label ref="jr:itext('/data/intro:label')"/>
+    </input>
+  </h:body>
+</h:html>
